@@ -10,13 +10,17 @@ User.hasMany(Post, {
 });
 
 User.hasMany(Movie, {
-    // set foreign key to user?
+    
     foreignKey: 'user_id'
 });
 
 Movie.belongsTo(User, {
     foreignKey: 'user_id'
 });
+
+Movie.belongsTo(Post, {
+    foreignKey: 'post_id'   // I think movie should belong to post? 
+})
 
 Post.belongsTo(User, {
     foreignKey: 'user_id',
@@ -25,7 +29,11 @@ Post.belongsTo(User, {
 
 Movie.belongsTo(Genre, {
     foreignKey: 'genre_id',
-    onDelete: 'SET NULL'
+    
+});
+
+Genre.hasMany(Movie, {
+    foreignKey: 'genre_id'
 });
 
 // Movie.hasMany(Genre, {
@@ -33,9 +41,7 @@ Movie.belongsTo(Genre, {
 
 // });  // i mean movies do sometimes fall under several genres tho...
 
-Genre.hasMany(Movie, {
-    foreignKey: 'genre_id'
-});
+
 
 
 module.exports = { User, Post, Movie, Genre };
