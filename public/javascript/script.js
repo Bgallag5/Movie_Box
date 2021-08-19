@@ -24,10 +24,10 @@ src.pipe(dest);
  
 src.emit('data', 'test');
 
-needle.get('http://www.omdbapi.com/?apikey=[63a211f6]&', function(error, response) {
-  if (!error && response.statusCode == 200)
-    console.log(response.body);
-});
+// needle.get('http://www.omdbapi.com/?apikey=[63a211f6]&', function(error, response) {
+//   if (!error && response.statusCode == 200)
+//     console.log(response.body);
+// });
 
 
 app.get('/', function(req, res){
