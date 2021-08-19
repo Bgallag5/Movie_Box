@@ -2,7 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
-class Movie extends Model {}
+class Movie extends Model { }
 
 Movie.init({
   id: {
@@ -28,6 +28,11 @@ Movie.init({
       key: "id",
     },
   },
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: "movie",
 });
 
 //     title: {
@@ -41,3 +46,6 @@ Movie.init({
 
 //   }
 // });
+
+
+module.exports = Movie;
