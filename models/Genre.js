@@ -15,6 +15,7 @@ Genre.inti({
   genre_name: {
     type: DataTypes.STRING,
   },
+  
   sequelize,
   timestamps: false,
   freezeTableName: true,
