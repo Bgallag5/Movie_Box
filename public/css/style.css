@@ -1,0 +1,81 @@
+#navId {
+  background-color: white;
+}
+
+.navbar {
+  height: 85px;
+  background-color: white;
+}
+
+#movieBox {
+  font-family: "Architects Daughter", cursive;
+  font-size: 60px;
+}
+
+#favs {
+  margin-left: 800px;
+}
+
+#favs a {
+  color: black;
+}
+
+#favs a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#watchlist a {
+  color: black;
+}
+
+#watchlist a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#logout a {
+  color: black;
+}
+
+#logout a:hover {
+  color: rgb(65, 0, 170);
+}
+
+.nav-item {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+
+.input-group {
+  width: 500px;
+  margin-left: 500px;
+  margin-top: 100px;
+}
+
+.btn {
+  color: white;
+}
+
+.card {
+  margin-top: 300px;
+  height: 400px;
+  text-align: center;
+}
+
+.hero {
+  background-image: url(../assets/images/cityscape.jpg);
+  height: 120%;
+  width: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+}
+
+/* #footer {
+  margin-top: 1050px;
+  height: 70px;
+  background-color: rgb(252, 245, 245);
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+} */

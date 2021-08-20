@@ -10,17 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ungap/url-search-params": "^0.2.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
-    "durable-json-lint": "0.0.3",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
+    "imdb-api": "^4.4.1",
+    "ky": "^0.28.5",
+    "ky-universal": "^0.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
-    "needle": "^2.8.0",
-    "omdb": "^0.8.0",
-    "sequelize": "^6.6.5",
-    "stream": "0.0.2"
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "tap": "^15.0.9"
   }
 }
