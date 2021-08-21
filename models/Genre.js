@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 class Genre extends Model { }
 
-Genre.inti({
+Genre.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -14,9 +14,11 @@ Genre.inti({
 
   genre_name: {
     type: DataTypes.STRING,
-  },
-  
-  sequelize,
+  } 
+}
+  , 
+{
+  sequelize: sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,

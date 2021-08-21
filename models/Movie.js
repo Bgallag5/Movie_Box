@@ -16,7 +16,7 @@ Movie.init({
     allowNull: false,
   },
   rating: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
   },
   viewed: {
     type: DataTypes.BOOLEAN,
@@ -28,12 +28,24 @@ Movie.init({
       key: "id",
     },
   },
-  sequelize,
+  poster_url: {
+    type: DataTypes.BLOB,
+  },
+  imdb_url: {
+    type: DataTypes.STRING, 
+    allowNull: false,
+    validate: {
+      isUrl: true
+    }
+  }
+}, 
+  {
+  sequelize: sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "movie",
-});
+  modelName: "Movie"
+  });
 
 //     title: {
 //         type: DataTypes.STRING,

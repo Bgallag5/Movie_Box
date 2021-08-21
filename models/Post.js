@@ -28,9 +28,9 @@ Post.init({
             model: 'user',
             key: 'id'
         }
-    },
-
-    sequelize,
+    }
+}, {
+    sequelize: sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,

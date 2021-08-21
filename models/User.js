@@ -31,9 +31,9 @@ User.init(
         len: [7],
       },
     },
-    favorites: {
-      type: DataTypes.ARRAY,
-    },
+    // favorites: {
+    //   type: DataTypes.ARRAY,
+    // },
   },
   {
     hooks: {

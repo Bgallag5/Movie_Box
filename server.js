@@ -6,6 +6,9 @@ const exphbs = require("express-handlebars");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+const routes = require("./controllers");
+
 // const session = require("express-session");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -31,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // turn on routes
-// app.use(require("./controllers/"));
+app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
