@@ -1,39 +1,157 @@
-const router = require('express').Router();
-const { User, Post, Genre, Movie } = require('../../models');
-const imdb = require("imdb-api");
+var axios = require("axios").default;
+const router = require("express").Router();
+const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
+const { User, Post, Genre, Movie, UserFav, Rating } = require("../../models");
 
-// const imdb = require('imdb-api');
-const cli = new imdb.Client({apiKey: '63a211f6'});
+var options = {
+  method: "GET",
+  url: "https://imdb8.p.rapidapi.com/title/find/",
+  params: { q: "Toy Story" },
+  headers: {
+    "x-rapidapi-host": "imdb8.p.rapidapi.com",
+    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
+  },
+};
 
-//get all movies
-// router.get('/', (req, res) => {
-//     Movie.findAll({
-//         attributes: ['id', 'title', 'rating', 'viewed', 'genre_id'],
-//         include: [
-//             {
-//                 model: Genre,
-//                 attributes: ['id', 'genre_name'],
-                
-//             },
-//         ]
-//     })
-//     .then(dbMovieData => res.json(dbMovieData))
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     });
+var options_details = {
+  method: "GET",
+  url: "https://imdb8.p.rapidapi.com/title/get-details",
+  params: { tconst: "tt0944947" },
+  headers: {
+    "x-rapidapi-host": "imdb8.p.rapidapi.com",
+    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
+  },
+};
+
+//
+/**
+ * @DESCRIPTION route to search for a movies given a title : NOTE, REPLACE WHITE SPACES WITH UNDERSCORE
+ * @RETURN returns data object from imdb
+ */
+router.get("/search/:title", async (req, res) => {
+  let title = req.params.title.replace("_", " "); //
+  let request_options = Object.assign({}, options);
+  request_options.params.q = title;
+
+  try {
+    let results = await axios.request(request_options);
+
+    res.send(results.data); //sent results from imdb as the response
+  } catch (error) {
+    console.error(error?.data);
+    res.status(500).send("failed to fect data");
+  }
+});
+
+/**
+ * @description add a favorite entry into the db for the the user
+ * @return copy of favorite
+ */
+router.get("/favorite/:user_id/:movie_id", async (req, res) => {
+  try {
+    //insert a user movie pair into the database if it does not exists already
+    const fav = await UserFav.create({
+      user_id: req.params.user_id,
+      movie_id: req.params.movie_id,
+    });
+    console.log(fav.toJSON());
+    res.json(fav);
+    //return count of updated element
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("failed to favorite");
+  }
+});
+
+/**
+ * @description add a rating entry into the db with an associated user and movie
+ * @return copy of created rating
+ */
+router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
+  try {
+    const rating = await Rating.create({
+      movie_id: req.params.movie_id,
+      user_id: req.params.user_id,
+      rating: req.params.rating,
+    });
+    res.json(rating);
+  } catch (error) {
+    console.error(error?.data);
+    res.status(500).send("failed to fect data");
+  }
+});
+
+/**
+ * @description get a movies based on an imdb
+ * @return response object from imdb
+ */
+router.get("/find/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let request_options = Object.assign({}, options_details);
+    request_options.params.tconst = id;
+    let results = await axios.request(request_options);
+
+    res.send(results.data); //sent results from imdb movie details as the response
+  } catch (error) {
+    console.error(error?.data);
+    res.status(500).send("failed to fect data");
+  }
+});
+
+//   axios.request(options).then(function (response) {
+//       console.log("++++++++++++++++++++++++++++++", response.data.results[0]);
+//   }).catch(function (error) {
+//       console.error(error);
+//       router.get('/title', (req,res) => {
+//           res.send(res.data)
+//       })
+//   });
+
+//  router.post('/title', (req, res) => {
+//     console.log("_____________________________________");
+//       const item = req.body.inputId;
+
+//       res.send("got it");
+//   });
+
+/// gather title, posterimageURL, imdbLink/description
+
+// axios.request(options).then(function (response) {
+// 	console.log(response.data);
+// }).catch(function (error) {
+// 	console.error(error);
 // });
 
-router.get('/title', (req, res) => {
- res.send(imdb.get({name: 'The Toxic Avenger'}, {apiKey: '63a211f6', timeout: 30000})
-  .then(console.log).catch(console.log));
-  res.send(movie);
+//get all movies
+router.get("/", (req, res) => {
+  Movie.findAll({
+    attributes: ["id", "title", "rating", "viewed", "genre_id"],
+    include: [
+      {
+        model: Genre,
+        attributes: ["id", "genre_name"],
+      },
+    ],
+  })
+    .then((dbMovieData) => res.json(dbMovieData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-// imdb.get({name: 'The Toxic Avenger'}, {apiKey: 'foo', timeout: 30000}).then(console.log).catch(console.log);
+
+router.get("/title", (req, res) => {
+  //  res.send(imdb.get({name: 'The Toxic Avenger'}, {apiKey: '63a211f6', timeout: 30000})
+  //   .then(console.log).catch(console.log));
+  //   res.send(movie);
+
+  res.send("hello world");
+});
 
 // router.get('/:title', (req, res) => {
 //     // find a single movie product by its `title`
-    
+
 //     Movie.findOne({
 //         where: {
 //             title: req.params.title
@@ -43,7 +161,7 @@ router.get('/title', (req, res) => {
 //                 model: Genre,
 //                 attributes: ["id", "genre_name"]
 //             },
-         
+
 //         ]
 //     })
 //         .then((dbMovieData) => {
@@ -59,6 +177,6 @@ router.get('/title', (req, res) => {
 //         });
 // });
 
-/// do we want to 'create' movies or should we 'create' the post which will contain the movie? 
+/// do we want to 'create' movies or should we 'create' the post which will contain the movie?
 
 module.exports = router;

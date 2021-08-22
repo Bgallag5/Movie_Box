@@ -47,6 +47,8 @@ Movie.init({
   modelName: "Movie"
   });
 
+
+
 //     title: {
 //         type: DataTypes.STRING,
 //         allowNull: false,

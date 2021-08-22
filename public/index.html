@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
@@ -24,10 +25,10 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li> -->
             <li class="nav-item" id="favs">
-              <a class="nav-link" href="#">My Favorites</a>
+              <a class="nav-link" href="#">Favorites</a>
             </li>
             <li class="nav-item" id="watchlist">
-              <a class="nav-link" href="#">My Watchlist</a>
+              <a class="nav-link" href="#">Watchlist</a>
             </li>
             <li class="nav-item" id="logout">
                 <a class="nav-link" href="#">LogOut</a>
@@ -46,10 +47,14 @@
 
 
     <div class="input-group">
+      <form id ="myForm">
         <input type="search" class="form-control rounded" id="inputId" placeholder="Search" aria-label="Search" 
           aria-describedby="search-addon" />
-        <button class="btn btn-outline-light" id="buttonId">search</button>
+        <button class="btn btn-outline-light" type="submit" action="/search" id="buttonId">search</button>
+      </form>
       </div>
+
+   
 
 
 
@@ -69,11 +74,28 @@
         </div>
     </div>
 
+    <!-- <div id=“target”> </div> -->
+
+
+
 
 
   
     
 </section>
+
+<script>$("#myForm").submit(function (e) {
+  e.preventDefault()
+  $.ajax({
+         success: function (data) {
+          // $('#target').html(data.msg);
+          console.log(data.dataType);
+
+  
+         }
+   });
+  });
+  </script>
 
 <!-- <footer id="footer">
     <h4>[MovieBox] &copy 2021</h4>
@@ -81,6 +103,7 @@
   </footer> -->
 
 
-    <script src="./javascript/movieApi.js"></script>
+    <!-- <script src="../controllers/api/movie-routes.js"></script> -->
+   
 </body>
 </html>
