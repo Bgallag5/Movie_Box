@@ -1,0 +1,114 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../assets/cityscape.jpeg");
+  /* display: inline-block; */
+}
+
+#movieBox {
+  font-family: "Architects Daughter", cursive;
+  font-size: 60px;
+  color: whitesmoke;
+}
+
+#favs {
+  margin-left: 40rem;
+}
+
+#favs a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#favs a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#watchlist a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#watchlist a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#logout a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#logout a:hover {
+  color: rgb(65, 0, 170);
+}
+
+.nav-item {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 150%;
+}
+
+/* MOVIES */
+#movies-section {
+    margin-top: 10%;
+}
+
+.movies {
+  background-color: rgb(1, 0, 48);
+  padding: 5px;
+  height: 45vh;
+
+  text-align: center;
+  margin-top: 4vh;
+  margin-left: 4vh; 
+  color: yellow;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.movrow{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.movrow :hover{
+border: 5px white solid;
+/* background-color: rgb(30, 32, 46, .8); */
+}
+
+footer {
+background-color: rgb(30, 32, 46);
+height: 20rem;
+margin-top: 5vh;
+}
+
+#contact-us h3, h4{
+    color: whitesmoke;
+    padding: 2vh;
+}
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 2vh; /* Place the button at the bottom of the page */
+    right: 2vh; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    /* background-color: red;  */
+    color: rgb(114, 114, 114); /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 5px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+  }
+  
+  #topBtn:hover {
+    background-color: rgb(1, 0, 48); /* Add a dark-grey background on hover */
+  }

@@ -2,7 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
-class User extends Model { }
+class User extends Model {}
 
 User.init(
   {
@@ -15,6 +15,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -27,9 +28,9 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [7],
-      },
+      // validate: {    //VALIDATION SHOULD HAPPEN WHEN USER REGISTERS BC THIS WILL ALWAYS BE HASHED PW
+      //   len: [7],
+      // },
     },
     // favorites: {
     //   type: DataTypes.ARRAY,
@@ -58,6 +59,5 @@ User.init(
     modelName: "user",
   }
 );
-
 
 module.exports = User;
