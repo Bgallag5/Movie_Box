@@ -4,8 +4,7 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-
+const PORT = process.env.PORT || 3002;
 
 const routes = require("./controllers");
 
@@ -41,8 +40,5 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
 
-
-
 ////Front End: Ben, Raevin
 ///Back: Ani, Thandie
-

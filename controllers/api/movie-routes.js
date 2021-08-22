@@ -16,7 +16,7 @@ var options = {
 
 var options_details = {
   method: "GET",
-  url: "https://imdb8.p.rapidapi.com/title/get-details",
+  url: "https://imdb8.p.rapidapi.com/title/get-details", //gets the id  and other details
   params: { tconst: "tt0944947" },
   headers: {
     "x-rapidapi-host": "imdb8.p.rapidapi.com",
@@ -26,7 +26,7 @@ var options_details = {
 
 //
 /**
- * @DESCRIPTION route to search for a movies given a title : NOTE, REPLACE Underscore with whitespace
+ * @DESCRIPTION route to search for a movies get title : NOTE, REPLACE whitespace with underscore
  * @RETURN returns data object from imdb
  */
 router.get("/search/:title", async (req, res) => {
@@ -40,7 +40,7 @@ router.get("/search/:title", async (req, res) => {
     res.send(results.data); //sent results from imdb as the response
   } catch (error) {
     console.error(error?.data);
-    res.status(500).send("failed to fect data");
+    res.status(500).send("failed to fetch data");
   }
 });
 
@@ -100,30 +100,6 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-//   axios.request(options).then(function (response) {
-//       console.log("++++++++++++++++++++++++++++++", response.data.results[0]);
-//   }).catch(function (error) {
-//       console.error(error);
-//       router.get('/title', (req,res) => {
-//           res.send(res.data)
-//       })
-//   });
-
-//  router.post('/title', (req, res) => {
-//     console.log("_____________________________________");
-//       const item = req.body.inputId;
-
-//       res.send("got it");
-//   });
-
-/// gather title, posterimageURL, imdbLink/description
-
-// axios.request(options).then(function (response) {
-// 	console.log(response.data);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
-
 //get all movies
 router.get("/", (req, res) => {
   Movie.findAll({
@@ -142,13 +118,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/title", (req, res) => {
-  //  res.send(imdb.get({name: 'The Toxic Avenger'}, {apiKey: '63a211f6', timeout: 30000})
-  //   .then(console.log).catch(console.log));
-  //   res.send(movie);
-
-  res.send("hello world");
-});
+module.exports = router;
 
 // router.get('/:title', (req, res) => {
 //     // find a single movie product by its `title`
@@ -180,4 +150,18 @@ router.get("/title", (req, res) => {
 
 /// do we want to 'create' movies or should we 'create' the post which will contain the movie?
 
-module.exports = router;
+//   axios.request(options).then(function (response) {
+//       console.log("++++++++++++++++++++++++++++++", response.data.results[0]);
+//   }).catch(function (error) {
+//       console.error(error);
+//       router.get('/title', (req,res) => {
+//           res.send(res.data)
+//       })
+//   });
+
+//  router.post('/title', (req, res) => {
+//     console.log("_____________________________________");
+//       const item = req.body.inputId;
+
+//       res.send("got it");
+//   });
