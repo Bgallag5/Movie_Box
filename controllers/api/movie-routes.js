@@ -77,7 +77,7 @@ router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
     });
     res.json(rating);
   } catch (error) {
-    console.error(error?.data);
+    console.error(error?.data); //can use ? as a conditional?!!
     res.status(500).send("failed to fect data");
   }
 });
