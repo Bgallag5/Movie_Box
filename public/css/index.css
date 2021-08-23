@@ -14,25 +14,13 @@ body {
   color: whitesmoke;
 }
 
-#favs {
-  margin-left: 35rem;
-}
-
-#favs a {
+#dashboard a {
   color: whitesmoke;
   text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+  margin-left: 45rem;
 }
 
-#favs a:hover {
-  color: rgb(65, 0, 170);
-}
-
-#watchlist a {
-  color: whitesmoke;
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-}
-
-#watchlist a:hover {
+#dashboard a:hover {
   color: rgb(65, 0, 170);
 }
 
@@ -51,9 +39,60 @@ body {
   font-size: 150%;
 }
 
+/* SEARCH/FILTER */
+
+#search-filter{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10vh;
+}
+
+.input-group{
+  width: 50%;
+}
+
+
+.buttons{
+  background-color: rgb(65, 0, 170);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgb(65, 0, 170);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
 /* MOVIES */
 #movies-section {
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .movies {
@@ -110,5 +149,8 @@ margin-top: 5vh;
   }
   
   #topBtn:hover {
-    background-color: rgb(1, 0, 48); /* Add a dark-grey background on hover */
+    background-color: rgb(65, 0, 170); /* Add a dark-grey background on hover */
+    color: whitesmoke;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+
   }
