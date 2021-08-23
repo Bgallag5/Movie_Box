@@ -24,30 +24,43 @@ var options_details = {
   },
 };
 
-//
-/**
- * @DESCRIPTION route to search for a movies get title : NOTE, REPLACE whitespace with underscore
- * @RETURN returns data object from imdb
- */
+//route to search for a movies get title : NOTE, REPLACE whitespace with underscore
+// returns data object from imdb
 router.get("/search/:title", async (req, res) => {
   let title = req.params.title.replace("_", " "); //
   let request_options = Object.assign({}, options);
   request_options.params.q = title;
 
   try {
-    let results = await axios.request(request_options);
+    const response = await axios.request(request_options);
+    const formattedMovieData = response.data.results
+      .map((obj) => {
+        const { title, year } = obj;
 
-    res.send(results.data); //sent results from imdb as the response
+        /**
+         * At this point we have a single object in the results array.
+         * We want to extract the year and title and return that in a new object.
+         */
+        return {
+          title,
+          year,
+        };
+      })
+      .filter((newObj) => {
+        const { title, year } = newObj;
+        // console.log(`Filter: ${JSON.stringify(newObj)} ${Object.keys(newObj)}`);
+        return title && year; // if the title and year are not empty strings and defined then return true (don't filter out)
+      });
+
+    res.send(formattedMovieData); //sent results from imdb as the response
   } catch (error) {
     console.error(error?.data);
     res.status(500).send("failed to fetch data");
   }
 });
 
-/**
- * @description add a favorite entry into the db for the the user
- * @return copy of favorite
- */
+//  add a favorite entry into the db for the the user
+//  return copy of favorite
 router.get("/favorite/:user_id/:movie_id", async (req, res) => {
   try {
     //insert a user movie pair into the database if it does not exists already
@@ -64,10 +77,9 @@ router.get("/favorite/:user_id/:movie_id", async (req, res) => {
   }
 });
 
-/**
- * @description add a rating entry into the db with an associated user and movie
- * @return copy of created rating
- */
+//add a rating entry into the db with an associated user and movie
+//copy of created rating
+
 router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
   try {
     const rating = await Rating.create({
@@ -77,15 +89,14 @@ router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
     });
     res.json(rating);
   } catch (error) {
-    console.error(error?.data); //can use ? as a conditional?!!
+    console.error(error?.data); //can use ? as a conditional aka JavaScript's optional chaining feature
     res.status(500).send("failed to fect data");
   }
 });
 
-/**
- * @description get a movies based on an imdb
- * @return response object from imdb
- */
+//get a movies based on an imdb
+///return response object from imdb
+
 router.get("/find/:id", async (req, res) => {
   try {
     let id = req.params.id;
@@ -93,9 +104,9 @@ router.get("/find/:id", async (req, res) => {
     request_options.params.tconst = id;
     let results = await axios.request(request_options);
 
-    res.send(results.data); //sent results from imdb movie details as the response
+    res.send(results.data);
   } catch (error) {
-    console.error(error?.data);
+    console.error(error?.data); //if error is undefined, return undefined
     res.status(500).send("failed to fect data");
   }
 });
