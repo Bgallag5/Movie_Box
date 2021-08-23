@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url("../assets/cityscape.jpeg");
+  background-image: url("../assets/images/cityscape.jpg");
   /* display: inline-block; */
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 #favs {
-  margin-left: 40rem;
+  margin-left: 35rem;
 }
 
 #favs a {

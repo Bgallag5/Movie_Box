@@ -24,6 +24,7 @@ var options_details = {
   },
 };
 
+
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
 router.get("/search/:title", async (req, res) => {

@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+    rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/moviesstyle.css" />
     <title>Movie Box</title>
-</head>
-<body>
+  </head>
+  <body>
     <header id="header">
-    <nav class="navbar navbar-expand-lg navbar-light" id="navId">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navId">
         <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <!-- <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li> -->
-            <li class="nav-item" id="favs">
-              <a class="nav-link" href="#">Favorites</a>
+            <li class="nav-item nav-text" id="favs">
+              <a class="nav-link" href="#">My Favorites</a>
             </li>
-            <li class="nav-item" id="watchlist">
-              <a class="nav-link" href="#">Watchlist</a>
+            <li class="nav-item nav-text" id="watchlist">
+              <a class="nav-link" href="#">My Watchlist</a>
             </li>
-            <li class="nav-item" id="logout">
-                <a class="nav-link" href="#">LogOut</a>
-              </li>
+            <li class="nav-item nav-text" id="logout">
+              <a class="nav-link" href="#">Log Out</a>
+            </li>
             <!-- <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
@@ -41,69 +45,207 @@
       </nav>
     </header>
 
-    <section class="hero" id="heroId">
+    <section id= 'search-filter' >
+      <button>Button</button>
+    </section>
 
-    
+<section id='movies-section'>
+<button onclick="topFunction()" id="topBtn" title="Go to top">back to top</button>
 
-
-    <div class="input-group">
-      <!-- <form id ="myForm"> -->
-        <input type="search" class="form-control rounded" id="inputId" placeholder="Search" aria-label="Search" 
-          aria-describedby="search-addon" />
-        <button class="btn btn-outline-light"  action="/search" id="buttonId">search</button>
-      <!-- </form> -->
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
+      </div>
+    <div class="row container movrow">
+        <div class="col movies">1 of 4</div>
+        <div class="col movies">2 of 4</div>
+        <div class="col movies">3 of 4</div>
+        <div class="col movies">4 of 4</div>
       </div>
 
-   
-
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <div class="card" id="card1">CARD ONE</div>
-                <p class="cardOne"></p>
-            </div>
-            <div class="col-4">
-                <div class="card" id="card2">CARD TWO</div>
-            </div>
-            <div class="col-4">
-                <div class="card" id="card3">CARD THREE</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div id=“target”> </div> -->
-
-
-
-
-
-  
-    
 </section>
 
-<!-- <script>$("#myForm").submit(function (e) {
-  e.preventDefault()
-  $.ajax({
-         success: function (data) {
-          // $('#target').html(data.msg);
-          console.log(data.dataType);
 
-  
-         }
-   });
-  }); -->
-  <!-- </script> -->
+<footer>
+  <div id='contact-us'>
+      <h3>Created By</h3>
+      <h4>Ben Gallagher</h4>
+      <h4>Ani Carr</h4>
+  </div>
+</footer>
 
-<!-- <footer id="footer">
-    <h4>[MovieBox] &copy 2021</h4>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="javascript/movies.js" ></script>
+  </body>
 
-  </footer> -->
-
-
-    <!-- <script src="../controllers/api/movie-routes.js"></script> -->
-   
-</body>
 </html>
