@@ -1,0 +1,67 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../assets/images/cityscape.jpg");
+  /* display: inline-block; */
+}
+
+#movieBox {
+  font-family: "Architects Daughter", cursive;
+  font-size: 60px;
+  color: whitesmoke;
+}
+
+#favs {
+  margin-left: 35rem;
+}
+
+#favs a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#favs a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#watchlist a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#watchlist a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#logout a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#logout a:hover {
+  color: rgb(65, 0, 170);
+}
+
+.nav-item {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 150%;
+}
+
+
+
+footer {
+background-color: rgb(30, 32, 46);
+height: 20rem;
+margin-top: 5vh;
+}
+
+#contact-us h3, h4{
+    color: whitesmoke;
+    padding: 2vh;
+}
+
+
