@@ -1,11 +1,7 @@
 ### Notes on what to accomplish
 
-Descriptions:
-this is going to be a fun website where a user can search for some movies based on a search and we return results from imbd
-
-the user can also click the title and that title is a link to amazon/imdb so they can get more info about the movie
-the user can also see the poster url  
-the user can 'favorite' or rate a movie -- crud
+Description:
+Users can view our movie Database on the home page. They can then choose to sign up or login to search for additional movies. Once a user searches, our movie API returns results based on title. The user sees all matches from that title in the form of the movie poster image, the title, and year. From here, the user can click on a movie for additional details. On this page, they can also write their own review/notes about the movie. The user can also "favorite" movies that they like and view them on a separate page.
 
 movies
 routes
@@ -34,6 +30,6 @@ end points
 
   /api/movies/find/:id
 
-## Sql nots
+## route to add review to movie (post route)
 
-`
+http://localhost:3001/api/reviews/createNew
