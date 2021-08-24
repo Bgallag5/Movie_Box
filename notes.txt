@@ -9,6 +9,9 @@ https://api.themoviedb.org/3/movie/500/recommendations?api_key=5f3dc3ecf1766c32d
 append to https://image.tmdb.org/t/p/w500 to become => https://image.tmdb.org/t/p/w500/v7TaX8kXMXs5yFFGR41guUDNcnB.jpg.
 This get request returns the movie poster. (/w500 is the image size; may cause an issue if the poster_path isnt .jpg?)
 
+
+Movie Genres: Action, Adventure, Drama, Horror, Family, Thriller 
+
 <Ben End>
 
 
