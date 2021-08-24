@@ -47,6 +47,13 @@ async function loginFormHandler(event) {
       }
     }
   }
+
+  //const searchBtn = document.getElementById('buttonId');
+  //var searchTerm = document.getElementById('inputId');
+  //searchBtn.onclick = function(){
+  //  console.log(searchTerm.value);
+  //}
+
   
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   

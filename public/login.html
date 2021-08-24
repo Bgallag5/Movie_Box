@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/login.css"/>
     <title>Movie Box</title>
   </head>
 
@@ -38,13 +39,22 @@
       </nav>
     </header>
 
-    <form>
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-    
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+    <form id="login-form">
+      <div id="login-form" class="container">
+          <div id="email">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+          </div>
+
+          <div>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+          </div>
+
+          <div>
+            <label for=""><b>Username</b></label>
+            <input type="Username" placeholder="Enter Username" name="username" required>
+          </div>
     
         <button type="submit">Login</button>
         <label>
@@ -54,7 +64,7 @@
     
       <div class="container">
         <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <button type="button"><a href="#">Forgot password?</a></button>
       </div>
     </form>
 
