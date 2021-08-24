@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,14 +14,17 @@
     "@ungap/url-search-params": "^0.2.2",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
-    "nodemon": "^2.0.12",
     "sequelize": "^6.6.5",
     "unirest": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

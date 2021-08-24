@@ -33,3 +33,7 @@ end points
 - @return response object from imdb
 
   /api/movies/find/:id
+
+## Sql nots
+
+`

@@ -24,9 +24,32 @@ var options_details = {
   },
 };
 
+//now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
+// get db table ready to store any movie that a user adds to their 'favorites'
+var axios = require("axios").default;
+
+var AltApiOptions = {
+  method: "GET",
+  url: "https://movie-database-imdb-alternative.p.rapidapi.com/",
+  params: { t: "the glass house", r: "json" },
+  headers: {
+    "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+    "x-rapidapi-key": "3f62d6d805msh7dbfdcaa1a72368p136173jsn11f89f1fc0d7",
+  },
+};
+
+// axios
+//   .request(AltApiOptions)
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
+//   .catch(function (error) {
+//     console.error(error);
+//   });
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
+
 router.get("/search/:title", async (req, res) => {
   let title = req.params.title.replace("_", " "); //
   let request_options = Object.assign({}, options); //cloning object

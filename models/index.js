@@ -1,6 +1,6 @@
 //importing all models
 const User = require("./User");
-const Post = require("./Post");
+const UserReview = require("./UserReview");
 const Movie = require("./Movie");
 const Genre = require("./Genre");
 const UserFav = require("./UserFav");
@@ -30,6 +30,14 @@ const Rating = require("./Rating");
 //     onDelete: 'SET NULL'
 // });
 
+UserReview.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+User.hasMany(UserReview, {
+  foreignKey: "user_id",
+});
+
 Movie.belongsTo(Genre, {
   foreignKey: "genre_id",
 });
@@ -43,4 +51,11 @@ Genre.hasMany(Movie, {
 
 // });  // i mean movies do sometimes fall under several genres tho...
 
-module.exports = { User, Post, Movie, Genre, UserFav, Rating };
+module.exports = {
+  User,
+  UserReview: UserReview,
+  Movie,
+  Genre,
+  UserFav,
+  Rating,
+};
