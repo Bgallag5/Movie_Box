@@ -1,4 +1,6 @@
-////**  BUTTONS  **///
+const movieRoute  = require('../../controllers/api/movie-routes')
+
+///**  BUTTONS  **///
 
 //BACK TO TOP
 //Get the button:
@@ -26,6 +28,7 @@ var searchTerm = document.getElementById('inputId');
 
 searchBtn.onclick = function(){
   console.log(searchTerm.value); 
+  movieRoute.getMovie(searchTerm.value)
 }
 
 //SORT BY 

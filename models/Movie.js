@@ -16,27 +16,22 @@ Movie.init({
     allowNull: false,
   },
   rating: {
-    type: DataTypes.INTEGER,
-  },
-  viewed: {
-    type: DataTypes.BOOLEAN,
-  },
-  genre_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: "genre",
-      key: "id",
-    },
-  },
-  poster_url: {
-    type: DataTypes.BLOB,
-  },
-  imdb_url: {
-    type: DataTypes.STRING, 
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
-    validate: {
-      isUrl: true
-    }
+  },
+  genre: {
+    type: DataTypes.STRING,
+  },
+  plot :{
+    type: DataTypes.STRING(15000),
+  },
+  poster_path: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  release_year: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, 
   {
@@ -49,17 +44,6 @@ Movie.init({
 
 
 
-//     title: {
-//         type: DataTypes.STRING,
-//         allowNull: false,
-//     },
-
-//             rating: {
-//             type: DataTypes.STRING
-//         }
-
-//   }
-// });
 
 
 module.exports = Movie;

@@ -2,7 +2,6 @@
 const User = require("./User");
 const Post = require("./Post");
 const Movie = require("./Movie");
-const Genre = require("./Genre");
 const UserFav = require("./UserFav");
 const Rating = require("./Rating");
 
@@ -30,17 +29,17 @@ const Rating = require("./Rating");
 //     onDelete: 'SET NULL'
 // });
 
-Movie.belongsTo(Genre, {
-  foreignKey: "genre_id",
-});
+// Movie.belongsTo(Genre, {
+//   foreignKey: "genre_id",
+// });
 
-Genre.hasMany(Movie, {
-  foreignKey: "genre_id",
-});
+// Genre.hasMany(Movie, {
+//   foreignKey: "genre_id",
+// });
 
-// Movie.hasMany(Genre, {
-//     foreignKey: 'movie_id',
+// // Movie.hasMany(Genre, {
+// //     foreignKey: 'movie_id',
 
 // });  // i mean movies do sometimes fall under several genres tho...
 
-module.exports = { User, Post, Movie, Genre, UserFav, Rating };
+module.exports = { User, Post, Movie, UserFav, Rating };

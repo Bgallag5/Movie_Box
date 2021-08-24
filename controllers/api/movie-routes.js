@@ -24,6 +24,13 @@ var options_details = {
   },
 };
 
+router.get('/', (req, res) => {
+  Movie.findAll({}).then(dbData => {
+    res.json(dbData);
+  })
+  // res.send('movroute')
+})
+
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
@@ -59,6 +66,7 @@ router.get("/search/:title", async (req, res) => {
     res.status(500).send("failed to fetch data");
   }
 });
+
 
 //  add a favorite entry into the db for the the user
 //  return copy of favorite
@@ -113,22 +121,22 @@ router.get("/find/:id", async (req, res) => {
 });
 
 //get all movies
-router.get("/", (req, res) => {
-  Movie.findAll({
-    attributes: ["id", "title", "rating", "viewed", "genre_id"],
-    include: [
-      {
-        model: Genre,
-        attributes: ["id", "genre_name"],
-      },
-    ],
-  })
-    .then((dbMovieData) => res.json(dbMovieData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get("/", (req, res) => {
+//   Movie.findAll({
+//     attributes: ["id", "title", "rating", "viewed", "genre_id"],
+//     include: [
+//       {
+//         model: Genre,
+//         attributes: ["id", "genre_name"],
+//       },
+//     ],
+//   })
+//     .then((dbMovieData) => res.json(dbMovieData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;
 
@@ -177,3 +185,4 @@ module.exports = router;
 
 //       res.send("got it");
 //   });
+
