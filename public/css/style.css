@@ -1,23 +1,26 @@
-#navId {
-  background-color: white;
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.navbar {
-  height: 85px;
-  background-color: white;
+body {
+  background-image: url("../assets/images/cityscape.jpg");
+  /* display: inline-block; */
 }
 
 #movieBox {
   font-family: "Architects Daughter", cursive;
   font-size: 60px;
+  color: whitesmoke;
 }
 
 #favs {
-  margin-left: 800px;
+  margin-left: 35rem;
 }
 
 #favs a {
-  color: black;
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
 #favs a:hover {
@@ -25,7 +28,8 @@
 }
 
 #watchlist a {
-  color: black;
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
 #watchlist a:hover {
@@ -33,7 +37,8 @@
 }
 
 #logout a {
-  color: black;
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
 #logout a:hover {
@@ -43,39 +48,20 @@
 .nav-item {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 20px;
+  font-size: 150%;
 }
 
-.input-group {
-  width: 500px;
-  margin-left: 500px;
-  margin-top: 100px;
+
+
+footer {
+background-color: rgb(30, 32, 46);
+height: 20rem;
+margin-top: 5vh;
 }
 
-.btn {
-  color: white;
+#contact-us h3, h4{
+    color: whitesmoke;
+    padding: 2vh;
 }
 
-.card {
-  margin-top: 300px;
-  height: 400px;
-  text-align: center;
-}
 
-.hero {
-  background-image: url(../assets/images/cityscape.jpg);
-  height: 120%;
-  width: 100%;
-  position: absolute;
-  background-repeat: no-repeat;
-}
-
-/* #footer {
-  margin-top: 1050px;
-  height: 70px;
-  background-color: rgb(252, 245, 245);
-  position: relative;
-  text-align: center;
-  display: flex;
-  align-items: center;
-} */
