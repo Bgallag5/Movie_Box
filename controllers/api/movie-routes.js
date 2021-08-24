@@ -28,7 +28,7 @@ var options_details = {
 // returns data object from imdb
 router.get("/search/:title", async (req, res) => {
   let title = req.params.title.replace("_", " "); //
-  let request_options = Object.assign({}, options);
+  let request_options = Object.assign({}, options); //cloning object
   request_options.params.q = title;
 
   try {
@@ -47,7 +47,7 @@ router.get("/search/:title", async (req, res) => {
         };
       })
       .filter((newObj) => {
-        const { title, year } = newObj;
+        const { title, year, url } = newObj;
         // console.log(`Filter: ${JSON.stringify(newObj)} ${Object.keys(newObj)}`);
         return title && year; // if the title and year are not empty strings and defined then return true (don't filter out)
       });
@@ -100,7 +100,7 @@ router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
 router.get("/find/:id", async (req, res) => {
   try {
     let id = req.params.id;
-    let request_options = Object.assign({}, options_details);
+    let request_options = Object.assign({}, options_details); //cloning object
     request_options.params.tconst = id;
     let results = await axios.request(request_options);
 
