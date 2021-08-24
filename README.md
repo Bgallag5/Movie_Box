@@ -1,35 +1,31 @@
-### Notes on what to accomplish
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-Descriptions:
-this is going to be a fun website where a user can search for some movies based on a search and we return results from imbd
 
-the user can also click the title and that title is a link to amazon/imdb so they can get more info about the movie
-the user can also see the poster url  
-the user can 'favorite' or rate a movie -- crud
+ # Movie Box
 
-movies
-routes
--- search
--- favs
+  -[Description](#description)
+  -[Made With](#made&nbspwith)
+  -[Usage](#usage)
+  -[Questions](#questions)
+  -[License](#license)
 
-end points
+  ## Description  
+  Movie Box is a fullstack movie database application that allows users to sort, search, and save the movies in our databse.      
+  
+  
+  ## Made With
+  javascript, express, node, mysql2, sequelize, dotenv, bcrypt, lodash, html, css, bootsrap, handlebars
 
-- @DESCRIPTION route to search for a movies given a title : NOTE, REPLACE white space from imdb with underscore
-- @RETURN returns data object from imdb
+  ## Usage 
+  This can be used as a movie databse/social media application.   
 
-  /api/movies/search/:title"
+  ## Questions?
+  Check out the team:
+  Ben Gallagher [Github](https://github.com/Bgallag5)
+  ...or email me: bgallag5@gmail.com
+  Ani Carr[Github](https://github.com/anidino)
+  ...or email me: ani.elaina.carr@gmail.com
 
-- @description add a favorite entry into the db for the the user
-- @return copy of favorite
-
-  /api/movies/favorite/:user_id/:movie_id
-
-- @description add a rating entry into the db with an associated user and movie
-- @return copy of created rating
-
-  /api/movies/rating/:movie_id/:user_id/:rating
-
-- @description get a movies based on an imdb
-- @return response object from imdb
-
-  /api/movies/find/:id
+  ## License  
+  
+  Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.

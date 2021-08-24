@@ -1,0 +1,50 @@
+<Ben Start>
+Got movie data from The Movie Database API under Movies/Get Recommendations. Returns pages of movies, 
+only data thats not available is box office and genre (maybe we just don't need those? We can drop the idea of sorting by genre;
+I erased box office from our Movie model and allowed genre to be null).
+
+https://api.themoviedb.org/3/movie/500/recommendations?api_key=5f3dc3ecf1766c32d790affae9aa1c37&language=en-US&page=1
+
+--from this endpoint we get a poster_path (/v7TaX8kXMXs5yFFGR41guUDNcnB.jpg) that we can save in our db , and then 
+append to https://image.tmdb.org/t/p/w500 to become => https://image.tmdb.org/t/p/w500/v7TaX8kXMXs5yFFGR41guUDNcnB.jpg.
+This get request returns the movie poster. (/w500 is the image size; may cause an issue if the poster_path isnt .jpg?)
+
+<Ben End>
+
+
+ 
+ ### Notes on what to accomplish
+
+Descriptions:
+this is going to be a fun website where a user can search for some movies based on a search and we return results from imbd
+
+the user can also click the title and that title is a link to amazon/imdb so they can get more info about the movie
+the user can also see the poster url  
+the user can 'favorite' or rate a movie -- crud
+
+movies
+routes
+-- search
+-- favs
+
+end points
+
+- @DESCRIPTION route to search for a movies given a title : NOTE, REPLACE white space from imdb with underscore
+- @RETURN returns data object from imdb
+
+  /api/movies/search/:title"
+
+- @description add a favorite entry into the db for the the user
+- @return copy of favorite
+
+  /api/movies/favorite/:user_id/:movie_id
+
+- @description add a rating entry into the db with an associated user and movie
+- @return copy of created rating
+
+  /api/movies/rating/:movie_id/:user_id/:rating
+
+- @description get a movies based on an imdb
+- @return response object from imdb
+
+  /api/movies/find/:id
