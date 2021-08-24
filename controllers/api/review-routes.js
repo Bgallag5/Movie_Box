@@ -3,7 +3,8 @@ const { User, UserReview, Genre, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //user can get all of their reviews
-router.get("/allReviews", (req, res) => {
+router.get("/allReviews", withAuth, (req, res) => {
+  console.log("review session", req.session);
   UserReview.findAll({
     attributes: ["id", "title", "post_content", "user_id"],
     // include: [
@@ -13,44 +14,12 @@ router.get("/allReviews", (req, res) => {
     //   },
     // ],
   })
-    .then((dbCategoryData) => res.json(dbCategoryData))
+    .then((dbAllReviews) => res.json(dbAllReviews))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
-// user can get review by title
-// router.get("/:reviewByTitle", (req, res) => {
-// router.get("/findById/:id", (req, res) => {
-//   Post.findOne({
-//     where: {
-//       id: req.params.id,
-//     },
-//     attributes: ["id", "title", "post_content", "user_id"],
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["id", "username"],
-//         include: {
-//           model: Movie,
-//           attributes: ["id", "title", "genre_id"],
-//         },
-//       },
-//     ],
-//   })
-//     .then((dbPostData) => {
-//       if (!dbPostData) {
-//         res.status(404).json({ message: "No post found with this id" });
-//         return;
-//       }
-//       res.json(dbPostData);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 router.post("/createNew", withAuth, (req, res) => {
   console.log("review session", req.session);
@@ -113,3 +82,35 @@ router.delete("/delete", withAuth, (req, res) => {
 });
 
 module.exports = router;
+
+// user can get review by title
+// router.get("/:reviewByTitle", (req, res) => {
+// router.get("/findById/:id", (req, res) => {
+//   Post.findOne({
+//     where: {
+//       id: req.params.id,
+//     },
+//     attributes: ["id", "title", "post_content", "user_id"],
+//     include: [
+//       {
+//         model: User,
+//         attributes: ["id", "username"],
+//         include: {
+//           model: Movie,
+//           attributes: ["id", "title", "genre_id"],
+//         },
+//       },
+//     ],
+//   })
+//     .then((dbPostData) => {
+//       if (!dbPostData) {
+//         res.status(404).json({ message: "No post found with this id" });
+//         return;
+//       }
+//       res.json(dbPostData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
