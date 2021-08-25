@@ -48,17 +48,18 @@ async function loginFormHandler(event) {
     }
   }
 
-  //const searchBtn = document.getElementById('buttonId');
-  //var searchTerm = document.getElementById('inputId');
-  //searchBtn.onclick = function(){
-  //  console.log(searchTerm.value);
-  //}
+  const loginButton= document.getElementById("login-button");
+  var emailInput = document.getElementById("email-input");
+  
+  loginButton.onclick = function(){
+    console.log(emailInput.value);
+  }
 
   //const loginButton = document.getElementById("#login-button")
   //loginButton.onclick = function loginPage() {
   //  location.href="../public.dashboard.html"
   //}
   
-  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+ // document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   
-  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+  //document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
