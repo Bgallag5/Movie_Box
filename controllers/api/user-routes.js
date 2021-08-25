@@ -90,12 +90,13 @@ router.post("/login", async (req, res) => {
 
 // user can logout (should be connected to logout.js)
 router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.user) {
     req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
     res.status(404).end();
+    console.log("You are now logged out");
   }
 });
 
