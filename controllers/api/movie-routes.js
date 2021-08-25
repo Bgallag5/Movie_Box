@@ -1,8 +1,8 @@
-////start  ani's code /////////////////////////
-var axios = require("axios").default;
+// ani
+const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
-const { User, Post, Genre, Movie, UserFav, Rating } = require("../../models");
+const { User, Movie, UserFav } = require("../../models");
 
 var options = {
   method: "GET",
@@ -26,17 +26,16 @@ var options_details = {
 
 //now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
 // get db table ready to store any movie that a user adds to their 'favorites'
-var axios = require("axios").default;
 
-var AltApiOptions = {
-  method: "GET",
-  url: "https://movie-database-imdb-alternative.p.rapidapi.com/",
-  params: { t: "the glass house", r: "json" },
-  headers: {
-    "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-    "x-rapidapi-key": "3f62d6d805msh7dbfdcaa1a72368p136173jsn11f89f1fc0d7",
-  },
-};
+// var AltApiOptions = {
+//   method: "GET",
+//   url: "https://movie-database-imdb-alternative.p.rapidapi.com/",
+//   params: { t: "the glass house", r: "json" },
+//   headers: {
+//     "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+//     "x-rapidapi-key": "3f62d6d805msh7dbfdcaa1a72368p136173jsn11f89f1fc0d7",
+//   },
+// };
 
 // axios
 //   .request(AltApiOptions)
@@ -83,27 +82,8 @@ router.get("/search/:title", async (req, res) => {
   }
 });
 
-//  add a favorite entry into the db for the the user
-//  return copy of favorite
-router.get("/favorite/:user_id/:movie_id", async (req, res) => {
-  try {
-    //insert a user movie pair into the database if it does not exists already
-    const fav = await UserFav.create({
-      user_id: req.params.user_id,
-      movie_id: req.params.movie_id,
-    });
-    console.log(fav.toJSON());
-    res.json(fav);
-    //return count of updated element
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("failed to favorite");
-  }
-});
-
 //add a rating entry into the db with an associated user and movie
 //copy of created rating
-
 router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
   try {
     const rating = await Rating.create({
@@ -118,7 +98,7 @@ router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
   }
 });
 
-//get a movies based on an imdb
+//get a movie based on an imdb search
 ///return response object from imdb
 
 router.get("/find/:id", async (req, res) => {
@@ -138,7 +118,7 @@ router.get("/find/:id", async (req, res) => {
 //get all movies
 router.get("/", (req, res) => {
   Movie.findAll({
-    attributes: ["id", "title", "rating", "viewed", "genre_id"],
+    attributes: ["id", "title", "year", "poster", "plot"],
     include: [
       {
         model: Genre,

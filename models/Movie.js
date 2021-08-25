@@ -19,18 +19,18 @@ Movie.init(
     year: {
       type: DataTypes.INTEGER,
     },
-    viewed: {
-      type: DataTypes.BOOLEAN,
-    },
-    genre_id: {
-      //previously genre_id, but I don't think we need/want the Genre model
-      type: DataTypes.STRING,
+    // viewed: {
+    //   type: DataTypes.BOOLEAN,
+    // },
+    // genre_id: {
+    //   //previously genre_id, but I don't think we need/want the Genre model
+    //   type: DataTypes.STRING,
 
-      // references: {
-      //   model: "genre",
-      //   key: "id",
-      // },
-    },
+    //   // references: {
+    //   //   model: "genre",
+    //   //   key: "id",
+    //   // },
+    // },
     poster: {
       type: DataTypes.BLOB,
     },

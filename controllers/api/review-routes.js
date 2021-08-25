@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, UserReview, Genre, Movie } = require("../../models");
+const { User, UserReview, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //user can get all of their reviews
@@ -65,10 +65,11 @@ router.post("/createNew", withAuth, (req, res) => {
 
 // user can make changes to what they wrote in their review //
 router.put("/updateReview/:id", withAuth, (req, res) => {
+  // res.json({ id: req.params.id });
   UserReview.update(req.body, {
     individualHooks: true,
     where: {
-      title: req.body.params.title,
+      id: +req.params.id,
     },
   })
     .then((dbPostData) => {
