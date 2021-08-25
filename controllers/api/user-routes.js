@@ -5,6 +5,7 @@ const Post = require("../../models/UserReview");
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
+// get all users
 router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
   User.findAll({
