@@ -10,7 +10,7 @@ append to https://image.tmdb.org/t/p/w500 to become => https://image.tmdb.org/t/
 This get request returns the movie poster. (/w500 is the image size; may cause an issue if the poster_path isnt .jpg?)
 
 
-Movie Genres: Action, Adventure, Drama, Horror, Family, Thriller 
+Movie Genres: Action, Adventure, Drama, Horror, Family, Thriller, Comedy
 
 <Ben End>
 
