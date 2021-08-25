@@ -2,35 +2,31 @@
 var axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
-const { User, Post, Genre, Movie, UserFav, Rating } = require("../../models");
+const { User, Post, Movie, UserFav, Rating } = require("../../models");
 
-var options = {
-  method: "GET",
-  url: "https://imdb8.p.rapidapi.com/title/find/",
-  params: { q: "Toy Story" },
-  headers: {
-    "x-rapidapi-host": "imdb8.p.rapidapi.com",
-    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
-  },
-};
-
-var options_details = {
-  method: "GET",
-  url: "https://imdb8.p.rapidapi.com/title/get-details", //gets the id  and other details
-  params: { tconst: "tt0944947" },
-  headers: {
-    "x-rapidapi-host": "imdb8.p.rapidapi.com",
-    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
-  },
-};
+////START Bens Routes
 
 router.get('/', (req, res) => {
   Movie.findAll({}).then(dbData => {
     res.json(dbData);
   })
-  // res.send('movroute')
 })
 
+router.get('/:id', (req, res) => {
+  Movie.findOne({
+    id: req.params.id
+  },
+  //include {model: Review, attributes: ['review_text', 'user_id']}
+  ).then(dbData => {
+    res.json(dbData);
+  })
+})
+
+
+
+
+
+//// END Bens Routes
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb

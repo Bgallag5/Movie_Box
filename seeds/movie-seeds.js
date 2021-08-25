@@ -785,7 +785,7 @@ const movies = [
 ];
 
 const seedMovies = () => Movie.bulkCreate(movies)
-seedMovies();
+// seedMovies();
 
 module.exports= seedMovies;
 

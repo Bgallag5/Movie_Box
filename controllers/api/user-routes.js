@@ -1,23 +1,32 @@
 // Ani's Code //
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User , Movie} = require("../../models");
 const Post = require("../../models/Post");
 const bcrypt = require("bcrypt");
 
-router.get("/", (req, res) => {
-  User.findAll({
-    attributes: { exclude: ["password"] },
-  })
-    .then((dbUserData) => res.json(dbUserData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get("/", (req, res) => {
+//   User.findAll({
+//     attributes: { exclude: ["password"] },
+//   })
+//     .then((dbUserData) => res.json(dbUserData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
+
+
+////Bens Routes
+
+router.get('/', (req, res) => {
+  User.findAll({}).then(dbData => {
+    res.json(dbData);
+  })
+})
 
 // router.get('/:id', (req, res) => {
 //     User.findOne({
