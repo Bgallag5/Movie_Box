@@ -3,8 +3,10 @@ const router = require("express").Router();
 const { User } = require("../../models");
 const Post = require("../../models/UserReview");
 const bcrypt = require("bcrypt");
+const withAuth = require("../../utils/auth");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
+  console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
   })
@@ -83,6 +85,37 @@ router.post("/login", async (req, res) => {
     console.error("failed login", error);
     res.status(500).json(error);
   }
+});
+
+// user can logout (should be connected to logout.js)
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+// delete a user by their id
+router.delete("/delete/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

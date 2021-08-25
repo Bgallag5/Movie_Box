@@ -21,32 +21,32 @@ router.get("/allReviews", withAuth, (req, res) => {
     });
 });
 
-// get review by id//// ****** WHY IS THIS NOT WORKING
-router.get("/:id", (req, res) => {
-  // console.log("review session", req.session);
-  UserReview.findOne({
-    where: {
-      id: req.params.id,
-    },
-    include: [
-      {
-        model: User,
-        attributes: ["id", "username", "email", "password"],
-      },
-    ],
-  })
-    .then((dbReviewById) => {
-      if (!dbReviewById) {
-        res.status(404).json({ message: "No review found with this id" });
-        return;
-      }
-      res.json(dbReviewById);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// get review by id////
+// router.get("/:id", (req, res) => {
+//   // console.log("review session", req.session);
+//   UserReview.findOne({
+//     where: {
+//       id: req.params.id,
+//     },
+//     include: [
+//       {
+//         model: User,
+//         attributes: ["id", "username", "email", "password"],
+//       },
+//     ],
+//   })
+//     .then((dbReviewById) => {
+//       if (!dbReviewById) {
+//         res.status(404).json({ message: "No review found with this id" });
+//         return;
+//       }
+//       res.json(dbReviewById);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // user can create a new review/note (must be at least 2 characters long and no more than 200)
 router.post("/createNew", withAuth, (req, res) => {
@@ -64,17 +64,13 @@ router.post("/createNew", withAuth, (req, res) => {
 });
 
 // user can make changes to what they wrote in their review //
-router.put("/updateReview", withAuth, (req, res) => {
-  UserReview.update(
-    {
-      title: req.body.title,
+router.put("/updateReview/:id", withAuth, (req, res) => {
+  UserReview.update(req.body, {
+    individualHooks: true,
+    where: {
+      title: req.body.params.title,
     },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
+  })
     .then((dbPostData) => {
       if (!dbPostData) {
         res.status(404).json({ message: "No post found with this id" });
@@ -84,6 +80,7 @@ router.put("/updateReview", withAuth, (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+
       res.status(500).json(err);
     });
 });
