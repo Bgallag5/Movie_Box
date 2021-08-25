@@ -54,6 +54,10 @@ async function loginFormHandler(event) {
   //  console.log(searchTerm.value);
   //}
 
+  //const loginButton = document.getElementById("#login-button")
+  //loginButton.onclick = function loginPage() {
+  //  location.href="../public.dashboard.html"
+  //}
   
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   
