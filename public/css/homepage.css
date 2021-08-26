@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    background-color: whitesmoke;
+    color: purple;
+    padding: 5%;
+    margin: 0 25%;
+}
+
+section {
+    text-align: center;
+    background-color: purple;
+    color: whitesmoke;
+    padding: 2%;
+    margin: 2% 30%;
+}
+
+section a {
+    color: whitesmoke;
+}
