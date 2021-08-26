@@ -5,10 +5,12 @@
   var passwordInput = document.getElementById("password-input");
   var usernameInput = document.getElementById("username-input");
   
-  loginButton.onclick = function(){
+  loginButton.onclick = function(event){
+    event.preventDefault;
     console.log(emailInput.value);
     console.log(passwordInput.value);
     console.log(usernameInput.value);
+    window.location('../public/dashboard.html');
   }
 
   //async function loginFormHandler(event) {
