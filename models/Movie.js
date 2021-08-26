@@ -24,15 +24,10 @@ Movie.init(
     },
     plot: {
       type: DataTypes.TEXT,
-      // validate: {
-      //   len: [5, 65535],
-      // },
     },
     poster_path: {
       type: DataTypes.STRING,
-      validate: {
-        isUrl: true,
-      },
+      allowNull: false,
     },
     release_year: {
       type: DataTypes.INTEGER,
@@ -67,7 +62,7 @@ Movie.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "Movie",
+    modelName: "movie",
   }
 );
 

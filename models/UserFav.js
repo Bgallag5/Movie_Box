@@ -13,8 +13,24 @@ UserFav.init(
     movie_id: {
       type: DataTypes.STRING,
       allowNull: false,
+      references: {
+        model: "movie",
+        key: "id",
+      },
     },
-
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2, 50],
+      },
+    },
+    genre: {
+      references: {
+        model: "movie",
+        key: "genre",
+      },
+    },
     // favorites: {
     //   type: DataTypes.ARRAY,
     // },
