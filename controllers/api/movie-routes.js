@@ -7,8 +7,11 @@ const { User, Post, Movie, UserFav, Rating } = require("../../models");
 ////START Bens Routes
 
 router.get('/', (req, res) => {
-  Movie.findAll({}).then(dbData => {
-    res.json(dbData);
+  Movie.findAll({
+    attributes: ['title', 'rating']
+  }).then(dbData => {
+    const movies = dbData.map(movie => movie.get({plain: true}));
+    res.render('index', {movies});
   })
 })
 
