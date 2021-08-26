@@ -16,14 +16,13 @@ Movie.init({
     allowNull: false,
   },
   rating: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
+    type: DataTypes.DECIMAL,
   },
   genre: {
     type: DataTypes.STRING,
   },
   plot :{
-    type: DataTypes.STRING(15000),
+    type: DataTypes.TEXT
   },
   poster_path: {
     type: DataTypes.STRING,
@@ -31,7 +30,10 @@ Movie.init({
   },
   release_year: {
     type: DataTypes.INTEGER,
-    allowNull: false
+  },
+  viewed: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 }, 
   {
