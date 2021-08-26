@@ -50,9 +50,13 @@ async function loginFormHandler(event) {
 
   const loginButton= document.getElementById("login-button");
   var emailInput = document.getElementById("email-input");
+  var passwordInput = document.getElementById("password-input");
+  var usernameInput = document.getElementById("username-input");
   
   loginButton.onclick = function(){
     console.log(emailInput.value);
+    console.log(passwordInput.value);
+    console.log(usernameInput.value);
   }
 
   //const loginButton = document.getElementById("#login-button")
