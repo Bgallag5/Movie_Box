@@ -2,7 +2,9 @@ const router = require("express").Router();
 
 const movie = require("./movie-routes");
 // const genre = require("./genre-routes");
+
 const reviews = require("./review-routes");
+
 const user = require("./user-routes");
 const userFav = require("./fav-routes");
 

@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" 
+    rel="stylesheet"/>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/login.css"/>
     <title>Movie Box</title>
-</head>
-<body> 
+  </head>
 
+  <body>
+    <header id="header">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navId">
+        <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
 
+            <li class="nav-item nav-text" id="dashboard">
+              <a class="nav-link" href="./dashboard.html">My Dashboard</a>
+            </li>
+            <li class="nav-item nav-text" id="logout">
+              <a class="nav-link" href="./login.html">Log In</a>
+            </li>
 
+          </ul>
+        </div>
+      </nav>
+    </header>
 
+    <h1>
+      Log In
+    </h1>
 
+    <form id="login-form">
+      <div id="login-form" class="container">
+          <div id="email">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+          </div>
 
+          <div>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+          </div>
 
-</body>
+          <div>
+            <label for=""><b>Username</b></label>
+            <input type="Username" placeholder="Enter Username" name="username" required>
+          </div>
+    
+        <button id="login-button" type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+    
+      <div class="container">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="button">Forgot password?</button>
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="javascript/index.js" ></script> -->
+    <script src="javascript/login.js" ></script>
+
+  </body>
 </html>
 

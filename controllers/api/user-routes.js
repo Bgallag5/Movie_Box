@@ -1,9 +1,12 @@
 // Ani's Code //
 const router = require("express").Router();
-const { User } = require("../../models");
-const Post = require("../../models/UserReview");
+
+const { User , Movie} = require("../../models");
+const Post = require("../../models/Post");
+
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
+
 
 // get all users
 router.get("/", withAuth, (req, res) => {
@@ -18,9 +21,39 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
+
 async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
+
+
+
+// router.get('/:id', (req, res) => {
+//     User.findOne({
+//         attributes: { exclude: ['password'] },
+//         where: {
+//             id: req.params.id
+//         },
+//         include: [
+//             {
+//                 model: Post,
+//                 attributes: ['id', 'title', 'post_url', 'user_id', 'post_id', 'created_at']
+//             }
+//         ]
+//     })
+//         .then(dbUserData => {
+//             if (!dbUserData) {
+//                 res.status(404).json({ message: "No user found with this id" });
+//                 return;
+//             }
+//             res.json(dbUserData);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
+
 
 // user can sign up //
 // BOTH USERNAME AND PASSWORD MUST BE UNIQUE IN DB

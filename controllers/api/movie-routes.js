@@ -2,27 +2,31 @@
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
-const { User, Movie, UserFav } = require("../../models");
 
-var options = {
-  method: "GET",
-  url: "https://imdb8.p.rapidapi.com/title/find/",
-  params: { q: "Toy Story" },
-  headers: {
-    "x-rapidapi-host": "imdb8.p.rapidapi.com",
-    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
-  },
-};
+const { User, Post, Movie, UserFav, Rating } = require("../../models");
 
-var options_details = {
-  method: "GET",
-  url: "https://imdb8.p.rapidapi.com/title/get-details", //gets the id  and other details
-  params: { tconst: "tt0944947" },
-  headers: {
-    "x-rapidapi-host": "imdb8.p.rapidapi.com",
-    "x-rapidapi-key": "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420",
+////START Bens Routes
+
+router.get('/', (req, res) => {
+  Movie.findAll({}).then(dbData => {
+    const movies = dbData.map(movie => movie.get({plain: true}));
+    console.log(movies);
+    res.render('index', {movies});
+  })
+})
+
+router.get('/:id', (req, res) => {
+  Movie.findOne({
+    id: req.params.id
+
   },
-};
+  //include {model: Review, attributes: ['review_text', 'user_id']}
+  ).then(dbData => {
+    res.json(dbData);
+  })
+})
+
+
 
 //now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
 // get db table ready to store any movie that a user adds to their 'favorites'
@@ -45,6 +49,9 @@ var options_details = {
 //   .catch(function (error) {
 //     console.error(error);
 //   });
+
+
+//// END Bens Routes
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
@@ -116,6 +123,7 @@ router.get("/find/:id", async (req, res) => {
 });
 
 //get all movies
+
 router.get("/", (req, res) => {
   Movie.findAll({
     attributes: ["id", "title", "year", "poster", "plot"],
@@ -132,6 +140,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 module.exports = router;
 
@@ -180,3 +189,4 @@ module.exports = router;
 
 //       res.send("got it");
 //   });
+

@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 class Movie extends Model {}
 
+
 Movie.init(
   {
     id: {
@@ -57,6 +58,7 @@ Movie.init(
     //   },
     // },
   },
+
   {
     sequelize: sequelize,
     timestamps: false,
@@ -66,16 +68,5 @@ Movie.init(
   }
 );
 
-//     title: {
-//         type: DataTypes.STRING,
-//         allowNull: false,
-//     },
-
-//             rating: {
-//             type: DataTypes.STRING
-//         }
-
-//   }
-// });
 
 module.exports = Movie;

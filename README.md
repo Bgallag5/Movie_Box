@@ -1,35 +1,36 @@
-### Notes on what to accomplish
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-Description:
-Users can view our movie Database on the home page. They can then choose to sign up or login to search for additional movies. Once a user searches, our movie API returns results based on title. The user sees all matches from that title in the form of the movie poster image, the title, and year. From here, the user can click on a movie for additional details. On this page, they can also write their own review/notes about the movie. The user can also "favorite" movies that they like and view them on a separate page.
 
-movies
-routes
--- search
--- favs
 
-end points
+ # Movie Box
 
-- @DESCRIPTION route to search for a movies given a title : NOTE, REPLACE white space from imdb with underscore
-- @RETURN returns data object from imdb
 
-  /api/movies/search/:title"
+  -[Description](#description)
+  -[Made With](#made&nbspwith)
+  -[Usage](#usage)
+  -[Questions](#questions)
+  -[License](#license)
 
-- @description add a favorite entry into the db for the the user
-- @return copy of favorite
+  ## Description  
+  Movie Box is a fullstack movie database application that allows users to sort, search, and save the movies in our databse.      
+  
+  
+  ## Made With
+  javascript, express, node, mysql2, sequelize, dotenv, bcrypt, lodash, html, css, bootsrap, handlebars
 
-  /api/movies/favorite/:user_id/:movie_id
+  ## Usage 
+  This can be used as a movie databse/social media application.   
 
-- @description add a rating entry into the db with an associated user and movie
-- @return copy of created rating
+  ## Questions?
+  Check out the team:
+  Ben Gallagher [Github](https://github.com/Bgallag5)
+  ...or email me: bgallag5@gmail.com
+  Ani Carr[Github](https://github.com/anidino)
+  ...or email me: ani.elaina.carr@gmail.com
 
-  /api/movies/rating/:movie_id/:user_id/:rating
 
-- @description get a movies based on an imdb
-- @return response object from imdb
+  ## License  
+  
+  Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
+=======
 
-  /api/movies/find/:id
-
-## route to add review to movie (post route)
-
-http://localhost:3001/api/reviews/createNew

@@ -1,3 +1,4 @@
+
 const seedMovies = require("./movie-seeds");
 const seedUsers = require("./user-seeds");
 
@@ -14,3 +15,4 @@ const runSeeds = async () => {
 };
 
 runSeeds();
+

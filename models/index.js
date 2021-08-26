@@ -22,6 +22,26 @@ Movie.hasMany(UserFav, {
 //   //   through: { UserFav },
 // });
 
+// Movie.belongsTo(Post, {
+//     foreignKey: 'post_id'   // I think movie should belong to post?
+// })
+
+// Post.belongsTo(User, {
+//     foreignKey: 'user_id',
+//     onDelete: 'SET NULL'
+// });
+
+// Movie.belongsTo(Genre, {
+//   foreignKey: "genre_id",
+// });
+
+// Genre.hasMany(Movie, {
+//   foreignKey: "genre_id",
+// });
+
+// // Movie.hasMany(Genre, {
+// //     foreignKey: 'movie_id',
+
 UserFav.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
@@ -36,10 +56,12 @@ User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
+
 module.exports = {
   User,
   UserReview: UserReview,
   Movie,
 
-  UserFav,
-};
+
+module.exports = { User, Post, Movie, UserFav, Rating };
+
