@@ -16,31 +16,51 @@ Movie.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    year: {
+    rating: {
+      type: DataTypes.DECIMAL,
+    },
+    genre: {
+      type: DataTypes.STRING,
+    },
+    plot: {
+      type: DataTypes.TEXT,
+      // validate: {
+      //   len: [5, 65535],
+      // },
+    },
+    poster_path: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true,
+      },
+    },
+    release_year: {
       type: DataTypes.INTEGER,
     },
-    // viewed: {
-    //   type: DataTypes.BOOLEAN,
-    // },
+    viewed: {
+      type: DataTypes.BOOLEAN,
+      // allowNull: false,
+      defaultValue: false,
+    },
     // genre_id: {
     //   //previously genre_id, but I don't think we need/want the Genre model
-    //   type: DataTypes.STRING,
-
+    //   type: DataTypes.INTEGER,
+    // },
     //   // references: {
     //   //   model: "genre",
     //   //   key: "id",
     //   // },
     // },
-    poster: {
-      type: DataTypes.BLOB,
-    },
-    plot: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isUrl: true,
-      },
-    },
+    // poster: {
+    //   type: DataTypes.BLOB,
+    // },
+    // plot: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     isUrl: true,
+    //   },
+    // },
   },
   {
     sequelize: sequelize,

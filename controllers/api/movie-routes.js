@@ -110,7 +110,7 @@ router.get("/find/:id", async (req, res) => {
 
     res.send(results.data);
   } catch (error) {
-    console.error(error?.data); //if error is undefined, return undefined
+    console.error(error?.data); //if data is undefined, return undefined
     res.status(500).send("failed to fect data");
   }
 });

@@ -19,4 +19,6 @@ router.get("/:user_id/:movie_id", async (req, res) => {
   }
 });
 
+router.get("/:id");
+
 module.exports = router;

@@ -9,6 +9,11 @@ Movie.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
+UserFav.belongsTo(Movie),
+  {
+    foreignKey: "movie_id",
+  };
+
 // User.hasMany(UserFav, {
 //   foreignKey: "user_id",
 //   //   through: { UserFav },
