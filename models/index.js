@@ -56,12 +56,9 @@ User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
-
 module.exports = {
   User,
   UserReview: UserReview,
   Movie,
-
-
-module.exports = { User, Post, Movie, UserFav, Rating };
-
+  UserFav,
+};

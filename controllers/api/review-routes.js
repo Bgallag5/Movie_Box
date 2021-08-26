@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, UserReview, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
+const bcrypt = require("bcrypt");
 
 //user can get all of their reviews
 router.get("/allReviews", withAuth, (req, res) => {

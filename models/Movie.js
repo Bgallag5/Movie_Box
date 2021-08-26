@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 
 class Movie extends Model {}
 
-
 Movie.init(
   {
     id: {
@@ -28,7 +27,9 @@ Movie.init(
     },
     poster_path: {
       type: DataTypes.STRING,
-      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
     },
     release_year: {
       type: DataTypes.INTEGER,
@@ -67,6 +68,5 @@ Movie.init(
     modelName: "movie",
   }
 );
-
 
 module.exports = Movie;

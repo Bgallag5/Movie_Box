@@ -1,12 +1,10 @@
 // Ani's Code //
 const router = require("express").Router();
 
-const { User , Movie} = require("../../models");
-const Post = require("../../models/Post");
+const { User } = require("../../models");
 
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
-
 
 // get all users
 router.get("/", withAuth, (req, res) => {
@@ -21,12 +19,9 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
-
 async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
-
-
 
 // router.get('/:id', (req, res) => {
 //     User.findOne({
@@ -53,7 +48,6 @@ async function checkPassword(password, hash) {
 //             res.status(500).json(err);
 //         });
 // });
-
 
 // user can sign up //
 // BOTH USERNAME AND PASSWORD MUST BE UNIQUE IN DB
