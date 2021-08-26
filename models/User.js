@@ -15,6 +15,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -27,13 +28,13 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [7],
-      },
+      // validate: {    //VALIDATION SHOULD HAPPEN WHEN USER REGISTERS BC THIS WILL ALWAYS BE HASHED PW
+      //   len: [7],
+      // },
     },
-    favorites: {
-      type: DataTypes.ARRAY,
-    },
+    // favorites: {
+    //   type: DataTypes.ARRAY,
+    // },
   },
   {
     hooks: {
@@ -58,3 +59,5 @@ User.init(
     modelName: "user",
   }
 );
+
+module.exports = User;
