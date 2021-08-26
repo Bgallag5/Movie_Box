@@ -1,4 +1,5 @@
 // const sequelize = require('../config/connection')
+
 const Movie = require('../models/Movie');
 
 
@@ -782,10 +783,12 @@ const movies = [
         release_year:1994,
     },
 
+
 ];
 
 const seedMovies = () => Movie.bulkCreate(movies);
 // seedMovies();
+
 
 module.exports= seedMovies;
 
@@ -798,3 +801,4 @@ module.exports= seedMovies;
 //     poster_path: 
 //     release_year: ,
 // },
+

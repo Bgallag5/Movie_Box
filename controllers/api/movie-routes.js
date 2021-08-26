@@ -1,7 +1,8 @@
-////start  ani's code /////////////////////////
-var axios = require("axios").default;
+// ani
+const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
+
 const { User, Post, Movie, UserFav, Rating } = require("../../models");
 
 ////START Bens Routes
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Movie.findOne({
     id: req.params.id
+
   },
   //include {model: Review, attributes: ['review_text', 'user_id']}
   ).then(dbData => {
@@ -26,12 +28,34 @@ router.get('/:id', (req, res) => {
 
 
 
+//now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
+// get db table ready to store any movie that a user adds to their 'favorites'
+
+// var AltApiOptions = {
+//   method: "GET",
+//   url: "https://movie-database-imdb-alternative.p.rapidapi.com/",
+//   params: { t: "the glass house", r: "json" },
+//   headers: {
+//     "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+//     "x-rapidapi-key": "3f62d6d805msh7dbfdcaa1a72368p136173jsn11f89f1fc0d7",
+//   },
+// };
+
+// axios
+//   .request(AltApiOptions)
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
+//   .catch(function (error) {
+//     console.error(error);
+//   });
 
 
 //// END Bens Routes
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
+
 router.get("/search/:title", async (req, res) => {
   let title = req.params.title.replace("_", " "); //
   let request_options = Object.assign({}, options); //cloning object
@@ -65,28 +89,8 @@ router.get("/search/:title", async (req, res) => {
   }
 });
 
-
-//  add a favorite entry into the db for the the user
-//  return copy of favorite
-router.get("/favorite/:user_id/:movie_id", async (req, res) => {
-  try {
-    //insert a user movie pair into the database if it does not exists already
-    const fav = await UserFav.create({
-      user_id: req.params.user_id,
-      movie_id: req.params.movie_id,
-    });
-    console.log(fav.toJSON());
-    res.json(fav);
-    //return count of updated element
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("failed to favorite");
-  }
-});
-
 //add a rating entry into the db with an associated user and movie
 //copy of created rating
-
 router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
   try {
     const rating = await Rating.create({
@@ -101,7 +105,7 @@ router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
   }
 });
 
-//get a movies based on an imdb
+//get a movie based on an imdb search
 ///return response object from imdb
 
 router.get("/find/:id", async (req, res) => {
@@ -113,28 +117,30 @@ router.get("/find/:id", async (req, res) => {
 
     res.send(results.data);
   } catch (error) {
-    console.error(error?.data); //if error is undefined, return undefined
+    console.error(error?.data); //if data is undefined, return undefined
     res.status(500).send("failed to fect data");
   }
 });
 
 //get all movies
-// router.get("/", (req, res) => {
-//   Movie.findAll({
-//     attributes: ["id", "title", "rating", "viewed", "genre_id"],
-//     include: [
-//       {
-//         model: Genre,
-//         attributes: ["id", "genre_name"],
-//       },
-//     ],
-//   })
-//     .then((dbMovieData) => res.json(dbMovieData))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+
+router.get("/", (req, res) => {
+  Movie.findAll({
+    attributes: ["id", "title", "year", "poster", "plot"],
+    include: [
+      {
+        model: Genre,
+        attributes: ["id", "genre_name"],
+      },
+    ],
+  })
+    .then((dbMovieData) => res.json(dbMovieData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;
 
