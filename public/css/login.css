@@ -5,6 +5,14 @@ h1 {
 
 #login-form {
     color: whitesmoke;
+    background-color: purple;
     text-align: center;
     font-size: large;
+    margin: 0 25%;
+    padding: 2%
+}
+
+#login-form button {
+    background-color: purple;
+    color: whitesmoke;
 }
