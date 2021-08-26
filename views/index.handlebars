@@ -20,19 +20,18 @@
 <section id='movies-section'>
 <button onclick="topFunction()" id="topBtn" title="Go to top">back to top</button>
 
-<ol>
+<div class="row container movrow">
     {{#each movies}}
-    <li>
-        {{title}}
-        {{rating}}
-    </li>
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
     {{/each}}
-</ol>
+</div>
 
-    <div class="row container movrow">
+    {{!-- <div class="row container movrow">
         <div class="col movies">1 of 4</div>
         <div class="col movies">2 of 4</div>
         <div class="col movies">3 of 4</div>
         <div class="col movies">4 of 4</div>
-      </div>
+      </div> --}}
+      {{!-- <div class="movies">{{title}} {{rating}}</div> --}}
+
 </section>
