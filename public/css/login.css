@@ -57,3 +57,13 @@ h1 {
     background-color: whitesmoke;
     color:rgb(65, 0, 170);
 }
+h1 {
+    color: whitesmoke;
+    text-align: center;
+}
+
+#login-form {
+    color: whitesmoke;
+    text-align: center;
+    font-size: large;
+}

@@ -1,0 +1,28 @@
+
+    <section id= 'search-filter' >
+      <div class="input-group">
+          <input type="search" class="form-control rounded" id="inputId" placeholder="Search" aria-label="Search" 
+            aria-describedby="search-addon" />
+          <button class="btn buttons"  action="/search" id="buttonId">Search</button>
+        </div>
+
+        <div class="dropdown">
+          <label class="sortbtn buttons">Sort By</label>
+          <select class="dropdown-content" id='dropdown'>
+            <option href="#">Rating</option>
+            <option href="#">Popularity</option>
+            <option href="#">Release Date</option>
+          </select>
+        </div>
+
+    </section>
+
+<section id='movies-section'>
+<button onclick="topFunction()" id="topBtn" title="Go to top">back to top</button>
+
+<div class="row container movrow">
+    {{#each movies}}
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
+    {{/each}}
+</div>
+</section>
