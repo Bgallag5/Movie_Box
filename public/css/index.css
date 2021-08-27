@@ -14,6 +14,15 @@ body {
   color: whitesmoke;
 }
 
+#home a {
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#home a:hover {
+  color: rgb(65, 0, 170);
+}
+
 #dashboard a {
   color: whitesmoke;
   text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);

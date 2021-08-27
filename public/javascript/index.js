@@ -28,6 +28,7 @@ searchBtn.onclick = function(){
   console.log(searchTerm.value); 
 }
 
+
 //SORT BY 
 var sortBtn = document.getElementById('dropdown')
 
