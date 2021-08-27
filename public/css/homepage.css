@@ -1,14 +1,14 @@
 h1 {
     text-align: center;
     background-color: whitesmoke;
-    color: purple;
+    color:rgb(65, 0, 170);
     padding: 5%;
     margin: 0 25%;
 }
 
 section {
     text-align: center;
-    background-color: purple;
+    background-color:rgb(65, 0, 170);
     color: whitesmoke;
     padding: 2%;
     margin: 2% 30%;
