@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Movie.findOne({
     where: {
-      id: req.params.id,
+      id: +req.params.id,
     },
     include: [
       {
@@ -43,7 +43,43 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//   Movie.findOne(
+// get movie by title //
+// router.get("/:title", (req, res) => {
+//   // find a single movie product by its `title`
+//   // let title = req.params.title.replace("_", " ");
+//   // let request_options = Object.assign({}, options); //cloning object
+//   request_options.params.q = title;
+
+//   Movie.findOne({
+//     where: {
+//       title: req.params.title,
+//     },
+//     include: [
+//       {
+//         model: UserReview,
+//         attributes: ["id", "title", "post_content", "user_id"],
+//         include: {
+//           model: User,
+//           attributes: ["id", "username"],
+//         },
+//       },
+//     ],
+//   })
+//     .then((dbMovieData) => {
+//       if (!dbMovieData) {
+//         res
+//           .status(404)
+//           .json({ message: "We can't find a movie called this. 🙁" });
+//         return;
+//       }
+//       res.json(dbMovieData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
 //     {
 //       id: req.params.id,
 //     }
@@ -144,69 +180,4 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-//get all movies
-
-router.get("/", (req, res) => {
-  Movie.findAll({
-    attributes: ["id", "title", "year", "poster", "plot"],
-    include: [
-      {
-        model: Genre,
-        attributes: ["id", "genre_name"],
-      },
-    ],
-  })
-    .then((dbMovieData) => res.json(dbMovieData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 module.exports = router;
-
-// router.get('/:title', (req, res) => {
-//     // find a single movie product by its `title`
-
-//     Movie.findOne({
-//         where: {
-//             title: req.params.title
-//         },
-//         include: [
-//             {
-//                 model: Genre,
-//                 attributes: ["id", "genre_name"]
-//             },
-
-//         ]
-//     })
-//         .then((dbMovieData) => {
-//             if (!dbMovieData) {
-//                 res.status(404).json({ message: "We can't find a movie called this. 🙁" });
-//                 return;
-//             }
-//             res.json(dbMovieData);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
-
-/// do we want to 'create' movies or should we 'create' the post which will contain the movie?
-
-//   axios.request(options).then(function (response) {
-//       console.log("++++++++++++++++++++++++++++++", response.data.results[0]);
-//   }).catch(function (error) {
-//       console.error(error);
-//       router.get('/title', (req,res) => {
-//           res.send(res.data)
-//       })
-//   });
-
-//  router.post('/title', (req, res) => {
-//     console.log("_____________________________________");
-//       const item = req.body.inputId;
-
-//       res.send("got it");
-//   });
