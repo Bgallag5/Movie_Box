@@ -34,6 +34,13 @@ Movie.init(
     release_year: {
       type: DataTypes.INTEGER,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        keys: "id",
+      },
+    },
     viewed: {
       type: DataTypes.BOOLEAN,
       // allowNull: false,

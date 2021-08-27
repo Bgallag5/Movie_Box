@@ -3,7 +3,7 @@ const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 
-const { User, Movie, UserFav } = require("../../models");
+const { User, Movie, UserFav, UserReview } = require("../../models");
 
 ////START Bens Routes
 
@@ -15,16 +15,43 @@ router.get("/", (req, res) => {
   });
 });
 
+//// END Bens Routes
+
+//Ani's routes - get movie by id ////
 router.get("/:id", (req, res) => {
-  Movie.findOne(
-    {
+  Movie.findOne({
+    where: {
       id: req.params.id,
-    }
-    //include {model: Review, attributes: ['review_text', 'user_id']}
-  ).then((dbData) => {
-    res.json(dbData);
-  });
+    },
+    include: [
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "user_id"],
+        include: {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      },
+    ],
+  })
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
+//   Movie.findOne(
+//     {
+//       id: req.params.id,
+//     }
+//     include: {model: userReview, attributes: ['title', 'post_content', 'user_id] }
+//   ).then((dbData) => {
+//     res.json(dbData);
+//   });
+// });
 
 //now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
 // get db table ready to store any movie that a user adds to their 'favorites'
@@ -47,8 +74,6 @@ router.get("/:id", (req, res) => {
 //   .catch(function (error) {
 //     console.error(error);
 //   });
-
-//// END Bens Routes
 
 //route to search for a movies get title : NOTE, REPLACE whitespace with underscore
 // returns data object from imdb
