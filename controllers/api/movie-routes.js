@@ -21,12 +21,12 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Movie.findOne({
     where: {
-      id: +req.params.id,
+      id: req.params.id,
     },
     include: [
       {
         model: UserReview,
-        attributes: ["id", "title", "post_content", "user_id"],
+        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
         include: {
           model: User,
           attributes: ["id", "username"],
@@ -43,42 +43,40 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// get movie by title //
-// router.get("/:title", (req, res) => {
-//   // find a single movie product by its `title`
-//   // let title = req.params.title.replace("_", " ");
-//   // let request_options = Object.assign({}, options); //cloning object
-//   request_options.params.q = title;
+// Ani's get movie by title //
+router.get("/title/:title", (req, res) => {
+  let title = req.params.title.split("_").join(" ");
+  console.log("LOOK HERE", title);
 
-//   Movie.findOne({
-//     where: {
-//       title: req.params.title,
-//     },
-//     include: [
-//       {
-//         model: UserReview,
-//         attributes: ["id", "title", "post_content", "user_id"],
-//         include: {
-//           model: User,
-//           attributes: ["id", "username"],
-//         },
-//       },
-//     ],
-//   })
-//     .then((dbMovieData) => {
-//       if (!dbMovieData) {
-//         res
-//           .status(404)
-//           .json({ message: "We can't find a movie called this. 🙁" });
-//         return;
-//       }
-//       res.json(dbMovieData);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+  Movie.findOne({
+    where: {
+      title: title,
+    },
+    include: [
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "user_id"],
+        include: {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      },
+    ],
+  })
+    .then((dbMovieData) => {
+      if (!dbMovieData) {
+        res
+          .status(404)
+          .json({ message: "We can't find a movie called this. 🙁" });
+        return;
+      }
+      res.json(dbMovieData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 //     {
 //       id: req.params.id,

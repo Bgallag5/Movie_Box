@@ -23,6 +23,13 @@ UserReview.init(
       },
       allowNull: false,
     },
+    movie_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "movie",
+        key: "id",
+      },
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
