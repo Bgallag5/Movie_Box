@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 const { User , Movie} = require("../../models");
-const Post = require("../../models/Post");
+// const Post = require("../../models/Post");
 
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");

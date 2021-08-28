@@ -33,11 +33,11 @@ Movie.init(
     release_year: {
       type: DataTypes.INTEGER,
     },
-    viewed: {
-      type: DataTypes.BOOLEAN,
-      // allowNull: false,
-      defaultValue: false,
-    },
+    // viewed: {
+    //   type: DataTypes.BOOLEAN,
+    //   // allowNull: false,
+    //   defaultValue: false,
+    // },
     // genre_id: {
     //   //previously genre_id, but I don't think we need/want the Genre model
     //   type: DataTypes.INTEGER,

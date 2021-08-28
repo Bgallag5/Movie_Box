@@ -3,7 +3,7 @@ const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 
-const { User, Post, Movie, UserFav, Rating } = require("../../models");
+const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 
 ////START Bens Routes
 
@@ -15,16 +15,55 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   Movie.findOne({
-    id: req.params.id
-
-  },
-  //include {model: Review, attributes: ['review_text', 'user_id']}
-  ).then(dbData => {
-    res.json(dbData);
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        include: {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      },
+    ],
   })
-})
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/:title", (req, res) => {
+  Movie.findOne({
+    where: {
+      title: req.params.title,
+    },
+    include: [
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        include: {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      },
+    ],
+  })
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 

@@ -26,6 +26,10 @@
         <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+      
+            <li class="nav-item nav-text" id="home">
+              <a class="nav-link" href="#">Home</a>
+            </li>
 
             <li class="nav-item nav-text" id="dashboard">
               <a class="nav-link" href="#">My Dashboard</a>
@@ -59,25 +63,84 @@
     <h5 class="card-title">Box Office</h5>
     <p class="card-text">$472 million</p>
 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/U1fu_sA7XhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
   </div>
   </div>
    </section> 
 
+
+   <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Star Rating Form | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="post">
+        <div class="text">Thanks for rating us!</div>
+        <div class="edit">EDIT</div>
+      </div>
+      <div class="star-widget">
+        <input type="radio" name="rate" id="rate-5">
+        <label for="rate-5" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-4">
+        <label for="rate-4" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-3">
+        <label for="rate-3" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-2">
+        <label for="rate-2" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-1">
+        <label for="rate-1" class="fas fa-star"></label>
+        <form action="#">
+          <header></header>
+          <div class="textarea">
+            <textarea cols="30" placeholder="Describe your movie experience.."></textarea>
+          </div>
+          <div class="btn">
+            <button type="submit">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      const btn = document.querySelector("button");
+      const post = document.querySelector(".post");
+      const widget = document.querySelector(".star-widget");
+      const editBtn = document.querySelector(".edit");
+      btn.onclick = ()=>{
+        widget.style.display = "none";
+        post.style.display = "block";
+        editBtn.onclick = ()=>{
+          widget.style.display = "block";
+          post.style.display = "none";
+        }
+        return false;
+      }
+    </script>
+
+  </body>
+</html>
+
    
+
 
 <footer>
   <div id='contact-us'>
       <h3>Created By</h3>
-      <h4>Ben Gallagher</h4>
-      <h4>Ani Carr</h4>
-      <h4>Raevin Lastname</h4>
-      <h4>Thandie Lastname</h4>
+      <h4>Ben Gallagher (Bgallag5)</h4>
+      <h4>Ani Carr (anidino)</h4>
+      <h4>Raevin Dunson (raevindunson)</h4>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- <script src="javascript/index.js" ></script> -->
-<script src="javascript/movieApi.js" ></script>
-  </body>
+<script src="./javascript/single-view.js"></script> 
+ </body>
 
 </html>
+

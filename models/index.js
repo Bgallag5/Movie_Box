@@ -57,11 +57,5 @@ User.hasMany(UserReview, {
 });
 
 
-module.exports = {
-  User,
-  UserReview: UserReview,
-  Movie,
-
-
-module.exports = { User, Post, Movie, UserFav, Rating };
+module.exports = { User, Movie, UserFav };
 

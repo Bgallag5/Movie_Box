@@ -25,12 +25,12 @@ UserFav.init(
         len: [2, 50],
       },
     },
-    genre: {
-      references: {
-        model: "movie",
-        key: "genre",
-      },
-    },
+    // genre: {
+    //   references: {
+    //     model: "movie",
+    //     key: "genre",
+    //   },
+    // },
     // favorites: {
     //   type: DataTypes.ARRAY,
     // },
