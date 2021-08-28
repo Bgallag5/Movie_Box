@@ -78,104 +78,29 @@ router.get("/title/:title", (req, res) => {
     });
 });
 
-//     {
-//       id: req.params.id,
-//     }
-//     include: {model: userReview, attributes: ['title', 'post_content', 'user_id] }
-//   ).then((dbData) => {
-//     res.json(dbData);
-//   });
-// });
-
-//now using 'Movie Database ('IMDB Alternative') from rapidAPi to get title, year, genre, plot, & poster url from api
-// get db table ready to store any movie that a user adds to their 'favorites'
-
-// var AltApiOptions = {
-//   method: "GET",
-//   url: "https://movie-database-imdb-alternative.p.rapidapi.com/",
-//   params: { t: "the glass house", r: "json" },
-//   headers: {
-//     "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-//     "x-rapidapi-key": "3f62d6d805msh7dbfdcaa1a72368p136173jsn11f89f1fc0d7",
-//   },
-// };
-
-// axios
-//   .request(AltApiOptions)
-//   .then(function (response) {
-//     console.log(response.data);
-//   })
-//   .catch(function (error) {
-//     console.error(error);
-//   });
-
-//route to search for a movies get title : NOTE, REPLACE whitespace with underscore
-// returns data object from imdb
-
-router.get("/search/:title", async (req, res) => {
-  let title = req.params.title.replace("_", " "); //
-  let request_options = Object.assign({}, options); //cloning object
-  request_options.params.q = title;
-
-  try {
-    const response = await axios.request(request_options);
-    const formattedMovieData = response.data.results
-      .map((obj) => {
-        const { title, year } = obj;
-
-        /**
-         * At this point we have a single object in the results array.
-         * We want to extract the year and title and return that in a new object.
-         */
-        return {
-          title,
-          year,
-        };
-      })
-      .filter((newObj) => {
-        const { title, year, url } = newObj;
-        // console.log(`Filter: ${JSON.stringify(newObj)} ${Object.keys(newObj)}`);
-        return title && year; // if the title and year are not empty strings and defined then return true (don't filter out)
-      });
-
-    res.send(formattedMovieData); //sent results from imdb as the response
-  } catch (error) {
-    console.error(error?.data);
-    res.status(500).send("failed to fetch data");
-  }
-});
-
-//add a rating entry into the db with an associated user and movie
-//copy of created rating
-router.get("/rating/:movie_id/:user_id/:rating", async (req, res) => {
-  try {
-    const rating = await Rating.create({
-      movie_id: req.params.movie_id,
-      user_id: req.params.user_id,
-      rating: req.params.rating,
+// Ani's delete movie route //
+// a user movie can be deleted although we likely won't use this
+//tested on movie id 0 and got wanted response. (404 message below bc no movie 0)
+router.delete("/delete/:id", (req, res) => {
+  Movie.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbMovieData) => {
+      if (!dbMovieData) {
+        res
+          .status(404)
+          .json({ message: "No movie found with this id for us to delete" });
+        return;
+      }
+      res.json(dbMovieData);
+      console.log("movie deleted successfully");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-    res.json(rating);
-  } catch (error) {
-    console.error(error?.data); //can use ? as a conditional aka JavaScript's optional chaining feature
-    res.status(500).send("failed to fect data");
-  }
-});
-
-//get a movie based on an imdb search
-///return response object from imdb
-
-router.get("/find/:id", async (req, res) => {
-  try {
-    let id = req.params.id;
-    let request_options = Object.assign({}, options_details); //cloning object
-    request_options.params.tconst = id;
-    let results = await axios.request(request_options);
-
-    res.send(results.data);
-  } catch (error) {
-    console.error(error?.data); //if data is undefined, return undefined
-    res.status(500).send("failed to fect data");
-  }
 });
 
 module.exports = router;
