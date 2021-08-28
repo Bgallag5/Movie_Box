@@ -29,3 +29,6 @@ next();
 //window.onload = function() {
 //    setInterval(changeBanner, 1000)
 //};
+
+var dashReview = document.getElementById("dash-reviews")
+var reviewCards = document.getElementById("review-cards")
