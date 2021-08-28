@@ -2,6 +2,7 @@
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
+const withAuth = require("../../utils/auth");
 
 const { User, Movie, UserFav, UserReview } = require("../../models");
 
@@ -17,8 +18,49 @@ router.get("/", (req, res) => {
 
 //// END Bens Routes
 
-//Ani's routes - get movie by id ////
-router.get("/:id", (req, res) => {
+// Ani's get by id route for NON LOGGED IN in users //
+router.get("/singleMovie/:id", (req, res) => {
+  Movie.findOne({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//Ani's get by title route for NON LOGGED IN in users //
+// router.get("/gettitle/:title", (req, res) => {
+//   let title = req.params.title.split("_").join(" ");
+//   console.log("LOOK HERE", title);
+
+//   Movie.findOne({
+//     where: {
+//       title: title,
+//     },
+//   })
+//     .then((dbMovieData) => {
+//       if (!dbMovieData) {
+//         res
+//           .status(404)
+//           .json({ message: "We can't find a movie called this. 🙁" });
+//         return;
+//       }
+//       res.json(dbMovieData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
+//Ani's routes - get movie by id for LOGGED IN USERS ////
+router.get("/:id", withAuth, (req, res) => {
   Movie.findOne({
     where: {
       id: req.params.id,
@@ -43,8 +85,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Ani's get movie by title //
-router.get("/title/:title", (req, res) => {
+// Ani's get movie by title for LOGGED IN users //
+router.get("/title/:title", withAuth, (req, res) => {
   let title = req.params.title.split("_").join(" ");
   console.log("LOOK HERE", title);
 
