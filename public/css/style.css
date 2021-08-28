@@ -3,10 +3,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: url("../assets/images/cityscape.jpg");
-  /* display: inline-block; */
-}
 
 #movieBox {
   font-family: "Architects Daughter", cursive;
