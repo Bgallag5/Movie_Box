@@ -55,9 +55,9 @@ height: 20rem;
 margin-top: 5vh;
 }
 
-#contact-us h3, h4{
+#contact-us h3, h4, a{
     color: whitesmoke;
-    padding: 2vh;
+    padding: 1vh;
 }
 
 

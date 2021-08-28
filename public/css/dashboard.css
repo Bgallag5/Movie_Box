@@ -6,3 +6,16 @@
 /* #myFavs{
     display: inline-block;
 } */
+
+#dash-reviews .row{
+    margin: 2rem 10rem;
+}
+
+#dash-reviews .btn{
+    background-color:rgb(65, 0, 170);
+    color: whitesmoke;
+}
+
+#dash-watchlist .row{
+    margin: 2rem 10rem;
+}

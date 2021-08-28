@@ -1,22 +1,23 @@
 //importing all models
 const User = require("./User");
-const Post = require("./Post");
+const UserReview = require("./UserReview");
 const Movie = require("./Movie");
-const Genre = require("./Genre");
 const UserFav = require("./UserFav");
-const Rating = require("./Rating");
 
 //make associations
-// User.hasMany(Post, {
-//     foreignKey: 'user_id'
-// });
+Movie.hasMany(UserReview, {
+  foreignKey: "user_id",
+});
 
+UserFav.belongsTo(Movie),
+  {
+    foreignKey: "movie_id",
+  };
+
+Movie.hasMany(UserFav, {
+  foreignKey: "movie_id",
+});
 // User.hasMany(UserFav, {
-//   foreignKey: "user_id",
-//   //   through: { UserFav },
-// });
-
-// Movie.hasMany(User, {
 //   foreignKey: "user_id",
 //   //   through: { UserFav },
 // });
@@ -30,17 +31,37 @@ const Rating = require("./Rating");
 //     onDelete: 'SET NULL'
 // });
 
-Movie.belongsTo(Genre, {
-  foreignKey: "genre_id",
+// Movie.belongsTo(Genre, {
+//   foreignKey: "genre_id",
+// });
+
+// Genre.hasMany(Movie, {
+//   foreignKey: "genre_id",
+// });
+
+// // Movie.hasMany(Genre, {
+// //     foreignKey: 'movie_id',
+
+UserFav.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
 });
 
-Genre.hasMany(Movie, {
-  foreignKey: "genre_id",
+UserReview.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
 });
 
-// Movie.hasMany(Genre, {
-//     foreignKey: 'movie_id',
+User.hasMany(UserReview, {
+  foreignKey: "user_id",
+});
 
-// });  // i mean movies do sometimes fall under several genres tho...
 
-module.exports = { User, Post, Movie, Genre, UserFav, Rating };
+module.exports = {
+  User,
+  UserReview: UserReview,
+  Movie,
+
+
+module.exports = { User, Post, Movie, UserFav, Rating };
+
