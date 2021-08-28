@@ -1,8 +1,48 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
+// const { Movie, UserFav, UpVote, User } = require("./models");
 
-class UserFav extends Model {}
+class UserFav extends Model {
+  static Vote(body, models) {
+    return models.UpVote.create({
+      user_id: body.user_id,
+      movie_id: body.movie_id,
+    }).then(() => {
+      return Movie.findOne({
+        where: {
+          id: body.movie_id,
+        },
+        attributes: [
+          "id",
+          "title",
+          "rating",
+          "genre",
+          "plot",
+          "poster_path",
+          "release_year",
+          "user_id",
+          [
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM UpVote WHERE movie.id = UpVote.movie_id)"
+            ),
+            "UpVote_count",
+          ],
+        ],
+        include: [
+          {
+            model: models.UserReview,
+            attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+            include: {
+              model: models.User,
+              attributes: ["username"],
+            },
+          },
+        ],
+      });
+    });
+  }
+}
 
 UserFav.init(
   {
@@ -80,7 +120,7 @@ UserFav.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "userfav",
