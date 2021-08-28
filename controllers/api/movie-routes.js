@@ -36,12 +36,12 @@ router.get("/singleMovie/:id", (req, res) => {
 
 //Ani's get by title route for NON LOGGED IN in users //
 // router.get("/gettitle/:title", (req, res) => {
-//   let title = req.params.title.split("_").join(" ");
-//   console.log("LOOK HERE", title);
+//   let title1 = req.params.title.split("_").join(" ");
+//   console.log("LOOK HERE", title1);
 
 //   Movie.findOne({
 //     where: {
-//       title: title,
+//       title: title1,
 //     },
 //   })
 //     .then((dbMovieData) => {
