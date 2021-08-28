@@ -15,7 +15,6 @@
     crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css"/>
-    <link rel="stylesheet" href="./css/index.css"/>
     <link rel="stylesheet" href="./css/login.css"/>
     <title>Movie Box</title>
   </head>
@@ -26,56 +25,63 @@
         <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-
             <li class="nav-item nav-text" id="dashboard">
               <a class="nav-link" href="./dashboard.html">My Dashboard</a>
             </li>
-            <li class="nav-item nav-text" id="logout">
-              <a class="nav-link" href="./login.html">Log In</a>
-            </li>
-
           </ul>
         </div>
       </nav>
     </header>
-
+    
     <h1>
-      Log In
+      Welcome to Movie Box!
     </h1>
 
     <form id="login-form">
-      <div id="login-form" class="container">
-          <div id="email">
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-          </div>
-
-          <div>
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-          </div>
-
-          <div>
-            <label for=""><b>Username</b></label>
-            <input type="Username" placeholder="Enter Username" name="username" required>
-          </div>
-    
-        <button id="login-button" type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
+      <h2>
+        Log In
+      </h2>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email-input" placeholder="Email">
+        </div>
       </div>
-    
-      <div class="container">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button type="button">Forgot password?</button>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password-input" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="username-input" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <a href="./dashboard.html" id="login-button" type="submit" class="btn btn-primary">Log in</a>
+        </div>
       </div>
     </form>
 
+    <section id="login-info">
+      <p>Sign up or log in to access our full database of movies. Save your favorites, leave ratings, and view your watchlist!</p>
+    </section>
+
+    <footer>
+      <div id='contact-us'>
+        <h3>Created By</h3>
+        <h4><a href="https://github.com/Bgallag5">Ben Gallagher</a></h4>
+        <h4><a href="https://github.com/anidino">Ani Carr</a></h4>
+        <h4><a href="https://github.com/raevindunson">Raevin Dunson</a></h4>
+        <h4><a href="https://github.com/thandiek">Thandie Kapakasa</a></h4>
+      </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="javascript/index.js" ></script> -->
     <script src="javascript/login.js" ></script>
 
   </body>
 </html>
-
