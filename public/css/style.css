@@ -3,12 +3,6 @@
   box-sizing: border-box;
 }
 
-:root {
-primary-color: rgb(65, 0, 170);
-secondary-color:  whitesmoke;
-/* tertiary-color: ; */
-}
-
 body {
   background-image: url("../assets/images/cityscape.jpg");
   /* display: inline-block; */
@@ -65,9 +59,9 @@ height: 20rem;
 margin-top: 5vh;
 }
 
-#contact-us h3, h4{
+#contact-us h3, h4, a{
     color: whitesmoke;
-    padding: 2vh;
+    padding: 1vh;
 }
 
 
