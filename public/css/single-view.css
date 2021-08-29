@@ -1,27 +1,23 @@
-#home a {
-    color: whitesmoke;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-  }
-  
-  #home a:hover {
-    color: rgb(65, 0, 170);
-  }
-
-  #home {
-    margin-left: 5rem;
-}
-
 #dashboard a{
-    color: whitesmoke;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
 #dashboard a:hover {
-    color: rgb(65, 0, 170);
-  }
+  color: rgb(65, 0, 170);
+}
 
 #dashboard{
 margin-left: 45rem;
+}
+
+#home a{
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
+
+#home a:hover {
+  color: rgb(65, 0, 170);
 }
 
 #movie-poster{
@@ -173,7 +169,7 @@ form .btn button{
   transition: all 0.3s ease;
 }
 form .btn button:hover{
-  background: #1b1b1b;
+  background-color: rgb(65, 0, 170);
 }
 
   
