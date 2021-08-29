@@ -20,18 +20,67 @@ router.get("/:user_id/:movie_id", async (req, res) => {
   }
 });
 
-//create a new favorite by upvoting
-router.put("/upvote/:id", withAuth, (req, res) => {
+// get favorites
+// router.get("/:id", withAuth, async (req, res) => {
+//   const favMovies = await UserFav.find({ user: req.user.id });
+//   res.status(200).send(favMovies);
+// });
+
+// router.post("/newFav/:id", withAuth, async (req, res) => {
+//   const {
+//     user_id,
+//     movie_id,
+//     title,
+//     genre,
+//     rating,
+//     release_year,
+//     plot,
+//     poster_path,
+//     viewed,
+//   } = req.body;
+//   const thisMovie = await UserFav.findOne({ movie_id });
+
+//   const user = await User.findOne({ _id: req.user.id });
+//   if (thisMovie) {
+//     return;
+//   }
+//   const faveMovie = new UserFav({
+//     user_id,
+//     movie_id,
+//     title,
+//     genre,
+//     rating,
+//     release_year,
+//     plot,
+//     poster_path,
+//     viewed,
+//     // user: req.user.id,
+//   });
+//   try {
+//     await faveMovie.save();
+//     user.liked.push(movie_id);
+//     await user.save();
+//     res.sendStatus(200);
+//   } catch (err) {
+//     res.status(400).send(err);
+//   }
+// });
+
+// Ani's create a new favorite route //
+router.post("/upvote/:id", withAuth, async (req, res) => {
   // custom static method created in models/UserFav.js
-  Movie.upvote(
-    { ...req.body, user_id: req.session.user_id },
-    { Vote, Movie, User }
-  )
-    .then((updatedVoteData) => res.json(updatedVoteData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  const movie_id = req.params.id;
+  const user_id = req.session.user.id;
+  const isLiked = await Vote.findOne({ where: { user_id, movie_id } });
+
+  if (isLiked) {
+    res.send({ message: "you already liked this" });
+    return;
+  }
+
+  const vote = await Vote.create({ user_id, movie_id });
+
+  res.send(vote);
 });
 
 module.exports = router;
