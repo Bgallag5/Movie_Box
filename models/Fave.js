@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Vote extends Model {}
+class Fave extends Model {}
 
-Vote.init(
+Fave.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -24,14 +24,20 @@ Vote.init(
         key: "id",
       },
     },
+    // poster_path: {
+    //   type: DataTypes.STRING,
+    //   validate: {
+    //     isUrl: true,
+    //   },
+    // },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "vote",
+    modelName: "fave",
   }
 );
 
-module.exports = Vote;
+module.exports = Fave;

@@ -3,10 +3,14 @@ const { User, UserReview, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
 const bcrypt = require("bcrypt");
 
-//user can get all of their reviews
+//a user can get all of their reviews
 router.get("/allReviews", withAuth, (req, res) => {
   console.log("review session", req.session);
+  // const user_id = req.session.user.id;
   UserReview.findAll({
+    where: {
+      user_id: req.session.user.id,
+    },
     attributes: ["id", "title", "post_content", "user_id"],
     // include: [
     //   {

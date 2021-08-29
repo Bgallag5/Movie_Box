@@ -4,7 +4,7 @@ const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 const withAuth = require("../../utils/auth");
 
-const { User, Movie, UserFav, UserReview } = require("../../models");
+const { User, Movie, UserReview } = require("../../models");
 
 ////START Bens Routes
 

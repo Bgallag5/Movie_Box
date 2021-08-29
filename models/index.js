@@ -2,26 +2,25 @@
 const User = require("./User");
 const UserReview = require("./UserReview");
 const Movie = require("./Movie");
-const UserFav = require("./UserFav");
-const Vote = require("./Vote");
+const Fave = require("./Fave");
 
 //make associations
 Movie.hasMany(UserReview, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
+  // onDelete: "SET NULL",
 });
 
-UserFav.belongsTo(Movie),
+Fave.belongsTo(Movie),
   {
     foreignKey: "movie_id",
   };
 
-User.hasMany(UserFav, {
+User.hasMany(Fave, {
   foreignKey: "user_id",
 });
 
 User.belongsToMany(Movie, {
-  through: UserFav,
+  through: Fave,
   // as: "voted_posts",
   foreignKey: "user_id",
 });
@@ -30,17 +29,17 @@ Movie.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
-UserFav.belongsTo(User, {
+Fave.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
+  // onDelete: "SET NULL",
 });
 
 UserReview.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
+  // onDelete: "SET NULL",
 });
 
-// UserFav.belongsToMany(Movie, {
+// Fave.belongsToMany(Movie, {
 //   foreignKey: "user_id",
 //   onDelete: "SET NULL",
 // });
@@ -53,6 +52,5 @@ module.exports = {
   User,
   UserReview: UserReview,
   Movie,
-  UserFav,
-  Vote,
+  Fave,
 };
