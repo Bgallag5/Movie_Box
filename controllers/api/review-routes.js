@@ -32,6 +32,7 @@ router.post("/createNew", withAuth, (req, res) => {
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,
+    // movie_id: req.body.movie_id,
     user_id: req.session.user.id, //previously session
   })
     .then((dbPostData) => res.json(dbPostData))

@@ -24,12 +24,14 @@ Fave.init(
         key: "id",
       },
     },
-    // poster_path: {
-    //   type: DataTypes.STRING,
-    //   validate: {
-    //     isUrl: true,
-    //   },
-    // },
+    poster_path: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+      references: {
+        model: "movie",
+        key: "poster_path",
+      },
+    },
   },
   {
     sequelize,

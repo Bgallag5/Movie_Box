@@ -7,7 +7,7 @@ const user = require("./user-routes");
 const fave = require("./fav-routes");
 // const upvote = require("../../models/UpVote");
 
-// const dashboardRoutes = require('./dashboard-routes.js');
+const dashboardRoutes = require("../dashboard-routes");
 
 router.use("/movies", movie);
 router.use("/user", user);
@@ -17,6 +17,6 @@ router.use("/fav", fave);
 
 // router.use("/genres", genre);
 
-// router.use('/dashboard', dashboardRoutes);
+router.use("/dashboard", dashboardRoutes);
 
 module.exports = router;

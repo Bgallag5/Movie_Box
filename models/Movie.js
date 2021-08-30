@@ -27,6 +27,7 @@ Movie.init(
     },
     poster_path: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         isUrl: true,
       },

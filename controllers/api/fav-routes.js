@@ -71,6 +71,7 @@ router.post("/upVote/:id", withAuth, async (req, res) => {
   // custom static method created in models/UserFav.js
   const movie_id = req.params.id;
   const user_id = req.session.user.id; //returns only that user's fave's
+  const poster_path = req.body.poster_path;
   //   const poster_path = req.body.poster_path;
   const isLiked = await Fave.findOne({
     // id: req.params.id,
@@ -78,7 +79,13 @@ router.post("/upVote/:id", withAuth, async (req, res) => {
     // movie_id: req.body.movie_id,
     // poster_path: req.body.poster_path,
     where: { user_id, movie_id },
-    // attributes: ["id", "user_id", "movie_id", "poster_path"],
+    attributes: ["id", "user_id", "movie_id", "poster_path"],
+    include: [
+      {
+        model: Movie,
+        attributes: ["poster_path"],
+      },
+    ],
   });
 
   if (isLiked) {
@@ -86,7 +93,7 @@ router.post("/upVote/:id", withAuth, async (req, res) => {
     return;
   }
 
-  const fave = await Fave.create({ user_id, movie_id });
+  const fave = await Fave.create({ user_id, movie_id, poster_path });
 
   res.send(fave);
 });

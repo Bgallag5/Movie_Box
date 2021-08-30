@@ -120,6 +120,38 @@ router.get("/title/:title", withAuth, (req, res) => {
     });
 });
 
+// create a new favorite //
+// router.post("/likeMovie/:id", withAuth, async (req, res) => {
+//   // custom static method created in models/UserFav.js
+//   const id = req.params.id;
+//   const user_id = req.session.user.id; //returns only that user's fave's
+//   const poster_path = req.body.poster_path;
+//   //   const poster_path = req.body.poster_path;
+//   const isLiked = await Movie.findOne({
+//     // id: req.params.id,
+//     // user_id: req.session.user.id,
+//     // movie_id: req.body.movie_id,
+//     // poster_path: req.body.poster_path,
+//     where: { id, user_id },
+//     attributes: ["poster_path", "user_id"],
+//     // include: [
+//     //   {
+//     //     model: Movie,
+//     //     attributes: ["poster_path"],
+//     //   },
+//     // ],
+//   });
+
+//   if (isLiked) {
+//     res.send({ message: "you already liked this" });
+//     return;
+//   }
+
+//   const fave = await Movie.create({ id, poster_path, user_id });
+
+//   res.send(fave);
+// });
+
 // Ani's delete movie route //
 // a user movie can be deleted although we likely won't use this
 //tested on movie id 0 and got wanted response. (404 message below bc no movie 0)
