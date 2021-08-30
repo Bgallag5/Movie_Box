@@ -6,10 +6,10 @@ const Movie = require("./Movie");
 const Fave = require("./Fave");
 
 //make associations
-Movie.hasMany(UserReview, {
-  foreignKey: "user_id",
-  // onDelete: "SET NULL",
-});
+// Movie.hasMany(UserReview, {
+//   foreignKey: "user_id",
+//   // onDelete: "SET NULL",
+// });
 
 Fave.belongsTo(Movie),
   {
@@ -27,7 +27,7 @@ User.belongsToMany(Movie, {
 });
 
 Movie.hasMany(UserReview, {
-  foreignKey: "user_id",
+  foreignKey: "movie_id", // just changed from user_id
 });
 
 Fave.belongsTo(User, {

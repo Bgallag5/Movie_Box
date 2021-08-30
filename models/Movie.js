@@ -28,9 +28,9 @@ Movie.init(
     poster_path: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isUrl: true,
-      },
+      // validate: {
+      //   isUrl: true,
+      // },
     },
     release_year: {
       type: DataTypes.INTEGER,
