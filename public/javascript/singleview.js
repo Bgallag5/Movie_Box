@@ -13,10 +13,7 @@
 //         return false;
 //       }
     
-const btn = document.querySelector("btn")
-const post = document.querySelector("post");
-btn.onclick = function(){
-console.log(reviewText.value)
+document.getElementById("myP").innerHTML = "Hello Dolly.";
 
 
 }
