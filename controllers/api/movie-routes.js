@@ -2,7 +2,8 @@
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
-
+const Sequelize = require("sequelize");
+const {Op} = Sequelize.Op;
 const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 
 //this went in the home-routes
@@ -151,12 +152,62 @@ router.get("/", (req, res) => {
 // });
 // }
 
+
+////GET BY GENRE
 router.get('/filter/:genre', (req, res) => {
   Movie.findAll({ 
+    where: {
+      genre: req.params.genre
+    }
+  }).then(dbData => {
+    const movies = dbData.map(movie => movie.get({plain: true}));
+    console.log(movies);
+    res.render('index', {movies});
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+
+////GET BY BEST
+router.get('/filter/best', (req, res) => {
+  console.log('==========HIT BEST API ROUTE============');
+  Movie.findAll({ 
+    where: {
+      rating: {
+       [Op.between]: [8, 10],
+      }
+    }
+  }).then(dbData => {
+    const movies = dbData.map(movie => movie.get({plain: true}));
+    console.log(movies);
+    res.render('index', {movies});
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+
+///GET BY TITLE
+router.get('/search/:title', (req, res) => {
+  console.log("HIT API ROUTES, TITLE:") 
+  let title = req.params.title
+ console.log(title);
+
+  Movie.findAll({ 
       where: {
-          genre: req.params.genre
+        title: this.includes(title)
+          // title: sequelize.where(sequelize.fn('LOWER', sequelize.col('title')), 'LIKE', '%' + title + '%')
       }
   }).then(dbData => {
+    console.log(dbData);
+    if (!dbData){
+      res.status(404).json({ message: "We can't find a movie called this. 🙁" })
+    }
     const movies = dbData.map(movie => movie.get({plain: true}));
     console.log(movies);
     res.render('index', {movies});
@@ -166,7 +217,6 @@ router.get('/filter/:genre', (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
 // module.exports = searchMovies;

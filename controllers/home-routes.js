@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 const { Post, User, Comment, Movie } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -15,40 +16,63 @@ router.get('/', (req, res) => {
       });
   });
 
-// search index db by title
-router.get('/search/:title', (req, res) => {
+  
+  // filter index db by genre   
+  router.get('/filter/:genre', (req, res) => {
     Movie.findAll({ 
-        where: {
-            title: req.params.title
-        }
+      where: {
+        genre: req.params.genre
+      }
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
       res.render('index', {movies});
     })
     .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      console.log(err);
+      res.status(500).json(err);
+    });
   });
 
-// filter index db by genre   
-router.get('/filter/:genre', (req, res) => {
+  router.get('/best', (req, res) => {
+    console.log('==========HIT BEST ROUTE============');
     Movie.findAll({ 
-        where: {
-            genre: req.params.genre
+      where: {
+        rating: {
+         [Op.between]: [8, 10],
         }
+      }
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
       res.render('index', {movies});
     })
     .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      console.log(err);
+      res.status(500).json(err);
+    });
   });
-
-
-
+  
+  
+  // search index db by title
+  router.get('/search/:title', (req, res) => {
+      Movie.findAll({ 
+          where: {
+              title: req.params.title
+          }
+      }).then(dbData => {
+        console.log(dbData);
+        if (!dbData){
+          res.status(404).json({ message: "We can't find a movie called this. 🙁" })
+        }
+        const movies = dbData.map(movie => movie.get({plain: true}));
+        console.log(movies);
+        res.render('index', {movies});
+      })
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
+  
   module.exports = router;

@@ -46,13 +46,25 @@ sortBtn.onchange = async function(){
  console.log(genre);
 
  const response = await fetch(`/api/movies/filter/${genre}`, {
-  method: 'GET',
-  // headers: {
-  //   'Content-Type': 'application/json'
-  // }
+  method: 'GET'
 });
 if (response.ok) {
   document.location.replace(`/movies/filter/${genre}`);
+} else {
+  alert(response.statusText);
+}
+}
+
+//FILTER BEST
+var bestBtn = document.querySelector('#bestBtn')
+
+bestBtn.onclick = async function(){
+
+ const response = await fetch(`/api/movies/filter/best`, {
+  method: 'GET'
+});
+if (response.ok) {
+  document.location.replace(`/movies/best`);
 } else {
   alert(response.statusText);
 }
@@ -62,24 +74,27 @@ if (response.ok) {
 async function searchMovies(event) { 
   event.preventDefault();
 
-  const title = document.querySelector('#inputId').value;
+  const search = document.querySelector('#inputId').value;
+  var title = search.trim().toLowerCase();
 
   ///return all moveis that match search params 
   console.log(title); 
-  const response = await fetch(`/movies/search/${title}`, {
+  const response = await fetch(`/api/movies/search/${title}`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // }
   });
   if (response.ok) {
-    document.location.replace('/dashboard');
+    title = title.replace('_', ' ')
+    document.location.replace(`/movies/search/${title}`);
   } else {
     alert(response.statusText);
   }
  };
 
 document.querySelector('#buttonId').addEventListener('click', searchMovies);
+
 
 
 
