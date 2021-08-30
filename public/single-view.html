@@ -23,21 +23,18 @@
   <body>
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light" id="navId">
-        <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
+        <a class="navbar-brand" id="movieBox" href="index.html">[MovieBox]</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-      
-            <li class="nav-item nav-text" id="home">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-
             <li class="nav-item nav-text" id="dashboard">
-              <a class="nav-link" href="./dashboard.html">My Dashboard</a>
+              <a class="nav-link" href="./dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item nav-text" id="logout">
-              <a class="nav-link" href="./login.html">Log In</a>
+              <a class="nav-link" href="login.html">Login</a>
             </li>
-
+            <li class="nav-item nav-text" id="home">
+              <a class="nav-link" href="homepage.html">Home</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -46,8 +43,17 @@
 
    <section id="movie-section">
        <div id="movie-poster"> 
-          <img src="./assets/images/jaws.jpeg" style="height: 80vh; width: 54vh;">
+          <img src="./assets/images/jaws.jpeg" style="height: 58vh; width: 50vh;">
+          
+          <button class="btn buttons"  action="Favorite/" id="buttonId"> 
+            <a class="nav-link" href="dashboard.html">&#9829;Add to Favorites</a></button>
+            </li>
+              </div>
        </div>
+
+       
+
+       
 
     <div class="card border-info mb-3" id="movie-info">
     <div class="card-body text-info">
@@ -68,45 +74,31 @@
    </section> 
 
 
-
-  <body>
-    <div class="container">
-      <div class="post">
-        <div class="text">Thanks for rating us!</div>
-        <div class="edit">EDIT</div>
-      </div>
-      <div class="star-widget">
-        <form action="#">
-          <header></header>
-          <div class="textarea">
-            <textarea cols="30" placeholder="Describe your movie experience.."></textarea>
-          </div>
-          <div class="btn">
-            <button type="submit">Post</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-  </body>
-</html>
-
-   
-
-
+    <form action="//www.html.am/html-codes/textboxes/submitted.cfm">
+      <textarea name="myTextBox" cols="50" rows="5">
+      
+      </textarea>
+      <br />
+      <input type="submit" />
+      </form>
+      
+      
+      
+  
 <footer>
   <div id='contact-us'>
-      <h3>Created By</h3>
-      <h4>Ben Gallagher (Bgallag5)</h4>
-      <h4>Ani Carr (anidino)</h4>
-      <h4>Raevin Dunson (raevindunson)</h4>
+    <h3>Created By</h3>
+    <h4><a href="https://github.com/Bgallag5">Ben Gallagher</a></h4>
+    <h4><a href="https://github.com/anidino">Ani Carr</a></h4>
+    <h4><a href="https://github.com/raevindunson">Raevin Dunson</a></h4>
+    <h4><a href="https://github.com/thandiek">Thandie Kapakasa</a></h4>
+  </div>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script src="javascript/index.js" ></script> -->
-<script src="./javascript/single-view.js"></script> 
+<script src="javascript/index.js" ></script>
+<script src="javascript/singleview.js" ></script> 
  </body>
 
 </html>
-

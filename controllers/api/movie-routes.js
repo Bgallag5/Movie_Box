@@ -3,7 +3,7 @@ const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 const Sequelize = require("sequelize");
-const {Op} = Sequelize.Op;
+const Op = Sequelize.Op;
 const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 
 //this went in the home-routes
@@ -95,22 +95,22 @@ router.get("/find/:id", async (req, res) => {
 
 //get all movies
 
-router.get("/", (req, res) => {
-  Movie.findAll({
-    attributes: ["id", "title", "year", "poster", "plot"],
-    include: [
-      {
-        model: Genre,
-        attributes: ["id", "genre_name"],
-      },
-    ],
-  })
-    .then((dbMovieData) => res.json(dbMovieData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get("/", (req, res) => {
+//   Movie.findAll({
+//     attributes: ["id", "title", "year", "poster", "plot"],
+//     include: [
+//       {
+//         model: Genre,
+//         attributes: ["id", "genre_name"],
+//       },
+//     ],
+//   })
+//     .then((dbMovieData) => res.json(dbMovieData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // const searchMovies = function (title) {  
 //   // var searchTerm = document.getElementById('inputId');
@@ -200,8 +200,9 @@ router.get('/search/:title', (req, res) => {
 
   Movie.findAll({ 
       where: {
-        title: this.includes(title)
-          // title: sequelize.where(sequelize.fn('LOWER', sequelize.col('title')), 'LIKE', '%' + title + '%')
+        title: {
+          [Op.like]: `%${title}%`,
+        }
       }
   }).then(dbData => {
     console.log(dbData);

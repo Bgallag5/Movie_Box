@@ -75,7 +75,7 @@ async function searchMovies(event) {
   event.preventDefault();
 
   const search = document.querySelector('#inputId').value;
-  var title = search.trim().toLowerCase();
+  var title = search.trim();
 
   ///return all moveis that match search params 
   console.log(title); 
@@ -86,7 +86,7 @@ async function searchMovies(event) {
     // }
   });
   if (response.ok) {
-    title = title.replace('_', ' ')
+    // title = title.replace('_', ' ')
     document.location.replace(`/movies/search/${title}`);
   } else {
     alert(response.statusText);

@@ -56,23 +56,29 @@ router.get('/', (req, res) => {
   
   // search index db by title
   router.get('/search/:title', (req, res) => {
-      Movie.findAll({ 
-          where: {
-              title: req.params.title
+    console.log("HIT HOME TITLE SEARCH ROUTES") 
+    let title = req.params.title
+   console.log(title);
+  
+    Movie.findAll({ 
+        where: {
+          title: {
+            [Op.like]: `%${title}%`,
           }
-      }).then(dbData => {
-        console.log(dbData);
-        if (!dbData){
-          res.status(404).json({ message: "We can't find a movie called this. 🙁" })
         }
-        const movies = dbData.map(movie => movie.get({plain: true}));
-        console.log(movies);
-        res.render('index', {movies});
-      })
-      .catch((err) => {
-          console.log(err);
-          res.status(500).json(err);
-        });
-    });
+    }).then(dbData => {
+      console.log(dbData);
+      if (!dbData){
+        res.status(404).json({ message: "We can't find a movie called this. 🙁" })
+      }
+      const movies = dbData.map(movie => movie.get({plain: true}));
+      console.log(movies);
+      res.render('index', {movies});
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
   
   module.exports = router;
