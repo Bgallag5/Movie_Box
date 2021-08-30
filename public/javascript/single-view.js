@@ -20,3 +20,14 @@ console.log(reviewText.value)
 
 
 }
+
+
+
+async function addFavorite(title, user_id) { 
+    // const oldFavs = UserFavs.findAll({ where user_id: id})
+    ///var favorites = (oldFavs.split + title).join(;)
+    /////UserFav.create(where favorites += set(favorites)?)      IS THIS EVEN CLOSE? ACTUALLY SOME OF THIS join/split is done in UserFav model
+ }
+
+
+ 
