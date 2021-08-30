@@ -193,31 +193,31 @@ router.get('/filter/best', (req, res) => {
 
 
 ///GET BY TITLE
-router.get('/search/:title', (req, res) => {
-  console.log("HIT API ROUTES, TITLE:") 
-  let title = req.params.title
- console.log(title);
+// router.get('/search/:title', (req, res) => {
+//   console.log("HIT API ROUTES, TITLE:") 
+//   let title = req.params.title
+//  console.log(title);
 
-  Movie.findAll({ 
-      where: {
-        title: {
-          [Op.like]: `%${title}%`,
-        }
-      }
-  }).then(dbData => {
-    console.log(dbData);
-    if (!dbData){
-      res.status(404).json({ message: "We can't find a movie called this. 🙁" })
-    }
-    const movies = dbData.map(movie => movie.get({plain: true}));
-    console.log(movies);
-    res.render('index', {movies});
-  })
-  .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+//   Movie.findAll({ 
+//       where: {
+//         title: {
+//           [Op.like]: `%${title}%`,
+//         }
+//       }
+//   }).then(dbData => {
+//     console.log(dbData);
+//     if (!dbData){
+//       res.status(404).json({ message: "We can't find a movie called this. 🙁" })
+//     }
+//     const movies = dbData.map(movie => movie.get({plain: true}));
+//     console.log(movies);
+//     res.render('index', {movies});
+//   })
+//   .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;
 // module.exports = searchMovies;

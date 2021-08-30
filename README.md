@@ -22,10 +22,10 @@
   This can be used as a movie databse/social media application.   
 
   ## Questions?
-  Check out the team:
+  Check out the team:  
   Ben Gallagher [Github](https://github.com/Bgallag5)
   ...or email me: bgallag5@gmail.com  
-  Ani Carr[Github](https://github.com/anidino)
+  Ani Carr [Github](https://github.com/anidino)
   ...or email me: ani.elaina.carr@gmail.com
 
 

@@ -5,7 +5,9 @@ const { Post, User, Comment, Movie } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    Movie.findAll({}).then(dbData => {
+    Movie.findAll({
+      order: [["title", 'ASC']]
+    }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
       res.render('index', {movies});
@@ -22,7 +24,8 @@ router.get('/', (req, res) => {
     Movie.findAll({ 
       where: {
         genre: req.params.genre
-      }
+      },
+      order: [["title", 'ASC']],
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
@@ -41,7 +44,8 @@ router.get('/', (req, res) => {
         rating: {
          [Op.between]: [8, 10],
         }
-      }
+      },
+      order: [["title", 'ASC']],
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
@@ -65,7 +69,8 @@ router.get('/', (req, res) => {
           title: {
             [Op.like]: `%${title}%`,
           }
-        }
+        },
+        order: [ ['title', 'ASC'] ],
     }).then(dbData => {
       console.log(dbData);
       if (!dbData){

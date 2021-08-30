@@ -79,18 +79,18 @@ async function searchMovies(event) {
 
   ///return all moveis that match search params 
   console.log(title); 
-  const response = await fetch(`/api/movies/search/${title}`, {
-    method: 'GET',
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // }
-  });
-  if (response.ok) {
+  // const response = await fetch(`/api/movies/search/${title}`, {
+  //   method: 'GET',
+  //   // headers: {
+  //   //   'Content-Type': 'application/json'
+  //   // }
+  // });
+  // if (response.ok) {
     // title = title.replace('_', ' ')
     document.location.replace(`/movies/search/${title}`);
-  } else {
-    alert(response.statusText);
-  }
+  // } else {
+    // alert(response.statusText);
+  // }
  };
 
 document.querySelector('#buttonId').addEventListener('click', searchMovies);
