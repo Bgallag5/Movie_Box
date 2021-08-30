@@ -32,3 +32,7 @@ next();
 
 var dashReview = document.getElementById("dash-reviews")
 var reviewCards = document.getElementById("review-cards")
+
+// NEED MORE INFO FROM SINGLE -VIEW 
+//var reviewText = document.getElementById()
+//
