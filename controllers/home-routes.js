@@ -86,4 +86,21 @@ router.get('/', (req, res) => {
       });
   });
   
-  module.exports = router;
+
+router.get('/login', (req, res) => {
+  console.log(req.session);
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render('login')
+});
+
+
+
+module.exports = router;
+
+
+// Session {
+//   cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
+// }
