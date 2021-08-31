@@ -77,17 +77,9 @@ async function searchMovies(event) {
   const search = document.querySelector('#inputId').value;
   var title = search.trim();
 
-  ///return all moveis that match search params 
+ 
   console.log(title); 
-  // const response = await fetch(`/api/movies/search/${title}`, {
-  //   method: 'GET',
-  //   // headers: {
-  //   //   'Content-Type': 'application/json'
-  //   // }
-  // });
-  // if (response.ok) {
-    // title = title.replace('_', ' ')
-    document.location.replace(`/movies/search/${title}`);
+  document.location.replace(`/movies/search/${title}`);
   // } else {
     // alert(response.statusText);
   // }
