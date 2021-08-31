@@ -1,59 +1,59 @@
 //importing all models
+//importing all models
 const User = require("./User");
 const UserReview = require("./UserReview");
 const Movie = require("./Movie");
-const UserFav = require("./UserFav");
+const Fave = require("./Fave");
 
-// //make associations
+
+//make associations
 // Movie.hasMany(UserReview, {
 //   foreignKey: "user_id",
+//   // onDelete: "SET NULL",
 // });
 
-// UserFav.belongsTo(Movie,
-//   {
-//     foreignKey: "movie_id",
-//   });
+Fave.belongsTo(Movie),
+  {
+    foreignKey: "movie_id",
+  };
 
-// Movie.hasMany(UserFav, {
-//   foreignKey: "movie_id",
-// });
-// // User.hasMany(UserFav, {
-// //   foreignKey: "user_id",
-// //   //   through: { UserFav },
-// // });
+User.hasMany(Fave, {
+  foreignKey: "user_id",
+});
 
-// // Movie.belongsTo(Post, {
-// //     foreignKey: 'post_id'   // I think movie should belong to post?
-// // })
+User.belongsToMany(Movie, {
+  through: Fave,
+  // as: "voted_posts",
+  foreignKey: "user_id",
+});
 
-// // Post.belongsTo(User, {
-// //     foreignKey: 'user_id',
-// //     onDelete: 'SET NULL'
-// // });
+Movie.hasMany(UserReview, {
+  foreignKey: "movie_id", // just changed from user_id
+});
 
-// // Movie.belongsTo(Genre, {
-// //   foreignKey: "genre_id",
-// // });
+Fave.belongsTo(User, {
+  foreignKey: "user_id",
+  // onDelete: "SET NULL",
+});
 
-// // Genre.hasMany(Movie, {
-// //   foreignKey: "genre_id",
-// // });
+UserReview.belongsTo(User, {
+  foreignKey: "user_id",
+  // onDelete: "SET NULL",
+});
 
-// // // Movie.hasMany(Genre, {
-// // //     foreignKey: 'movie_id',
-
-// UserFav.belongsTo(User, {
+// Fave.belongsToMany(Movie, {
 //   foreignKey: "user_id",
+//   onDelete: "SET NULL",
 // });
 
-// UserReview.belongsTo(User, {
-//   foreignKey: "user_id",
-// });
+User.hasMany(UserReview, {
+  foreignKey: "user_id",
+});
 
-// User.hasMany(UserReview, {
-//   foreignKey: "user_id",
-// });
-
-
-module.exports = { User, Movie, UserFav, UserReview};
+module.exports = {
+  User,
+  UserReview: UserReview,
+  Movie,
+  Fave,
+};
 

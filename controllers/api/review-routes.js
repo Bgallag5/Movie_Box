@@ -1,11 +1,16 @@
 const router = require("express").Router();
 const { User, UserReview, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
+const bcrypt = require("bcrypt");
 
-//user can get all of their reviews
+//a user can get all of their reviews
 router.get("/allReviews", withAuth, (req, res) => {
   console.log("review session", req.session);
+  // const user_id = req.session.user.id;
   UserReview.findAll({
+    where: {
+      user_id: req.session.user.id,
+    },
     attributes: ["id", "title", "post_content", "user_id"],
     // include: [
     //   {
@@ -27,6 +32,7 @@ router.post("/createNew", withAuth, (req, res) => {
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,
+    // movie_id: req.body.movie_id,
     user_id: req.session.user.id, //previously session
   })
     .then((dbPostData) => res.json(dbPostData))
@@ -82,62 +88,3 @@ router.delete("/:id", withAuth, (req, res) => {
 });
 
 module.exports = router;
-
-// user can get review by title
-// router.get("/:reviewByTitle", (req, res) => {
-// router.get("/findById/:id", (req, res) => {
-//   Post.findOne({
-//     where: {
-//       id: req.params.id,
-//     },
-//     attributes: ["id", "title", "post_content", "user_id"],
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["id", "username"],
-//         include: {
-//           model: Movie,
-//           attributes: ["id", "title", "genre_id"],
-//         },
-//       },
-//     ],
-//   })
-//     .then((dbPostData) => {
-//       if (!dbPostData) {
-//         res.status(404).json({ message: "No post found with this id" });
-//         return;
-//       }
-//       res.json(dbPostData);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-
-// get review by id////
-// router.get("/:id", (req, res) => {
-//   // console.log("review session", req.session);
-//   UserReview.findOne({
-//     where: {
-//       id: req.params.id,
-//     },
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["id", "username", "email", "password"],
-//       },
-//     ],
-//   })
-//     .then((dbReviewById) => {
-//       if (!dbReviewById) {
-//         res.status(404).json({ message: "No review found with this id" });
-//         return;
-//       }
-//       res.json(dbReviewById);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
