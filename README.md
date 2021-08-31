@@ -22,15 +22,14 @@
   This can be used as a movie databse/social media application.   
 
   ## Questions?
-  Check out the team:
+  Check out the team:  
   Ben Gallagher [Github](https://github.com/Bgallag5)
-  ...or email me: bgallag5@gmail.com
-  Ani Carr[Github](https://github.com/anidino)
+  ...or email me: bgallag5@gmail.com  
+  Ani Carr [Github](https://github.com/anidino)
   ...or email me: ani.elaina.carr@gmail.com
 
 
   ## License  
-  
   Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
 =======
 

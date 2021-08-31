@@ -23,17 +23,18 @@
   <body>
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light" id="navId">
-        <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
+        <a class="navbar-brand" id="movieBox" href="index.html">[MovieBox]</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-
             <li class="nav-item nav-text" id="dashboard">
-              <a class="nav-link" href="./dashboard.html">My Dashboard</a>
+              <a class="nav-link" href="./dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item nav-text" id="logout">
-              <a class="nav-link" href="./login.html">Log In</a>
+              <a class="nav-link" href="login.html">Login</a>
             </li>
-
+            <li class="nav-item nav-text" id="home">
+              <a class="nav-link" href="homepage.html">Home</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -42,8 +43,17 @@
 
    <section id="movie-section">
        <div id="movie-poster"> 
-          <img src="./assets/images/jaws.jpeg" style="height: 80vh; width: 54vh;">
+          <img src="./assets/images/jaws.jpeg" style="height: 58vh; width: 50vh;">
+          
+          <button class="btn buttons"  action="Favorite/" id="buttonId"> 
+            <a class="nav-link" href="dashboard.html">&#9829;Add to Favorites</a></button>
+            </li>
+              </div>
        </div>
+
+       
+
+       
 
     <div class="card border-info mb-3" id="movie-info">
     <div class="card-body text-info">
@@ -63,21 +73,56 @@
   </div>
    </section> 
 
-   
 
+    <form action="">
+  
+      <textarea id="reviews" name="myTextBox" cols="50" rows="5">
+      
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
+        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
+        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
+        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
+        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+        doloremque. Quaerat provident commodi consectetur veniam similique ad 
+        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
+        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
+        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
+        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
+        quasi aliquam eligendi, placeat qui corporis!
+
+
+      </textarea>
+      <br />
+      <input type="submit" />
+    </form>
+      
+      
+      
+  
 <footer>
   <div id='contact-us'>
-      <h3>Created By</h3>
-      <h4>Ben Gallagher</h4>
-      <h4>Ani Carr</h4>
-      <h4>Raevin Lastname</h4>
-      <h4>Thandie Lastname</h4>
+    <h3>Created By</h3>
+    <h4><a href="https://github.com/Bgallag5">Ben Gallagher</a></h4>
+    <h4><a href="https://github.com/anidino">Ani Carr</a></h4>
+    <h4><a href="https://github.com/raevindunson">Raevin Dunson</a></h4>
+    <h4><a href="https://github.com/thandiek">Thandie Kapakasa</a></h4>
+  </div>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script src="javascript/index.js" ></script> -->
-<script src="javascript/movieApi.js" ></script>
-  </body>
+<script src="javascript/index.js" ></script>
+<script src="javascript/singleview.js" ></script> 
+ </body>
 
 </html>

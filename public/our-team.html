@@ -1,4 +1,4 @@
-{{!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,16 +16,14 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
-    {{!-- <link rel="stylesheet" href="/css/index.css"/>   --}}
-    <link rel="stylesheet" href="/css/login.css"/> 
-    {{!-- how do we do our stylesheets in handlebars? --}}
+    <link rel="stylesheet" href= "css/style.css" />
+    <!-- <link rel="stylesheet" href="/css/index.css"/>    -->
     <title>Movie Box</title>
   </head>
   <body>
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light" id="navId">
-        <a class="navbar-brand" id="movieBox" href="/movies">[MovieBox]</a>
+        <a class="navbar-brand" id="movieBox" href="#">[MovieBox]</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
 
@@ -35,7 +33,6 @@
             <li class="nav-item nav-text" id="movie-index">
               <a class="nav-link" href="#">Movies</a>
             </li>
-            {{!-- {{#if certain page // if logged in display different headers}} --}}
             <li class="nav-item nav-text" id="login">
               <a class="nav-link" href="#">Log In</a>
             </li>
@@ -44,7 +41,7 @@
         </div>
       </nav>
     </header>
-    {{{body}}}
+    
 <footer>
   <div id='contact-us'>
       <h3>Created By</h3>
@@ -56,8 +53,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/javascript/index.js"></script>
-{{!-- <script src="/javascript/login.js"></script> --}}
-{{!-- how do we do our different js files in handlebars?--}}
+
   </body>
 
-</html> --}}
+</html>

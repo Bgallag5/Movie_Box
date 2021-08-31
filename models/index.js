@@ -1,67 +1,59 @@
 //importing all models
+//importing all models
 const User = require("./User");
 const UserReview = require("./UserReview");
 const Movie = require("./Movie");
-const UserFav = require("./UserFav");
+const Fave = require("./Fave");
+
 
 //make associations
-Movie.hasMany(UserReview, {
-  foreignKey: "user_id",
-});
+// Movie.hasMany(UserReview, {
+//   foreignKey: "user_id",
+//   // onDelete: "SET NULL",
+// });
 
-UserFav.belongsTo(Movie),
+Fave.belongsTo(Movie),
   {
     foreignKey: "movie_id",
   };
 
-Movie.hasMany(UserFav, {
-  foreignKey: "movie_id",
-});
-// User.hasMany(UserFav, {
-//   foreignKey: "user_id",
-//   //   through: { UserFav },
-// });
-
-// Movie.belongsTo(Post, {
-//     foreignKey: 'post_id'   // I think movie should belong to post?
-// })
-
-// Post.belongsTo(User, {
-//     foreignKey: 'user_id',
-//     onDelete: 'SET NULL'
-// });
-
-// Movie.belongsTo(Genre, {
-//   foreignKey: "genre_id",
-// });
-
-// Genre.hasMany(Movie, {
-//   foreignKey: "genre_id",
-// });
-
-// // Movie.hasMany(Genre, {
-// //     foreignKey: 'movie_id',
-
-UserFav.belongsTo(User, {
+User.hasMany(Fave, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
+});
+
+User.belongsToMany(Movie, {
+  through: Fave,
+  // as: "voted_posts",
+  foreignKey: "user_id",
+});
+
+Movie.hasMany(UserReview, {
+  foreignKey: "movie_id", // just changed from user_id
+});
+
+Fave.belongsTo(User, {
+  foreignKey: "user_id",
+  // onDelete: "SET NULL",
 });
 
 UserReview.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
+  // onDelete: "SET NULL",
 });
+
+// Fave.belongsToMany(Movie, {
+//   foreignKey: "user_id",
+//   onDelete: "SET NULL",
+// });
 
 User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
-
 module.exports = {
   User,
   UserReview: UserReview,
   Movie,
-
-
-module.exports = { User, Post, Movie, UserFav, Rating };
+  Fave,
+};
 
