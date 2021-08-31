@@ -10,7 +10,7 @@
     console.log(emailInput.value);
     console.log(passwordInput.value);
     console.log(usernameInput.value);
-    location.href = "./";
+    location.href = "./dashboard.html";
   }
 
   //async function loginFormHandler(event) {
