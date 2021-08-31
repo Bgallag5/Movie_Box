@@ -10,30 +10,16 @@ UserFav.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    movie_id: {
-      type: DataTypes.STRING,
+    favorites: {      ////favorites are TITLES OF FAVORITE MOVIES stored in string, to be called in loop { Movie.findOne(where title = title)}; res.render('single-view')
+      type: DataTypes.STRING,     ////also JSON might work?
       allowNull: false,
-      references: {
-        model: "movie",
-        key: "id",
+      get() {
+        return this.getDataValue('favorites').split(';')
       },
+      set(val) {
+        this.setDataValue('favorites', val.join(';'));
+      }
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2, 50],
-      },
-    },
-    genre: {
-      references: {
-        model: "movie",
-        key: "genre",
-      },
-    },
-    // favorites: {
-    //   type: DataTypes.ARRAY,
-    // },
   },
   {
     sequelize,
@@ -45,3 +31,6 @@ UserFav.init(
 );
 
 module.exports = UserFav;
+
+
+////i think UserFav should just be an Array of Movie models? only have user_id and favorites: Array

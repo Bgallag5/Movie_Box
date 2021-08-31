@@ -2,19 +2,19 @@
 const router = require("express").Router();
 
 const { User , Movie} = require("../../models");
-const Post = require("../../models/Post");
+// const Post = require("../../models/Post");
 
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
 
 // get all users
-router.get("/", withAuth, (req, res) => {
+router.get("/",  (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
   })
-    .then((dbUserData) => res.json(dbUserData))
+    .then((dbUserData) => res.render('login', dbUserData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

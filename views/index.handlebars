@@ -6,13 +6,21 @@
           <button class="btn buttons"  action="/search" id="buttonId">Search</button>
         </div>
 
-        <div class="dropdown">
-          <label class="sortbtn buttons">Sort By</label>
+        <div class="dropdown filter">
+          <label class="sortbtn buttons">Sort By Genre</label>
           <select class="dropdown-content" id='dropdown'>
-            <option href="#">Rating</option>
-            <option href="#">Popularity</option>
-            <option href="#">Release Date</option>
+            <option href="#">Action</option>
+            <option href="#">Family</option>
+            <option href="#">Horror</option>
+            <option href="#">Adventure</option>
+            <option href="#">Comedy</option>
+            <option href="#">Thriller</option>
+            <option href="#">Drama</option>
           </select>
+        </div>
+
+        <div>
+          <button class="btn" id="bestBtn">Filter Best</button>
         </div>
 
     </section>
@@ -24,5 +32,6 @@
     {{#each movies}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
     {{/each}}
+    {{!-- add href here to be clickable through to single-view --}}
 </div>
 </section>

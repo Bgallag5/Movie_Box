@@ -1,27 +1,45 @@
-#dashboard a{
-    color: whitesmoke;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+body {
+  background-image: url("../assets/images/imag5.jpg");
 }
 
+#dashboard a{
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+}
 #dashboard a:hover {
-    color: rgb(65, 0, 170);
-  }
+  color: rgb(65, 0, 170);
+}
 
 #dashboard{
 margin-left: 45rem;
 }
 
-#movie-poster{
-    height: 80vh;
-    width: 54vh;
-    margin-left: 5rem;
+#home a{
+  color: whitesmoke;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
+#home a:hover {
+  color: rgb(65, 0, 170);
+}
+
+#movie-poster{
+    height: 40vh;
+    width: 40vh;
+    margin-left: 5rem;
+  }
+
 #movie-section{
-    margin-top: 8vh;
-    display: flex;
+    margin-top: 6vh;
+    display: flex;   
 }
 
 #movie-info{
-width: 60%;
+width: 40%;
+}
+
+#AddtoFavorites{
+  background-color:rgb(65, 0, 170);
+  box-shadow: 0px 8px 16px 0px rgb(65, 0, 170);
+  color: whitesmoke;
 }
