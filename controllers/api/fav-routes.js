@@ -6,7 +6,7 @@ const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 const { User, Movie, Fave } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// Ani's get all user favorites - includes all movie info //
+// Ani's get all user favorites - RETURNS all movie info //
 router.get("/", withAuth, async (req, res) => {
   try {
     //insert a user movie pair into the database if it does not exists already

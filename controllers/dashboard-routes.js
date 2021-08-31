@@ -1,4 +1,3 @@
-
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
@@ -6,7 +5,7 @@ const { User, Movie, Fave, UserReview } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
-router.get("/:id", withAuth, (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log(req.session);
   console.log("======================");
   Fave.findAll({
@@ -51,6 +50,3 @@ router.get("/:id", withAuth, (req, res) => {
 });
 
 module.exports = router;
-
-
-
