@@ -1,22 +1,18 @@
 // Ani's Code //
 const router = require("express").Router();
 
-
-const { User } = require("../../models");
-
-const { User , Movie} = require("../../models");
-
+const { User, Movie } = require("../../models");
 
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
 // get all users
-router.get("/",  (req, res) => {
+router.get("/", (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
   })
-    .then((dbUserData) => res.render('login', dbUserData))
+    .then((dbUserData) => res.render("login", dbUserData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
