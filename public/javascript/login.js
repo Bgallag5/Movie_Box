@@ -1,4 +1,5 @@
 
+
 // //
 
 //   const loginButton = document.getElementById("login-button");
@@ -38,6 +39,7 @@ async function loginFormHandler(event) {
     } else {
       alert(response.statusText);
     }
+
   }
 }
 
@@ -72,4 +74,5 @@ async function signupFormHandler(event) {
 }
 
 document.querySelector('#login-button').addEventListener('click', signupFormHandler)
+
 

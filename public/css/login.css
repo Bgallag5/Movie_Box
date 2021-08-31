@@ -4,7 +4,7 @@
   }
   
   body {
-    background-image: url("../assets/images/cityscape.jpg");
+    background-image: url("../assets/images/cityscape\ copy.jpg");
     /* display: inline-block; */
   }
   
@@ -46,7 +46,7 @@ h1 {
 
 #login-form {
     color: whitesmoke;
-    background-color: rgb(65, 0, 170);
+    background-color: rgb(69, 59, 85);
     text-align: center;
     font-size: large;
     margin: 0 25%;
@@ -55,7 +55,7 @@ h1 {
 
 #login-button {
     background-color: whitesmoke;
-    color:rgb(65, 0, 170);
+    color:rgb(69, 59, 85);
 }
 h1 {
     color: whitesmoke;
