@@ -5,6 +5,7 @@ const UserReview = require("./UserReview");
 const Movie = require("./Movie");
 const Fave = require("./Fave");
 
+
 //make associations
 // Movie.hasMany(UserReview, {
 //   foreignKey: "user_id",
@@ -55,3 +56,4 @@ module.exports = {
   Movie,
   Fave,
 };
+
