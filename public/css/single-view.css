@@ -78,3 +78,10 @@ top:inherit;
   background-color: rgb(245, 245, 245, .8);
   color: black;
 }
+
+.review-title{
+  text-decoration: underline;
+  font-size: larger;
+  font-weight: bold;
+  /* text-decoration:wavy;  */
+}
