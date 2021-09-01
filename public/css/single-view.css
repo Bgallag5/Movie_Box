@@ -1,5 +1,5 @@
 body {
-  background-image: url("../assets/images/imag5.jpg");
+  background-image: url("../assets/images/cityscape.jpg");
 }
 
 #dashboard a{
@@ -23,23 +23,58 @@ margin-left: 45rem;
   color: rgb(65, 0, 170);
 }
 
-#movie-poster{
-    height: 40vh;
-    width: 40vh;
-    margin-left: 5rem;
-  }
-
 #movie-section{
     margin-top: 6vh;
-    display: flex;   
+    display: flex;  
+    margin: 0 auto; 
+    width: 85%;
 }
+
+#movie-poster{
+    height: 68vh;
+    width: 49.5vh;
+    margin-left: 5rem;
+    border-radius: 2px;
+  }
+
 
 #movie-info{
-width: 40%;
+width: 50%;
 }
 
-#AddtoFavorites{
-  background-color:rgb(65, 0, 170);
-  box-shadow: 0px 8px 16px 0px rgb(65, 0, 170);
+#buttonId{
+margin-left: 20%;
+height: 8vh;
+color:rgb(65, 0, 170);
+top:inherit;
+}
+
+#user-reviews{
+  background-color: rgb(65, 0, 170, .5);
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  justify-content: center;
+  display: flex;
   color: whitesmoke;
+  
+}
+#add-review{
+  padding: 2rem;
+}
+
+#review-text{
+  width: 20rem;
+  height: 10rem;
+}
+
+#past-reviews{
+  padding: 2vh;
+}
+
+.single-review{
+  border: 2px solid white;
+  padding: 2vh;
+  background-color: rgb(245, 245, 245, .8);
+  color: black;
 }
