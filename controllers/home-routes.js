@@ -4,7 +4,7 @@ const Op = Sequelize.Op;
 const { Post, User, Comment, Movie } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { 
     Movie.findAll({
       order: [["title", 'ASC']]
     }).then(dbData => {
@@ -96,7 +96,37 @@ router.get('/login', (req, res) => {
   res.render('login')
 });
 
+router.get("/single/:id", (req, res) => {
 
+  Movie.findOne({
+    where: {
+      id: req.params.id,
+    },
+//     include: [
+//       {
+//         model: UserReview,
+//         attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+//         include: {
+//           model: User,
+//           attributes: ["id", "username"],
+//         },
+//       },
+//     ],
+
+  })
+    .then(dbData => {
+      const data = [dbData];
+      const movies = data.map(movie => movie.get({plain: true}));
+      console.log('=========dbDATA=========');
+      console.log(movies);
+      res.render('single-view', {movies})
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+
+    });
+});
 
 module.exports = router;
 
@@ -104,3 +134,16 @@ module.exports = router;
 // Session {
 //   cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
 // }
+
+
+
+
+
+
+
+///////WEB DEV SIMPLIFIED TRICK
+const users = [{first: 'Ben'}, {first: 'Ani'}];
+router.param('id', (req, res, next, id) => {
+  req.user = users[id]
+  next()
+});

@@ -3,8 +3,8 @@ const withAuth = (req, res, next) => {
   console.log(this);
   console.log(req.session);
   console.log(req.session.user);
-  console.log(req.session.user_id);
-  if (!req.session.user_id) {
+  // console.log(req.session.user_id);
+  if (!req.session.user.id) {
     res.redirect("/movies/login");
   } else {
     console.log('NEXT');

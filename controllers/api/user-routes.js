@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 
-const { User , Movie} = require("../../models");
+const { User , Movie, Fave} = require("../../models");
 
 
 const bcrypt = require("bcrypt");
@@ -25,31 +25,31 @@ async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
 
-// router.get('/:id', (req, res) => {
-//     User.findOne({
-//         attributes: { exclude: ['password'] },
-//         where: {
-//             id: req.params.id
-//         },
-//         include: [
-//             {
-//                 model: Post,
-//                 attributes: ['id', 'title', 'post_url', 'user_id', 'post_id', 'created_at']
-//             }
-//         ]
-//     })
-//         .then(dbUserData => {
-//             if (!dbUserData) {
-//                 res.status(404).json({ message: "No user found with this id" });
-//                 return;
-//             }
-//             res.json(dbUserData);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.params.id
+        },
+        include: [
+            {
+                model: Fave,
+                attributes: ['id', 'movie_id', 'user_id']
+            }
+        ]
+    })
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: "No user found with this id" });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 // user can sign up //
 // BOTH USERNAME AND PASSWORD MUST BE UNIQUE IN DB
@@ -76,7 +76,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-////ANI I CHANGED THIS: should /login
+////ANI I CHANGED THIS: 
 router.post("/login", async (req, res) => {
   console.log("=======HIT LOGIN ROUTE======");
   try {
@@ -117,7 +117,7 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error("failed login", error);
-    res.status(500).json(error);
+    res.render('/user/login', {email: req.body.email})
   }
 });
 
@@ -129,7 +129,7 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
-    console.log("You are now logged out");
+    console.log("You are NOT logged out");
   }
 });
 
