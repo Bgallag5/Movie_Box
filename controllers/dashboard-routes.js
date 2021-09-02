@@ -1,4 +1,3 @@
-
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
@@ -17,7 +16,6 @@ router.get("/", withAuth, (req, res) => {
       "id",
       "user_id",
       "movie_id",
-      
       //   [
       //     sequelize.literal(
       //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -26,23 +24,26 @@ router.get("/", withAuth, (req, res) => {
       //   ],
     ],
     include: [
-      // {
-      //   model: UserReview,
-      //   attributes: ["id", "title", "post_content", "movie_id", "user_id"],
-      //   include: {
-      //     model: User,
-      //     attributes: ["username"],
-      //   },
-      // },
-      //   {
-      //     model: User,
-      //     attributes: ["username"],
-      //   },
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: Movie,
+        attributes: ["poster_path"],
+      },
+
     ],
   })
     .then((dbDashboard) => {
       const posts = dbDashboard.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      console.log(posts, "***************");
+      // res.render("dashboard", { posts, loggedIn: true });
+      res.render("dashboard", { posts }); //calling dashboard.hps send posts
     })
     .catch((err) => {
       console.log(err);
@@ -51,6 +52,3 @@ router.get("/", withAuth, (req, res) => {
 });
 
 module.exports = router;
-
-
-

@@ -27,6 +27,7 @@ Movie.init(
     },
     poster_path: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     release_year: {

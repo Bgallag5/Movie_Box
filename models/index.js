@@ -4,17 +4,19 @@ const UserReview = require("./UserReview");
 const Movie = require("./Movie");
 const Fave = require("./Fave");
 
-
-
-
 //make associations
 Movie.hasMany(UserReview, {
   foreignKey: "user_id",
   // onDelete: "SET NULL",
 });
 
-Fave.belongsTo(Movie,
-  {
+
+Fave.belongsTo(UserReview, {
+  //this made the dashboard one step closer to working
+  foreignKey: "user_id",
+});
+
+Fave.belongsTo(Movie, {
     foreignKey: "movie_id",
   });
 
@@ -43,6 +45,7 @@ UserReview.belongsTo(User, {
 });
 
 
+
 User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
@@ -54,9 +57,9 @@ User.hasMany(UserReview, {
 //   // onDelete: "SET NULL",
 // });
 
-UserReview.belongsTo(Movie, {
-  foreignKey: 'movie_id'
-})
+// UserReview.belongsTo(Movie, {
+//   foreignKey: 'movie_id'
+// })
 
 
 // Fave.belongsToMany(Movie, {
@@ -71,4 +74,3 @@ module.exports = {
   Movie,
   Fave,
 };
-

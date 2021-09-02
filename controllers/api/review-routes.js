@@ -11,21 +11,13 @@ router.get("/", withAuth, (req, res) => {
     where: {
       user_id: req.session.user.id,
     },
-    attributes: ["id", "title", "post_content", "user_id"],
-    include: [
-      {
-        model: User,
-        attributes: ["id", "username"],
-        include: {
-          model: Movie,
-          attributes: ['title', 'id',]
-        }
-      },
-      {
-        model: Movie,
-        attributes: ['title', 'id']
-      }
-    ],
+    attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+//     include: [
+//       {
+//         model: User,
+//         attributes: ["id", "username"],
+//       },
+//     ],
   })
     .then((dbAllReviews) => res.json(dbAllReviews))
     .catch((err) => {
@@ -58,14 +50,14 @@ router.get("/", withAuth, (req, res) => {
 // });
 
 // user can create a new review/note (must be at least 2 characters long and no more than 200)
+
 router.post("/:id", withAuth, (req, res) => {
   console.log("====LOCATION======");
-  // console.log(document.location);
 
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,
-    // movie_id: req.body.movie_id,
+    movie_id: req.body.movie_id,
     user_id: req.session.user.id, //previously session
   })
     .then((dbPostData) => res.json(dbPostData))
