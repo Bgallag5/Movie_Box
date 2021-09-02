@@ -11,6 +11,11 @@ const Fave = require("./Fave");
 //   // onDelete: "SET NULL",
 // });
 
+Fave.belongsTo(UserReview, {
+  //this made the dashboard one step closer to working
+  foreignKey: "user_id",
+});
+
 Fave.belongsTo(Movie),
   {
     foreignKey: "movie_id",
