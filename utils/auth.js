@@ -1,10 +1,23 @@
 const withAuth = (req, res, next) => {
-  console.log("checking session", req.session.user);
+  console.log('WITHAUTH');
+  console.log(this);
+  console.log(req.session);
+  console.log(req.session.user);
+  // console.log(req.session.user_id);
   if (!req.session.user.id) {
-    res.redirect("/login");
+    res.redirect("/movies/login");
   } else {
+    console.log('NEXT');
     next();
   }
 };
 
 module.exports = withAuth;
+
+
+
+
+
+// Session {
+//   cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
+// }

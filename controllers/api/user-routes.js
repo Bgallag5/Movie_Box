@@ -2,9 +2,7 @@
 const router = require("express").Router();
 
 
-const { User } = require("../../models");
-
-const { User , Movie} = require("../../models");
+const { User , Movie, Fave} = require("../../models");
 
 
 const bcrypt = require("bcrypt");
@@ -16,7 +14,7 @@ router.get("/",  (req, res) => {
   User.findAll({
     attributes: { exclude: ["password"] },
   })
-    .then((dbUserData) => res.render('login', dbUserData))
+    .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -27,31 +25,31 @@ async function checkPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
 
-// router.get('/:id', (req, res) => {
-//     User.findOne({
-//         attributes: { exclude: ['password'] },
-//         where: {
-//             id: req.params.id
-//         },
-//         include: [
-//             {
-//                 model: Post,
-//                 attributes: ['id', 'title', 'post_url', 'user_id', 'post_id', 'created_at']
-//             }
-//         ]
-//     })
-//         .then(dbUserData => {
-//             if (!dbUserData) {
-//                 res.status(404).json({ message: "No user found with this id" });
-//                 return;
-//             }
-//             res.json(dbUserData);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.params.id
+        },
+        include: [
+            {
+                model: Fave,
+                attributes: ['id', 'movie_id', 'user_id']
+            }
+        ]
+    })
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: "No user found with this id" });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 // user can sign up //
 // BOTH USERNAME AND PASSWORD MUST BE UNIQUE IN DB
@@ -63,15 +61,14 @@ router.post("/register", (req, res) => {
     // favorites: req.body.favorites
   })
     .then((dbUserData) => {
-      //   req.session.save(() => {
-      //     req.session.user_id = dbUserData.id;
-      //     req.session.username = dbUserData.username;
-      //     req.session.loggedIn = true;
-      //     // req.session.favorites = dbUserData.favorites;
-      //     console.log(dbUserData);
-      //     res.json(dbUserData);
-      //   });
-      res.json(dbUserData);
+        req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+          // req.session.favorites = dbUserData.favorites;
+          console.log(dbUserData);
+          res.json(dbUserData);
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -79,7 +76,9 @@ router.post("/register", (req, res) => {
     });
 });
 
+////ANI I CHANGED THIS: 
 router.post("/login", async (req, res) => {
+  console.log("=======HIT LOGIN ROUTE======");
   try {
     let dbUserData = await User.findOne({
       where: {
@@ -92,7 +91,8 @@ router.post("/login", async (req, res) => {
         .json({ message: "We can't find a user with that email address 🤨" });
       return;
     }
-
+    console.log(req.body.password);
+    console.log(dbUserData.password);
     let validPassword = await checkPassword(
       req.body.password,
       dbUserData.password
@@ -101,21 +101,23 @@ router.post("/login", async (req, res) => {
       res.status(400).json({ message: "Incorrect password! 😐" });
       return;
     }
-
+    console.log("=======PRE RENDER INDEX======");
     req.session.user = dbUserData; //store user data in session
+    console.log(dbUserData);
     console.log("session.user", req.session.user);
+    // res.redirect('/movies') ///need to pass in something else here?
     res.json({ user: dbUserData, message: "You are now logged in!" });
-
-    // req.session.save(() => {
-    //   req.session.user_id = dbUserData.id;
-    //   req.session.username = dbUserData.username;
-    //   req.session.loggedIn = true;
-    //   req.session.favorites = dbUserData.favorites;
-
-    // });
+    console.log("=======RENDER INDEX======");
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      req.session.favorites = dbUserData.favorites;
+      console.log('SESSION DATA SAVED');
+    });
   } catch (error) {
     console.error("failed login", error);
-    res.status(500).json(error);
+    res.render('/user/login', {email: req.body.email})
   }
 });
 
@@ -127,7 +129,7 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
-    console.log("You are now logged out");
+    console.log("You are NOT logged out");
   }
 });
 

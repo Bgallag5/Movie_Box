@@ -21,36 +21,33 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 // Ani's create a new favorite route //
-router.post("/upVote/:id", withAuth, async (req, res) => {
+router.post("/add/:id", withAuth, async (req, res) => {
+  console.log('====HIT ADD ROUTE======');
   // custom static method created in models/UserFav.js
   const movie_id = req.params.id;
   const user_id = req.session.user.id; //returns only that user's fave's
-  // const poster_path = req.body.poster_path;
-  //   const poster_path = req.body.poster_path;
-  const isLiked = await Fave.findOne({
-    // id: req.params.id,
-    // user_id: req.session.user.id,
-    // movie_id: req.body.movie_id,
-    // poster_path: req.body.poster_path,
-    where: { user_id, movie_id },
-    attributes: ["id", "user_id", "movie_id"],
-    // include: [
-    //   {
-    //     model: Movie,
-    //     attributes: ["poster_path"],
-    //   },
-    // ],
+
+
+  const isFavorite = await Fave.findOne({
+
+    where: { 
+      user_id: user_id, 
+      movie_id: movie_id,
+    },
   });
 
-  if (isLiked) {
+  if (isFavorite) {
     res.send({ message: "you already liked this" });
     return;
   }
 
+  console.log('=====PRE CREATE======');
   const fave = await Fave.create({ user_id, movie_id });
-
+  console.log('====FAV CREATED====');
   res.send(fave);
 });
+
+
 
 // Delete a favorite movie by id
 router.delete("/delete/:id", withAuth, (req, res) => {

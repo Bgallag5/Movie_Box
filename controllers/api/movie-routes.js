@@ -17,33 +17,33 @@ const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 //   })
 // })
 
-router.get("/singleMovie/:id", (req, res) => {
+// router.get("/singleMovie/:id", (req, res) => {
 
-  Movie.findOne({
-    where: {
-      id: req.params.id,
-    },
-//     include: [
-//       {
-//         model: UserReview,
-//         attributes: ["id", "title", "post_content", "movie_id", "user_id"],
-//         include: {
-//           model: User,
-//           attributes: ["id", "username"],
-//         },
-//       },
-//     ],
+//   Movie.findOne({
+//     where: {
+//       id: req.params.id,
+//     },
+// //     include: [
+// //       {
+// //         model: UserReview,
+// //         attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+// //         include: {
+// //           model: User,
+// //           attributes: ["id", "username"],
+// //         },
+// //       },
+// //     ],
 
-  })
-    .then((dbData) => {
-      res.json(dbData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+//   })
+//     .then((dbData) => {
+//       res.json(dbData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
 
-    });
-});
+//     });
+// });
 
 // Ani's get movie by title // this will be used to display the single view page // the other /search/:title returns all matching search params on the index page 
 router.get("/title/:title", (req, res) => {
@@ -263,36 +263,6 @@ router.get('/filter/best', (req, res) => {
     res.status(500).json(err);
   });
 });
-
-
-///GET BY TITLE
-// router.get('/search/:title', (req, res) => {
-//   console.log("HIT API ROUTES, TITLE:") 
-//   let title = req.params.title
-//  console.log(title);
-
-//   Movie.findAll({ 
-//       where: {
-//         title: {
-//           [Op.like]: `%${title}%`,
-//         }
-//       }
-//   }).then(dbData => {
-//     console.log(dbData);
-//     if (!dbData){
-//       res.status(404).json({ message: "We can't find a movie called this. 🙁" })
-//     }
-//     const movies = dbData.map(movie => movie.get({plain: true}));
-//     console.log(movies);
-//     res.render('index', {movies});
-//   })
-//   .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-
-module.exports = router;
 
 
 

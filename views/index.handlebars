@@ -1,4 +1,6 @@
-{{!-- 
+    <link rel="stylesheet" href="/css/index.css"/>  
+
+
     <section id= 'search-filter' >
       <div class="input-group">
           <input type="search" class="form-control rounded" id="inputId" placeholder="Search" aria-label="Search" 
@@ -30,8 +32,11 @@
 
 <div class="row container movrow">
     {{#each movies}}
-    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' href="/movies/single/{{id}}" class ="movies" id="{{id}}" >
     {{/each}}
     {{!-- add href here to be clickable through to single-view --}}
 </div>
-</section> --}}
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/javascript/index.js"></script>

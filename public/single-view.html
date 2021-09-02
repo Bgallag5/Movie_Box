@@ -41,19 +41,11 @@
     </header>
 
 
-   <section id="movie-section">
-       <div id="movie-poster"> 
-          <img src="./assets/images/jaws.jpeg" style="height: 58vh; width: 50vh;">
-          
-          <button class="btn buttons"  action="Favorite/" id="buttonId"> 
-            <a class="nav-link" href="dashboard.html">&#9829;Add to Favorites</a></button>
-            </li>
-              </div>
+  <section id="movie-section" class="container row">
+       <div> 
+          <img src="./assets/images/jaws.jpeg" id="movie-poster">
        </div>
 
-       
-
-       
 
     <div class="card border-info mb-3" id="movie-info">
     <div class="card-body text-info">
@@ -70,41 +62,53 @@
     <p class="card-text">$472 million</p>
 
   </div>
+</div>
+<button class="btn buttons" id="buttonId"> Add to Favorites</button>
+</section> 
+
+
+<section class="container row" id="user-reviews">
+  <form id="add-review" class="col">
+    <textarea id="review-text"></textarea>
+  <br/>
+    <input type="submit"/>
+  </form>
+
+  <div class="col" id="past-reviews">
+    <div class="single-review">
+      <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
+      <p class="review-title">Hated It</p>
+      <p class="review-text">
+        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
+        I dare you. Say what one more motherfucking time! 
+      </p>
+    </div>
+    <div class="single-review">
+      <ion-icon class="review-icon" name="nutrition-outline"></ion-icon>
+      <p class="review-title">Loved it</p>
+      <p class="review-text">
+        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
+        I dare you. Say what one more motherfucking time!
+      </p>
+    </div>
+    <div class="single-review">
+      <ion-icon class="review-icon" name="leaf-outline"></ion-icon>
+      <p class="review-title">Best movies ever </p>
+      <p class="review-text">
+        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
+        I dare you. Say what one more motherfucking time!
+      </p>
+    </div>
+    <div class="single-review">
+      <ion-icon class="review-icon" name="pause-outline"></ion-icon>
+      <p class="review-title">Title</p>
+      <p class="review-text">
+        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
+        I dare you. Say what one more motherfucking time!
+      </p>
+    </div>
   </div>
-   </section> 
-
-
-    <form action="">
-  
-      <textarea id="reviews" name="myTextBox" cols="50" rows="5">
-      
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
-        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
-        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
-        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
-        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-        doloremque. Quaerat provident commodi consectetur veniam similique ad 
-        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
-        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
-        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
-        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam 
-        quasi aliquam eligendi, placeat qui corporis!
-
-
-      </textarea>
-      <br />
-      <input type="submit" />
-    </form>
+</section>
       
       
       
