@@ -33,15 +33,16 @@ router.get("/", withAuth, (req, res) => {
           attributes: ["username"],
         },
       },
-      //   {
-      //     model: User,
-      //     attributes: ["username"],
-      //   },
+      {
+        model: Movie,
+        attributes: ["poster_path"],
+      },
     ],
   })
     .then((dbDashboard) => {
       const posts = dbDashboard.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      // res.render("dashboard", { posts, loggedIn: true });
+      res.json(posts);
     })
     .catch((err) => {
       console.log(err);

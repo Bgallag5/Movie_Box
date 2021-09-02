@@ -51,12 +51,10 @@ router.get("/upVote/:id", withAuth, async (req, res) => {
     // poster_path: req.body.poster_path,
     where: { user_id, movie_id },
     attributes: ["id", "user_id", "movie_id"],
-    /* include: [
-      {
-        model: Movie,
-        attributes: ["poster_path"],
-      },
-    ] */ //,
+    include: {
+      model: Movie,
+      attributes: ["poster_path"],
+    },
   });
 
   if (isLiked) {
