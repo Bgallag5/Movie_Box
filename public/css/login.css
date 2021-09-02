@@ -50,7 +50,8 @@ h1 {
     text-align: center;
     font-size: large;
     margin: 0 25%;
-    padding: 2%
+    padding: 2%;
+    border-radius: 4px;
 }
 
 #login-button {
@@ -74,4 +75,8 @@ h1 {
     font-size: medium;
     margin: 0 25%;
     padding: 3%;
+}
+
+footer{
+  margin-top: 25vh;
 }

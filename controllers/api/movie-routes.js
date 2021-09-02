@@ -17,6 +17,7 @@ const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 //   })
 // })
 
+
 router.get("/singleMovie/:id", (req, res) => {
   Movie.findOne({
     where: {
@@ -41,6 +42,7 @@ router.get("/singleMovie/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // Ani's get movie by title // this will be used to display the single view page // the other /search/:title returns all matching search params on the index page
 router.get("/title/:title", (req, res) => {
@@ -77,28 +79,6 @@ router.get("/title/:title", (req, res) => {
     });
 });
 
-//get a movie based on an imdb search
-///return response object from imdb
-
-//   Movie.findOne({
-//     where: {
-//       title: title1,
-//     },
-//   })
-//     .then((dbMovieData) => {
-//       if (!dbMovieData) {
-//         res
-//           .status(404)
-//           .json({ message: "We can't find a movie called this. 🙁" });
-//         return;
-//       }
-//       res.json(dbMovieData);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 //Ani's routes - get movie by id for LOGGED IN USERS ////
 router.get("/:id", withAuth, (req, res) => {
@@ -161,37 +141,6 @@ router.get("/title/:title", withAuth, (req, res) => {
     });
 });
 
-// create a new favorite //
-// router.post("/likeMovie/:id", withAuth, async (req, res) => {
-//   // custom static method created in models/UserFav.js
-//   const id = req.params.id;
-//   const user_id = req.session.user.id; //returns only that user's fave's
-//   const poster_path = req.body.poster_path;
-//   //   const poster_path = req.body.poster_path;
-//   const isLiked = await Movie.findOne({
-//     // id: req.params.id,
-//     // user_id: req.session.user.id,
-//     // movie_id: req.body.movie_id,
-//     // poster_path: req.body.poster_path,
-//     where: { id, user_id },
-//     attributes: ["poster_path", "user_id"],
-//     // include: [
-//     //   {
-//     //     model: Movie,
-//     //     attributes: ["poster_path"],
-//     //   },
-//     // ],
-//   });
-
-//   if (isLiked) {
-//     res.send({ message: "you already liked this" });
-//     return;
-//   }
-
-//   const fave = await Movie.create({ id, poster_path, user_id });
-
-//   res.send(fave);
-// });
 
 // Ani's delete movie route //
 // a user movie can be deleted although we likely won't use this
@@ -257,31 +206,5 @@ router.get("/filter/best", (req, res) => {
     });
 });
 
-///GET BY TITLE
-// router.get('/search/:title', (req, res) => {
-//   console.log("HIT API ROUTES, TITLE:")
-//   let title = req.params.title
-//  console.log(title);
-
-//   Movie.findAll({
-//       where: {
-//         title: {
-//           [Op.like]: `%${title}%`,
-//         }
-//       }
-//   }).then(dbData => {
-//     console.log(dbData);
-//     if (!dbData){
-//       res.status(404).json({ message: "We can't find a movie called this. 🙁" })
-//     }
-//     const movies = dbData.map(movie => movie.get({plain: true}));
-//     console.log(movies);
-//     res.render('index', {movies});
-//   })
-//   .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 module.exports = router;
