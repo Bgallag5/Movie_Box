@@ -41,8 +41,9 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbDashboard) => {
       const posts = dbDashboard.map((post) => post.get({ plain: true }));
+      console.log(posts, "***************");
       // res.render("dashboard", { posts, loggedIn: true });
-      res.json(posts);
+      res.render("dashboard", { posts }); //calling dashboard.hps send posts
     })
     .catch((err) => {
       console.log(err);

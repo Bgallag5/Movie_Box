@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
 // get all users
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -59,14 +59,14 @@ router.post("/register", (req, res) => {
     // favorites: req.body.favorites
   })
     .then((dbUserData) => {
-      //   req.session.save(() => {
-      //     req.session.user_id = dbUserData.id;
-      //     req.session.username = dbUserData.username;
-      //     req.session.loggedIn = true;
-      //     // req.session.favorites = dbUserData.favorites;
-      //     console.log(dbUserData);
-      //     res.json(dbUserData);
-      //   });
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+        // req.session.favorites = dbUserData.favorites;
+        console.log(dbUserData);
+        // res.json(dbUserData);
+      });
       res.json(dbUserData);
     })
     .catch((err) => {
@@ -98,17 +98,18 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    req.session.user = dbUserData; //store user data in session
-    console.log("session.user", req.session.user);
-    res.json({ user: dbUserData, message: "You are now logged in!" });
+    // req.session.user = dbUserData; //store user data in session
+    // console.log("session.user", req.session.user);
+    // res.json({ user: dbUserData, message: "You are now logged in!" });
 
-    // req.session.save(() => {
-    //   req.session.user_id = dbUserData.id;
-    //   req.session.username = dbUserData.username;
-    //   req.session.loggedIn = true;
-    //   req.session.favorites = dbUserData.favorites;
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      // req.session.favorites = dbUserData.favorites;
 
-    // });
+      res.json({ user: dbUserData, message: "You are now logged in!" });
+    });
   } catch (error) {
     console.error("failed login", error);
     res.status(500).json(error);

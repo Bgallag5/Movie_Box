@@ -285,5 +285,3 @@ router.get("/filter/best", (req, res) => {
 // });
 
 module.exports = router;
-
-module.exports = router;
