@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 const bcrypt = require("bcrypt");
 
 //a user can get all of their reviews
-router.get("/allReviews", withAuth, (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
   // const user_id = req.session.user.id;
   UserReview.findAll({
@@ -12,12 +12,20 @@ router.get("/allReviews", withAuth, (req, res) => {
       user_id: req.session.user.id,
     },
     attributes: ["id", "title", "post_content", "user_id"],
-    // include: [
-    //   {
-    //     model: User,
-    //     attributes: ["id", "username"],
-    //   },
-    // ],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "username"],
+        include: {
+          model: Movie,
+          attributes: ['title', 'id',]
+        }
+      },
+      {
+        model: Movie,
+        attributes: ['title', 'id']
+      }
+    ],
   })
     .then((dbAllReviews) => res.json(dbAllReviews))
     .catch((err) => {
@@ -26,9 +34,34 @@ router.get("/allReviews", withAuth, (req, res) => {
     });
 });
 
+////leave commented
+// router.get("/:id",  (req, res) => {
+//   console.log("review session", req.session);
+//   // const user_id = req.session.user.id;
+//   UserReview.findAll({
+//     where: {
+//       user_id: req.session.user.id,
+//     },
+//     attributes: ["id", "title", "post_content", "user_id"],
+//     include: [
+//       {
+//         model: User,
+//         attributes: ["id", "username"],
+//       },
+//     ],
+//   })
+//     .then((dbAllReviews) => res.json(dbAllReviews))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
 // user can create a new review/note (must be at least 2 characters long and no more than 200)
-router.post("/createNew", withAuth, (req, res) => {
-  console.log("review session", req.session);
+router.post("/:id", withAuth, (req, res) => {
+  console.log("====LOCATION======");
+  // console.log(document.location);
+
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,

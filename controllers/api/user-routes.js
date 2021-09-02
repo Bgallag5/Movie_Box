@@ -1,12 +1,9 @@
 // Ani's Code //
 const router = require("express").Router();
-
-
 const { User , Movie, Fave} = require("../../models");
-
-
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
+
 
 // get all users
 router.get("/",  (req, res) => {
@@ -21,9 +18,10 @@ router.get("/",  (req, res) => {
     });
 });
 
-async function checkPassword(password, hash) {
-  return await bcrypt.compare(password, hash);
-}
+//leave commented
+// async function checkPassword(password, hash) {
+//   return await bcrypt.compare(password, hash);
+// }
 
 router.get('/:id', (req, res) => {
     User.findOne({
@@ -67,6 +65,7 @@ router.post("/register", (req, res) => {
           req.session.loggedIn = true;
           // req.session.favorites = dbUserData.favorites;
           console.log(dbUserData);
+          console.log(req.session);
           res.json(dbUserData);
         });
     })
@@ -93,37 +92,32 @@ router.post("/login", async (req, res) => {
     }
     console.log(req.body.password);
     console.log(dbUserData.password);
-    let validPassword = await checkPassword(
-      req.body.password,
-      dbUserData.password
-    );
+    ///THIS IS CORRECT --BUT ALSO MAYBE REDO THIS NOT AS ASYNC B/C MINE ISNT WORKING?
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
     if (!validPassword) {
       res.status(400).json({ message: "Incorrect password! 😐" });
       return;
     }
-    console.log("=======PRE RENDER INDEX======");
-    req.session.user = dbUserData; //store user data in session
-    console.log(dbUserData);
-    console.log("session.user", req.session.user);
-    // res.redirect('/movies') ///need to pass in something else here?
-    res.json({ user: dbUserData, message: "You are now logged in!" });
-    console.log("=======RENDER INDEX======");
+    
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-      req.session.favorites = dbUserData.favorites;
+ 
       console.log('SESSION DATA SAVED');
+      res.json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (error) {
     console.error("failed login", error);
-    res.render('/user/login', {email: req.body.email})
+    res.status(500).json(error)
   }
 });
 
 // user can logout (should be connected to logout.js)
 router.post("/logout", (req, res) => {
-  if (req.session.user) {
+  console.log(req.session); 
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });

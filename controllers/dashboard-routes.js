@@ -6,7 +6,7 @@ const { User, Movie, Fave, UserReview } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
-router.get("/:id", withAuth, (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log(req.session);
   console.log("======================");
   Fave.findAll({
@@ -17,7 +17,7 @@ router.get("/:id", withAuth, (req, res) => {
       "id",
       "user_id",
       "movie_id",
-      "poster_path",
+      
       //   [
       //     sequelize.literal(
       //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -26,14 +26,14 @@ router.get("/:id", withAuth, (req, res) => {
       //   ],
     ],
     include: [
-      {
-        model: UserReview,
-        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
+      // {
+      //   model: UserReview,
+      //   attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+      //   include: {
+      //     model: User,
+      //     attributes: ["username"],
+      //   },
+      // },
       //   {
       //     model: User,
       //     attributes: ["username"],

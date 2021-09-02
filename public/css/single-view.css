@@ -2,32 +2,18 @@ body {
   background-image: url("../assets/images/cityscape.jpg");
 }
 
-#dashboard a{
-  color: whitesmoke;
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-}
-#dashboard a:hover {
-  color: rgb(65, 0, 170);
-}
-
-#dashboard{
-margin-left: 45rem;
-}
-
-#home a{
-  color: whitesmoke;
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-}
-
-#home a:hover {
-  color: rgb(65, 0, 170);
-}
 
 #movie-section{
     margin-top: 6vh;
     display: flex;  
     margin: 0 auto; 
     width: 85%;
+}
+
+#poster-container{
+  display:inline-block;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 #movie-poster{
@@ -43,10 +29,10 @@ width: 50%;
 }
 
 #buttonId{
-margin-left: 20%;
+/* margin-left: 20%; */
 height: 8vh;
 color:rgb(65, 0, 170);
-top:inherit;
+/* top:inherit; */
 }
 
 #user-reviews{

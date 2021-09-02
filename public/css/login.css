@@ -58,6 +58,11 @@ h1 {
     background-color: whitesmoke;
     color:rgb(69, 59, 85);
 }
+
+#signup-button {
+  background-color: whitesmoke;
+  color:rgb(69, 59, 85);
+}
 h1 {
     color: whitesmoke;
     text-align: center;
