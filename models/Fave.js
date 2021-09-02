@@ -35,14 +35,15 @@ Fave.init(
     //   // },
     // },
 
-    // poster_path: {
-    //   type: DataTypes.STRING,
-    //   // allowNull: false,
-    //   references: {
-    //     model: "movie",
-    //     key: "poster_path",
-    //   },
-    // },
+    /* poster_path: {
+      type: DataTypes.STRING,
+      allowNull: false
+       references: {
+        model: "movie",
+        key: "poster_path",
+      },
+
+    }*/
   },
   {
     sequelize,

@@ -11,7 +11,7 @@ router.get("/allReviews", withAuth, (req, res) => {
     where: {
       user_id: req.session.user.id,
     },
-    attributes: ["id", "title", "post_content", "user_id"],
+    attributes: ["id", "title", "post_content", "movie_id", "user_id"],
     // include: [
     //   {
     //     model: User,
@@ -28,11 +28,12 @@ router.get("/allReviews", withAuth, (req, res) => {
 
 // user can create a new review/note (must be at least 2 characters long and no more than 200)
 router.post("/createNew", withAuth, (req, res) => {
+  console.log("BODY ******", req.body);
   console.log("review session", req.session);
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,
-    // movie_id: req.body.movie_id,
+    movie_id: req.body.movie_id,
     user_id: req.session.user.id, //previously session
   })
     .then((dbPostData) => res.json(dbPostData))

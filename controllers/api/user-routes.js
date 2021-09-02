@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
 // get all users
-router.get("/",  (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -61,14 +61,17 @@ router.post("/register", (req, res) => {
     // favorites: req.body.favorites
   })
     .then((dbUserData) => {
-        req.session.save(() => {
-          req.session.user_id = dbUserData.id;
-          req.session.username = dbUserData.username;
-          req.session.loggedIn = true;
-          // req.session.favorites = dbUserData.favorites;
-          console.log(dbUserData);
-          res.json(dbUserData);
-        });
+
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+        // req.session.favorites = dbUserData.favorites;
+        console.log(dbUserData);
+        // res.json(dbUserData);
+      });
+      res.json(dbUserData);
+
     })
     .catch((err) => {
       console.log(err);
@@ -108,10 +111,12 @@ router.post("/login", async (req, res) => {
     // res.redirect('/movies') ///need to pass in something else here?
     res.json({ user: dbUserData, message: "You are now logged in!" });
     console.log("=======RENDER INDEX======");
+
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
+
       req.session.favorites = dbUserData.favorites;
       console.log('SESSION DATA SAVED');
     });

@@ -1,4 +1,3 @@
-
 const axios = require("axios").default;
 const router = require("express").Router();
 const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
@@ -6,7 +5,7 @@ const { User, Movie, Fave, UserReview } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
-router.get("/:id", withAuth, (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log(req.session);
   console.log("======================");
   Fave.findAll({
@@ -17,7 +16,7 @@ router.get("/:id", withAuth, (req, res) => {
       "id",
       "user_id",
       "movie_id",
-      "poster_path",
+      // "poster_path",
       //   [
       //     sequelize.literal(
       //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -34,15 +33,17 @@ router.get("/:id", withAuth, (req, res) => {
           attributes: ["username"],
         },
       },
-      //   {
-      //     model: User,
-      //     attributes: ["username"],
-      //   },
+      {
+        model: Movie,
+        attributes: ["poster_path"],
+      },
     ],
   })
     .then((dbDashboard) => {
       const posts = dbDashboard.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      console.log(posts, "***************");
+      // res.render("dashboard", { posts, loggedIn: true });
+      res.render("dashboard", { posts }); //calling dashboard.hps send posts
     })
     .catch((err) => {
       console.log(err);
@@ -51,6 +52,3 @@ router.get("/:id", withAuth, (req, res) => {
 });
 
 module.exports = router;
-
-
-

@@ -1,9 +1,8 @@
 const withAuth = (req, res, next) => {
-  console.log('WITHAUTH');
-  console.log(this);
-  console.log(req.session);
-  console.log(req.session.user);
-  // console.log(req.session.user_id);
+
+  console.log("withAuth ******************");
+  console.log("checking session", req.session.user);
+
   if (!req.session.user.id) {
     res.redirect("/movies/login");
   } else {
