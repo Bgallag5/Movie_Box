@@ -59,9 +59,12 @@ router.get("/upVote/:id", withAuth, async (req, res) => {
 // Ani's create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {
   console.log('====HIT ADD ROUTE======');
+
   // custom static method created in models/UserFav.js
+  console.log(req.params.id);
+  console.log(req.session.user_id);
   const movie_id = req.params.id;
-  const user_id = req.session.user.id; //returns only that user's fave's
+  const user_id = req.session.user_fid; //returns only that user's fave's
 
 
   const isFavorite = await Fave.findOne({
@@ -74,14 +77,14 @@ router.post("/add/:id", withAuth, async (req, res) => {
   });
 
   if (isFavorite) {
-    res.send({ message: "you already liked this" });
+    res.send({ message: "you already favorited this" }); 
     return;
   }
 
   console.log('=====PRE CREATE======');
   const fave = await Fave.create({ user_id, movie_id });
   console.log('====FAV CREATED====');
-  res.send(fave);
+  res.json(fave);
 });
 
 
@@ -106,7 +109,6 @@ router.delete("/delete/:id", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 
 module.exports = router;

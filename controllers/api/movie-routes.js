@@ -8,14 +8,6 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 
-//this went in the home-routes
-// router.get('/', (req, res) => {
-//   Movie.findAll({}).then(dbData => {
-//     const movies = dbData.map(movie => movie.get({plain: true}));
-//     console.log(movies);
-//     res.render('index', {movies});
-//   })
-// })
 
 
 router.get("/singleMovie/:id", (req, res) => {
@@ -42,7 +34,6 @@ router.get("/singleMovie/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 // Ani's get movie by title // this will be used to display the single view page // the other /search/:title returns all matching search params on the index page
 router.get("/title/:title", (req, res) => {
@@ -93,11 +84,12 @@ router.get("/:id", withAuth, (req, res) => {
         include: {
           model: User,
           attributes: ["id", "username"],
-        },
+        }
       },
     ],
   })
     .then((dbData) => {
+      console.log(dbData);
       res.json(dbData);
     })
     .catch((err) => {
@@ -167,44 +159,8 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-////GET BY GENRE
-router.get("/filter/:genre", (req, res) => {
-  Movie.findAll({
-    where: {
-      genre: req.params.genre,
-    },
-  })
-    .then((dbData) => {
-      const movies = dbData.map((movie) => movie.get({ plain: true }));
-      console.log(movies);
-      res.render("index", { movies });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
 
-////GET BY BEST
-router.get("/filter/best", (req, res) => {
-  console.log("==========HIT BEST API ROUTE============");
-  Movie.findAll({
-    where: {
-      rating: {
-        [Op.between]: [8, 10],
-      },
-    },
-  })
-    .then((dbData) => {
-      const movies = dbData.map((movie) => movie.get({ plain: true }));
-      console.log(movies);
-      res.render("index", { movies });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 
 
 module.exports = router;

@@ -16,7 +16,6 @@ router.get("/", withAuth, (req, res) => {
       "id",
       "user_id",
       "movie_id",
-      // "poster_path",
       //   [
       //     sequelize.literal(
       //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -37,6 +36,7 @@ router.get("/", withAuth, (req, res) => {
         model: Movie,
         attributes: ["poster_path"],
       },
+
     ],
   })
     .then((dbDashboard) => {
