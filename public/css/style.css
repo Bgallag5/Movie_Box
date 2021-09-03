@@ -82,6 +82,10 @@ footer {
   padding: 5vh 3vh;
 }
 
+footer a {
+  color: whitesmoke;
+}
+
 #footer-create {
   text-align: center;
   width: 15%
