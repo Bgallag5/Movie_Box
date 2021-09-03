@@ -17,7 +17,8 @@ const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 //   })
 // })
 
-router.get("/singleMovie/:id", (req, res) => {
+// Ani's get movie by id WITh AUTH //
+router.get("/singleMovie/:id", withAuth, (req, res) => {
   Movie.findOne({
     where: {
       id: req.params.id,
@@ -42,42 +43,43 @@ router.get("/singleMovie/:id", (req, res) => {
     });
 });
 
+//Ani's get by title route WITHOUT AUTH //
 // Ani's get movie by title // this will be used to display the single view page // the other /search/:title returns all matching search params on the index page
-router.get("/title/:title", (req, res) => {
-  let title = req.params.title.split("_").join(" ");
-  console.log("LOOK HERE", title);
+// router.get("/titled/:title", (req, res) => {
+//   let title = req.params.title.split("_").join(" ");
+//   console.log("LOOK HERE", title);
 
-  Movie.findOne({
-    where: {
-      title: title,
-    },
-    include: [
-      {
-        model: UserReview,
-        attributes: ["id", "title", "post_content", "user_id"],
-        include: {
-          model: User,
-          attributes: ["id", "username"],
-        },
-      },
-    ],
-  })
-    .then((dbMovieData) => {
-      if (!dbMovieData) {
-        res
-          .status(404)
-          .json({ message: "We can't find a movie called this. 🙁" });
-        return;
-      }
-      res.json(dbMovieData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+//   Movie.findOne({
+//     where: {
+//       title: title,
+//     },
+//     include: [
+//       {
+//         model: UserReview,
+//         attributes: ["id", "title", "post_content", "user_id"],
+//         include: {
+//           model: User,
+//           attributes: ["id", "username"],
+//         },
+//       },
+//     ],
+//   })
+//     .then((dbMovieData) => {
+//       if (!dbMovieData) {
+//         res
+//           .status(404)
+//           .json({ message: "We can't find a movie called this. 🙁" });
+//         return;
+//       }
+//       res.json(dbMovieData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
-//Ani's routes - get movie by id for LOGGED IN USERS ////
+//Ani's routes - get movie by id WITHAUTH ////
 router.get("/:id", withAuth, (req, res) => {
   Movie.findOne({
     where: {
@@ -103,7 +105,9 @@ router.get("/:id", withAuth, (req, res) => {
     });
 });
 
-// Ani's get movie by title for LOGGED IN users //
+// Ani's get movie by title WITHAUTH //
+//Ani's get by title route WITHOUT AUTH //
+// Ani's get movie by title // this will be used to display the single view page // the other /search/:title returns all matching search params on the index page
 router.get("/title/:title", withAuth, (req, res) => {
   let title = req.params.title.split("_").join(" ");
   console.log("LOOK HERE", title);
