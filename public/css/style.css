@@ -54,14 +54,25 @@ body {
 
 
 footer {
-background-color: rgb(30, 32, 46);
-height: 20rem;
-margin-top: 5vh;
+  background-color: rgb(30, 32, 46);
+  height: 100%;
+  width: 100%;
+  color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  padding: 5vh 3vh;
 }
 
-#contact-us h3, h4, a{
-    color: whitesmoke;
-    padding: 1vh;
+#footer-create {
+  text-align: center;
+  width: 15%
 }
 
+#contact-us {
+  justify-content: right;
+  text-align: center;
+}
 
+#contact-us a{
+  color: whitesmoke;
+}
