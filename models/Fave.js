@@ -26,15 +26,15 @@ Fave.init(
         key: "id",
       },
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "movie",
-        key: "title",
-      },
-    },
-    
+    // title: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   references: {
+    //     model: "movie",
+    //     key: "title",
+    //   },
+    // },
+
     /* poster_path: {
       type: DataTypes.STRING,
       allowNull: false

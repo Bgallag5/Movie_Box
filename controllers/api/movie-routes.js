@@ -8,7 +8,14 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
 
-
+//this went in the home-routes
+// router.get('/', (req, res) => {
+//   Movie.findAll({}).then(dbData => {
+//     const movies = dbData.map(movie => movie.get({plain: true}));
+//     console.log(movies);
+//     res.render('index', {movies});
+//   })
+// })
 
 router.get("/singleMovie/:id", (req, res) => {
   Movie.findOne({
@@ -70,7 +77,6 @@ router.get("/title/:title", (req, res) => {
     });
 });
 
-
 //Ani's routes - get movie by id for LOGGED IN USERS ////
 router.get("/:id", withAuth, (req, res) => {
   Movie.findOne({
@@ -84,12 +90,11 @@ router.get("/:id", withAuth, (req, res) => {
         include: {
           model: User,
           attributes: ["id", "username"],
-        }
+        },
       },
     ],
   })
     .then((dbData) => {
-      console.log(dbData);
       res.json(dbData);
     })
     .catch((err) => {
@@ -133,7 +138,6 @@ router.get("/title/:title", withAuth, (req, res) => {
     });
 });
 
-
 // Ani's delete movie route //
 // a user movie can be deleted although we likely won't use this
 //tested on movie id 0 and got wanted response. (404 message below bc no movie 0)
@@ -159,8 +163,70 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
+////GET BY GENRE
+router.get("/filter/:genre", (req, res) => {
+  Movie.findAll({
+    where: {
+      genre: req.params.genre,
+    },
+  })
+    .then((dbData) => {
+      const movies = dbData.map((movie) => movie.get({ plain: true }));
+      console.log(movies);
+      res.render("index", { movies });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
+////GET BY BEST
+router.get("/filter/best", (req, res) => {
+  console.log("==========HIT BEST API ROUTE============");
+  Movie.findAll({
+    where: {
+      rating: {
+        [Op.between]: [8, 10],
+      },
+    },
+  })
+    .then((dbData) => {
+      const movies = dbData.map((movie) => movie.get({ plain: true }));
+      console.log(movies);
+      res.render("index", { movies });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
+///GET BY TITLE
+// router.get('/search/:title', (req, res) => {
+//   console.log("HIT API ROUTES, TITLE:")
+//   let title = req.params.title
+//  console.log(title);
 
+//   Movie.findAll({
+//       where: {
+//         title: {
+//           [Op.like]: `%${title}%`,
+//         }
+//       }
+//   }).then(dbData => {
+//     console.log(dbData);
+//     if (!dbData){
+//       res.status(404).json({ message: "We can't find a movie called this. 🙁" })
+//     }
+//     const movies = dbData.map(movie => movie.get({plain: true}));
+//     console.log(movies);
+//     res.render('index', {movies});
+//   })
+//   .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;
