@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
 // get all users
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -116,7 +116,7 @@ router.post("/login", async (req, res) => {
 });
 
 // user can logout (should be connected to logout.js)
-router.post("/logout", (req, res) => {
+router.post("/logout", withAuth, (req, res) => {
   if (req.session.user) {
     req.session.destroy(() => {
       res.status(204).end();
