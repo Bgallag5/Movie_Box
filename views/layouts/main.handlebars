@@ -1,4 +1,4 @@
-{{!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,9 +17,7 @@
     crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    {{!-- <link rel="stylesheet" href="/css/index.css"/>   --}}
-    <link rel="stylesheet" href="/css/login.css"/> 
-    {{!-- how do we do our stylesheets in handlebars? --}}
+    {{!-- how do we do our stylesheets in handlebars? We just link them in their respective .hbs--}}
     <title>Movie Box</title>
   </head>
   <body>
@@ -32,7 +30,7 @@
             <li class="nav-item nav-text" id="dashboard">
               <a class="nav-link" href="#">My Dashboard</a>
             </li>
-            <li class="nav-item nav-text" id="movie-index">
+            <li class="nav-item nav-text" id="movies">
               <a class="nav-link" href="#">Movies</a>
             </li>
             {{!-- {{#if certain page // if logged in display different headers}} --}}
@@ -55,9 +53,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/javascript/index.js"></script>
-{{!-- <script src="/javascript/login.js"></script> --}}
-{{!-- how do we do our different js files in handlebars?--}}
+
   </body>
 
-</html> --}}
+</html>

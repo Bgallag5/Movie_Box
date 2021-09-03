@@ -17,7 +17,7 @@ Movie.init(
       allowNull: false,
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 1),
     },
     genre: {
       type: DataTypes.STRING,
@@ -27,6 +27,7 @@ Movie.init(
     },
     poster_path: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     release_year: {

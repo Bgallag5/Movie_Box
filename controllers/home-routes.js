@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-const { Post, User, Comment, Movie } = require('../models');
+const { Post, User, Comment, Movie, UserReview } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { 
     Movie.findAll({
       order: [["title", 'ASC']]
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
-      console.log(movies);
       res.render('index', {movies});
     })
     .catch((err) => {
@@ -86,4 +85,51 @@ router.get('/', (req, res) => {
       });
   });
   
-  module.exports = router;
+
+  ////render login page
+router.get('/login', (req, res) => {
+  console.log(req.session);
+  if (req.session.loggedIn) {
+    res.redirect("/movies");
+    return;
+  }
+  res.render('login')
+});
+
+
+//////ANI THIS WAS MY ATTEMPTED ROUTE TO RENDER SINGLE-VIEW, IT GETS CALLED IN INDEX.JS WITH THE MOVIE ID, SO SINCE YOURS WORKS
+///NOW WE'LL USE YOURS. JUST NEED TO CHANGE THE PATH THAT GETS CALLED IN INDEX.JS
+router.get("/single/:id", (req, res) => {
+
+  Movie.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: UserReview,
+        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        include: {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      },
+    ],
+
+  })
+    .then(dbData => {
+      const data = [dbData];
+      const movies = data.map(movie => movie.get({plain: true}));
+      console.log('=========dbDATA=========');
+      console.log(movies);
+      console.log(movies[0].userreviews);
+      res.render('single-view', {movies})
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+
+    });
+});
+
+module.exports = router;

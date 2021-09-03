@@ -3,17 +3,11 @@
       <h4>My Favorites</h4>
             
           <div class="row container movrow">
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
+                 {{#each posts}}
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
+    {{/each}}
             </div>
-          <div class="row container movrow">
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
-              <div class="col movies">Title</div>
-            </div>
+     
     </section>
 
    

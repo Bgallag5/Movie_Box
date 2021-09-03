@@ -1,21 +1,24 @@
 //importing all models
-//importing all models
 const User = require("./User");
 const UserReview = require("./UserReview");
 const Movie = require("./Movie");
 const Fave = require("./Fave");
 
-
 //make associations
-// Movie.hasMany(UserReview, {
-//   foreignKey: "user_id",
-//   // onDelete: "SET NULL",
-// });
+Movie.hasMany(UserReview, {
+  foreignKey: "user_id",
+  // onDelete: "SET NULL",
+});
 
-Fave.belongsTo(Movie),
-  {
+
+Fave.belongsTo(UserReview, {
+  //this made the dashboard one step closer to working
+  foreignKey: "user_id",
+});
+
+Fave.belongsTo(Movie, {
     foreignKey: "movie_id",
-  };
+  });
 
 User.hasMany(Fave, {
   foreignKey: "user_id",
@@ -41,19 +44,33 @@ UserReview.belongsTo(User, {
   // onDelete: "SET NULL",
 });
 
-// Fave.belongsToMany(Movie, {
-//   foreignKey: "user_id",
-//   onDelete: "SET NULL",
-// });
+
 
 User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
+/////I WAS GETTING ERRORS WITH THIS ASSOCIATION
+// User.belongsToMany(Movie, {
+//   through: UserReview,
+//   foreignKey: "movie_id",
+//   // onDelete: "SET NULL",
+// });
+
+// UserReview.belongsTo(Movie, {
+//   foreignKey: 'movie_id'
+// })
+
+
+// Fave.belongsToMany(Movie, {
+//   foreignKey: "user_id",
+//   onDelete: "SET NULL",
+// });
+
+
 module.exports = {
   User,
-  UserReview: UserReview,
+  UserReview,
   Movie,
   Fave,
 };
-

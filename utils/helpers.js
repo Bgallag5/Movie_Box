@@ -22,6 +22,3 @@ module.exports = {
   };
 
 
-// module.exports = filterBest = function(movies) {
-
-// } 
