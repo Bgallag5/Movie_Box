@@ -55,6 +55,17 @@ router.get("/upVote/:id", withAuth, async (req, res) => {
     include: {
       model: Movie,
       attributes: ["poster_path"],
+    },
+  });
+  if (isLiked) {
+    res.send({ message: "you already liked this" });
+    return;
+  }
+  const fave = await Fave.create({ user_id, movie_id });
+  res.send(fave);
+});
+
+
 
 // Ani's create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {

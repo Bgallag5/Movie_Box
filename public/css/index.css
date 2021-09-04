@@ -1,25 +1,4 @@
-* {
-  margin: 0 auto;
-  box-sizing: border-box;
-}
 
-body {
-  background-image: url("../assets/images/cityscape.jpg");
-  /* display: inline-block; */
-}
-
-#movieBox {
-  font-family: "Architects Daughter", cursive;
-  font-size: 60px;
-  color: whitesmoke;
-}
-
-
-.nav-item {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 150%;
-}
 
 /* SEARCH/FILTER */
 
@@ -80,8 +59,8 @@ body {
 .movies {
   background-color: rgb(1, 0, 48);
   padding: 5px;
-  height: 48vh;
-  width: 32.4vh;
+  height: 29.6%;
+  width: 20%;
   text-align: center;
   margin-top: 4vh;
   margin-left: 4vh; 
@@ -99,7 +78,7 @@ body {
 }
 
 .movrow :hover{
-border: 5px white solid;
+border: 3px white solid;
 /* background-color: rgb(30, 32, 46, .8); */
 }
 
