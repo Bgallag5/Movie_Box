@@ -19,8 +19,6 @@
   cursor: pointer;
 }
 
-
-
 .movrow{
     display: flex;
     margin: auto;
@@ -30,6 +28,14 @@
 .movrow :hover{
 border: 5px white solid;
 /* background-color: rgb(30, 32, 46, .8); */
+}
+
+#dash-favs h4{
+    color: whitesmoke;
+}
+
+#dash-reviews h4{
+    color: whitesmoke;
 }
 
 #dash-reviews .row{
