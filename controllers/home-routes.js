@@ -96,6 +96,16 @@ router.get('/login', (req, res) => {
   res.render('login')
 });
 
+// render register page
+router.get('/register', (req, res) => {
+  console.log(req.session);
+  if (req.session.loggedIn) {
+    res.redirect("/movies");
+    return;
+  }
+  res.render('register')
+});
+
 
 ////GET AND RENDER SINGLE MOVIE 
 router.get("/single/:id", withAuth, (req, res) => {
@@ -119,10 +129,12 @@ router.get("/single/:id", withAuth, (req, res) => {
     .then(dbData => {
       const data = [dbData];
       const movies = data.map(movie => movie.get({plain: true}));
-      console.log('=========dbDATA=========');
+      console.log('=========MOVIES=========');
       console.log(movies);
+      console.log('=========REVIEWS======');
       console.log(movies[0].userreviews);
-      res.render('single-view', {movies, loggedIn: true})
+      const reviews = (movies[0].userreviews)
+      res.render('single-view', {movies, reviews, loggedIn: true})
     })
     .catch((err) => {
       console.log(err);
@@ -133,12 +145,3 @@ router.get("/single/:id", withAuth, (req, res) => {
 
 module.exports = router;
 
-// render register page
-router.get('/register', (req, res) => {
-  console.log(req.session);
-  if (req.session.loggedIn) {
-    res.redirect("/movies");
-    return;
-  }
-  res.render('register')
-});

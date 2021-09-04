@@ -103,11 +103,12 @@ const movie = req.params.id
 
 
 // Delete a favorite movie by id
-router.delete("/delete/:id", withAuth, (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
+  console.log('====HIT DELETE====');
   // console.log('id', req.params.id);
   Fave.destroy({
     where: {
-      id: req.params.id,
+      movie_id: req.params.id,
     },
   })
     .then((dbdeletedata) => {

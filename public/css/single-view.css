@@ -33,7 +33,7 @@ justify-content: center;
 margin: auto auto;
 }
 
-#buttonId{
+.add-remove{
 /* margin-left: 20%; */
 height: 20%;
 color:rgb(65, 0, 170);
@@ -73,6 +73,7 @@ color:rgb(65, 0, 170);
 .single-review{
   border: 2px solid white;
   margin-top: .5%;
+  height: auto;
   padding: 2%;
   background-color: rgb(245, 245, 245, .8);
   color: black;

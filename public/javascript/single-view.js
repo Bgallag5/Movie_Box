@@ -22,6 +22,28 @@ if(response.ok){
 
  $('#buttonId').on('click', addFavorite)
 
+
+async function removeFavorite(event) {
+event.preventDefault();
+
+const id = (this.name);
+console.log(id);
+
+const response = await fetch(`/api/fav/${id}`, {
+    method: "DELETE",
+});
+
+if(response.ok){
+    console.log('Remove from Favs')
+    alert('Removed to Favs!')
+} else {
+    alert(response.statusText);
+}
+}
+
+ $('#removeId').on('click', removeFavorite)
+
+
 async function addReview (event){
     event.preventDefault();
 

@@ -14,24 +14,6 @@
     color: whitesmoke;
   }
   
-  /* #dashboard a {
-    color: whitesmoke;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-    margin-left: 45rem;
-  }
-  
-  #dashboard a:hover {
-    color: rgb(65, 0, 170);
-  }
-  
-  #logout a {
-    color: whitesmoke;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
-  }
-  
-  #logout a:hover {
-    color: rgb(65, 0, 170);
-  } */
   
   .nav-item {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -66,6 +48,15 @@ h1 {
 h1 {
     color: whitesmoke;
     text-align: center;
+}
+
+#new{
+  color:rgb(125, 125, 255);
+  font-size: smaller;
+}
+#new:hover{
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #login-form {

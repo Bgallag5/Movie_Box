@@ -34,3 +34,6 @@ document.querySelector('#login-button').addEventListener('click', loginFormHandl
 
 
 
+$('#new').on('click', () => {
+  document.location.replace('/movies/register');
+})

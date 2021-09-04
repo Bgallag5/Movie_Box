@@ -38,7 +38,8 @@ on those classes with function that fetches the single view page based on ${id} 
 
   <div class="container row">
 {{#each movies}}
-<button class="btn buttons col-5 feedback" id="buttonId" name="{{id}}" onclick="return ('Added to Favorites!')"> Add to Favorites</button>
+<button class="btn buttons col-3 feedback add-remove" id="buttonId" name="{{id}}"> Add to Favorites</button>
+<button class="btn buttons col-3 feedback add-remove" id="removeId" name="{{id}}"> Remove Favorite</button>
 {{/each}}
 
   <form id="add-review" class="col-5 feedback">
@@ -49,34 +50,18 @@ on those classes with function that fetches the single view page based on ${id} 
   </form>
   </div>
 
-{{!-- {{#each movie}} --}}
+{{#each reviews}}
   <div class="col" id="past-reviews">
     <div class="single-review">
       <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
+      <p class="review-title">{{title}}</p>
+      <p class="">by {{user.username}}</p>
       <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
-      </p>
-    </div>
-    <div class="single-review">
-      <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
-      <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
-      </p>
-    </div>
-    <div class="single-review">
-      <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
-      <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
+       {{post_content}}
       </p>
     </div>
   </div>
-  {{!-- {{/each}} --}}
+  {{/each}}
 </section>
       
       

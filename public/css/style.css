@@ -78,10 +78,19 @@ footer a {
   color: whitesmoke;
 }
 
-#footer-create {
-  text-align: center;
-  width: 15%
+footer h5{
+  font-size: smaller;
 }
+
+footer h4{
+ margin-left: 0%;
+}
+
+#footer-create {
+  width: 25%
+}
+
+
 
 #contact-us {
   justify-content: right;
