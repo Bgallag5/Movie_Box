@@ -1,38 +1,48 @@
-body {
-  background-image: url("../assets/images/cityscape.jpg");
-}
+
 
 
 #movie-section{
-    margin-top: 6vh;
+    padding-top: 8vh;
     display: flex;  
     margin: 0 auto; 
-    width: 85%;
+    width: 95%;
+    /* justify-content: space-around; */
 }
 
-#poster-container{
+#movie-container{
   display:inline-block;
-  /* display: flex; */
-  /* justify-content: center; */
+  display: flex;
+  justify-content: center;
 }
 
 #movie-poster{
-    height: 68vh;
-    width: 49.5vh;
+    height: 80%;
+    /* width: 45%; */
     margin-left: 5rem;
     border-radius: 2px;
   }
 
 
 #movie-info{
-width: 50%;
+height: 80%;
+width: 45%;
+}
+
+.feedback{
+justify-content: center;
+margin: auto auto;
 }
 
 #buttonId{
 /* margin-left: 20%; */
-height: 8vh;
+height: 20%;
 color:rgb(65, 0, 170);
+
 /* top:inherit; */
+}
+
+#add-review{
+  padding: 2rem;
 }
 
 #user-reviews{
@@ -43,10 +53,8 @@ color:rgb(65, 0, 170);
   justify-content: center;
   display: flex;
   color: whitesmoke;
+  margin-bottom: 25%;
   
-}
-#add-review{
-  padding: 2rem;
 }
 
 #review-text{
@@ -55,12 +63,13 @@ color:rgb(65, 0, 170);
 }
 
 #past-reviews{
-  padding: 2vh;
+  padding: 3%;
 }
 
 .single-review{
   border: 2px solid white;
-  padding: 2vh;
+  margin-top: .5%;
+  padding: 2%;
   background-color: rgb(245, 245, 245, .8);
   color: black;
 }

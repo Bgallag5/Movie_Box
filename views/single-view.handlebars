@@ -3,16 +3,15 @@
 
 
   <section id="movie-section" class="container row">
-       <div class="container" id="poster-container"> 
+      <div class="container" id="movie-container"> 
           {{!-- <img src="./assets/images/jaws.jpeg" id="movie-poster"> --}}
     {{#each movies}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' href="/movies/single/{{id}}" id="movie-poster">
     
     {{/each}}
-       </div>
+    
 {{!-- or do we need helper functions? give each a class (i think movies already) then addEventListener
 on those classes with function that fetches the single view page based on ${id} --}}
-
     {{#each movies}}
     <div class="card border-info mb-3" id="movie-info">
     <div class="card-body text-info">
@@ -30,17 +29,24 @@ on those classes with function that fetches the single view page based on ${id} 
 
   </div>
 </div>
-<button class="btn buttons" id="buttonId" name="{{id}}"> Add to Favorites</button>
+</div>
 {{/each}}
 </section> 
 
 
 <section class="container row" id="user-reviews">
-  <form id="add-review" class="col" action="/single">
-    <textarea id="review-text" name="userReview"></textarea>
+
+  <div class="container row">
+{{#each movies}}
+<button class="btn buttons col-5 feedback" id="buttonId" name="{{id}}"> Add to Favorites</button>
+{{/each}}
+
+  <form id="add-review" class="col-5 feedback" action="/single">
+    <textarea id="review-text" name="userReview" placeholder=" Leave your own review here!"></textarea>
   <br/>
-    <input type="submit"/>
+    <button class="btn"/>Submit</button>
   </form>
+  </div>
 
 {{!-- {{#each movie}} --}}
   <div class="col" id="past-reviews">

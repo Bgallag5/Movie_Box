@@ -3,9 +3,9 @@
 /* SEARCH/FILTER */
 
 #search-filter{
-  width: 60%;
+  width: 70%;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin-top: 10vh;
 }
 
