@@ -40,14 +40,9 @@ UserReview.init(
       },
       allowNull: false, //must always reference a user so never can be null
     },
-    // movie_title: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'movie',
-    //     key: 'title'
-    //   }
-    // },
+    movie_title: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize: sequelize,

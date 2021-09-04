@@ -27,15 +27,16 @@ async function addReview (event){
 
     const title = document.getElementById('review-title').value
     const text = document.getElementById('review-text').value;
-    console.log(title, text);
-    console.log(document.location);
     const path = document.location.pathname
     const movieId = path.replace('/movies/single/', "")
     console.log(movieId);
+    const movieTitle = document.getElementById('movieTitle').textContent;
+    console.log(movieTitle);
 
     const response = await fetch(`/api/reviews`, {
         method: 'POST',
         body: JSON.stringify({
+            movie_title: movieTitle,
             title: title,
             post_content: text,
             movie_id: movieId,

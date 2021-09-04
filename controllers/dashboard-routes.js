@@ -24,7 +24,7 @@ router.get("/", withAuth, (req, res) => {
     include: [
       {
         model: UserReview,
-        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        attributes: ["id", "title", "post_content", "movie_id", "user_id", "movie_title"],
       },
       {
         model: Fave,
