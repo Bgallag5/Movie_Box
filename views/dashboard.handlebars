@@ -1,11 +1,15 @@
+ 
+ <link rel="stylesheet" href="/css/dashboard.css"/>  
+
 
     <section id='dash-favs'>
-      <h4>My Favorites</h4>
-            
+      {{#if user}}
+      <h4>{{user}}'s Favorites</h4>
+      {{/if}}      
           <div class="row container movrow">
                  {{#each posts}}
-    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies">
-    {{/each}}
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies" id="{{id}}">
+      {{/each}}
             </div>
      
     </section>
@@ -13,9 +17,9 @@
    
 
     <section id="dash-reviews">
-      <h4>
-        My Reviews
-      </h4>
+      {{#if user}}
+      <h4>{{user}}'s Reviews</h4>
+      {{/if}} 
       <div class="row">
         <div class="card col-md-3" style="width: 18rem;">
           <img class="card-img-top" src="..." alt="Card image cap">
@@ -43,3 +47,11 @@
         </div>
       </div>
     </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+<script src="/javascript/dashboard.js"></script>
+

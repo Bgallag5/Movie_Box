@@ -4,12 +4,12 @@ const Op = Sequelize.Op;
 const { Post, User, Comment, Movie, UserReview } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => { 
+router.get('/', withAuth, (req, res) => { 
     Movie.findAll({
       order: [["title", 'ASC']]
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
         console.log(err);
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
   
   // filter index db by genre   
-  router.get('/filter/:genre', (req, res) => {
+  router.get('/filter/:genre', withAuth, (req, res) => {
     Movie.findAll({ 
       where: {
         genre: req.params.genre
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
       console.log(err);
@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
     });
   });
 
-  router.get('/best', (req, res) => {
+  router.get('/best', withAuth, (req, res) => {
     console.log('==========HIT BEST ROUTE============');
     Movie.findAll({ 
       where: {
@@ -48,7 +48,7 @@ router.get('/', (req, res) => {
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
       console.log(err);
@@ -58,7 +58,7 @@ router.get('/', (req, res) => {
   
   
   // search index db by title
-  router.get('/search/:title', (req, res) => {
+  router.get('/search/:title', withAuth, (req, res) => {
     console.log("HIT HOME TITLE SEARCH ROUTES") 
     let title = req.params.title
    console.log(title);
@@ -77,7 +77,7 @@ router.get('/', (req, res) => {
       }
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
         console.log(err);
@@ -97,9 +97,8 @@ router.get('/login', (req, res) => {
 });
 
 
-//////ANI THIS WAS MY ATTEMPTED ROUTE TO RENDER SINGLE-VIEW, IT GETS CALLED IN INDEX.JS WITH THE MOVIE ID, SO SINCE YOURS WORKS
-///NOW WE'LL USE YOURS. JUST NEED TO CHANGE THE PATH THAT GETS CALLED IN INDEX.JS
-router.get("/single/:id", (req, res) => {
+////GET AND RENDER SINGLE MOVIE 
+router.get("/single/:id", withAuth, (req, res) => {
 
   Movie.findOne({
     where: {
@@ -123,7 +122,7 @@ router.get("/single/:id", (req, res) => {
       console.log('=========dbDATA=========');
       console.log(movies);
       console.log(movies[0].userreviews);
-      res.render('single-view', {movies})
+      res.render('single-view', {movies, loggedIn: true})
     })
     .catch((err) => {
       console.log(err);

@@ -11,14 +11,14 @@ Movie.hasMany(UserReview, {
 });
 
 
-Fave.belongsTo(UserReview, {
-  //this made the dashboard one step closer to working
-  foreignKey: "user_id",
-});
-
 Fave.belongsTo(Movie, {
     foreignKey: "movie_id",
-  });
+});
+  
+Fave.belongsTo(User, {
+    foreignKey: "user_id",
+    // onDelete: "SET NULL",
+});
 
 User.hasMany(Fave, {
   foreignKey: "user_id",
@@ -34,16 +34,11 @@ Movie.hasMany(UserReview, {
   foreignKey: "movie_id", // just changed from user_id
 });
 
-Fave.belongsTo(User, {
-  foreignKey: "user_id",
-  // onDelete: "SET NULL",
-});
 
 UserReview.belongsTo(User, {
   foreignKey: "user_id",
   // onDelete: "SET NULL",
 });
-
 
 
 User.hasMany(UserReview, {

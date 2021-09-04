@@ -1,12 +1,10 @@
-#logout{
-    margin-left: 45rem;
-}
+
 
 /* #myFavs{
     display: inline-block;
 } */
 
-.movies {
+/* .movies {
   background-color: rgb(65,0, 170);
   padding: 5px;
   height: 48vh;
@@ -17,7 +15,20 @@
   color: whitesmoke;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
+
+.movies {
+    background-color: rgb(1, 0, 48);
+    padding: 5px;
+    height: 29.6%;
+    width: 20%;
+    text-align: center;
+    margin-top: 4vh;
+    margin-left: 4vh; 
+    color: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
 .movrow{
     display: flex;

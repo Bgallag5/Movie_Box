@@ -6,7 +6,7 @@ const withAuth = require("../../utils/auth");
 
 
 // get all users
-router.get("/", withAuth, (req, res) => {
+router.get("/", (req, res) => {
   console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -117,6 +117,7 @@ router.post("/login", async (req, res) => {
 
 // user can logout (should be connected to logout.js)
 router.post("/logout", (req, res) => {
+  console.log('===HIT LOGOUT ROUTE===');
   console.log(req.session); 
   if (req.session.loggedIn) {
     req.session.destroy(() => {
