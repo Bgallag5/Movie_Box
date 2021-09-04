@@ -133,3 +133,13 @@ router.get("/single/:id", (req, res) => {
 });
 
 module.exports = router;
+
+// render register page
+router.get('/register', (req, res) => {
+  console.log(req.session);
+  if (req.session.loggedIn) {
+    res.redirect("/movies");
+    return;
+  }
+  res.render('register')
+});
