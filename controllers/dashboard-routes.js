@@ -38,13 +38,12 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((dbDashboard) => {
-      console.log(dbDashboard);
-      // res.json({dbDashboard})
-      // const movies = user.movies;
-      // const user = user.dataValues.username;
-      // console.log(movies);
       const movies = dbDashboard.movies;
       const user = dbDashboard.dataValues.username;
+      const reviewText = dbDashboard.userreviews;
+      const reviews = reviewText.map((review) => review.get({plain: true}))
+      console.log('=====REVIEWS======');
+      console.log(reviews);
       console.log('=====MOVIES======');
       console.log(movies);
       console.log('=====User======');
@@ -52,7 +51,7 @@ router.get("/", withAuth, (req, res) => {
       const posts = movies.map((post) => post.get({ plain: true }));
       console.log('====POSTS======');
       console.log(posts);
-      res.render("dashboard", { posts, user, loggedIn: true });
+      res.render("dashboard", { posts, user, reviews, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

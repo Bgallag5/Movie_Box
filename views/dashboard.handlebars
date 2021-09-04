@@ -21,30 +21,14 @@
       <h4>{{user}}'s Reviews</h4>
       {{/if}} 
       <div class="row">
+        {{#each reviews}}
         <div class="card col-md-3" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text">Review text</p>
-            <a href="#" class="btn btn-primary">See Review</a>
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{post_content}}</p>
           </div>
         </div>
-        <div class="card col-md-3" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text">Review text</p>
-            <a href="#" class="btn btn-primary">See Review</a>
-          </div>
-        </div>
-        <div class="card col-md-3" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text">Review text</p>
-            <a href="#" class="btn btn-primary">See Review</a>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </section>
 

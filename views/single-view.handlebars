@@ -38,13 +38,14 @@ on those classes with function that fetches the single view page based on ${id} 
 
   <div class="container row">
 {{#each movies}}
-<button class="btn buttons col-5 feedback" id="buttonId" name="{{id}}"> Add to Favorites</button>
+<button class="btn buttons col-5 feedback" id="buttonId" name="{{id}}" onclick="return ('Added to Favorites!')"> Add to Favorites</button>
 {{/each}}
 
-  <form id="add-review" class="col-5 feedback" action="/single">
-    <textarea id="review-text" name="userReview" placeholder=" Leave your own review here!"></textarea>
+  <form id="add-review" class="col-5 feedback">
+    <textarea id="review-title" name="title" placeholder=" Title"></textarea>
+    <textarea id="review-text" name="userReview" placeholder=" Leave your own review here!" ></textarea>
   <br/>
-    <button class="btn"/>Submit</button>
+    <button class="btn" id="review-submit">Submit</button>
   </form>
   </div>
 

@@ -49,12 +49,16 @@ color:rgb(65, 0, 170);
   background-color: rgb(65, 0, 170, .5);
   width: 85%;
   margin: 0 auto;
-  /* margin-top: 3%; */
+  margin-top: 3%;
   justify-content: center;
   display: flex;
   color: whitesmoke;
   margin-bottom: 25%;
   
+}
+
+#review-title{
+  width: 20rem;
 }
 
 #review-text{

@@ -1,4 +1,7 @@
-
+body{
+    background-image: none;
+    background-color: black !important;
+}
 
 /* #myFavs{
     display: inline-block;
@@ -41,12 +44,21 @@ border: 5px white solid;
 /* background-color: rgb(30, 32, 46, .8); */
 }
 
+#dash-favs{
+   padding: 2% 2%;
+}
+
 #dash-favs h4{
     color: whitesmoke;
 }
 
 #dash-reviews h4{
     color: whitesmoke;
+}
+
+#dash-reviews{
+padding: 2% 2%;
+padding-bottom: 20%;
 }
 
 #dash-reviews .row{
@@ -58,6 +70,6 @@ border: 5px white solid;
     color: whitesmoke;
 }
 
-#dash-watchlist .row{
+/* #dash-watchlist .row{
     margin: 2rem 10rem;
-}
+} */

@@ -9,7 +9,7 @@ router.get("/", withAuth, (req, res) => {
   // const user_id = req.session.user.id;
   UserReview.findAll({
     where: {
-      user_id: req.session.user.id,
+      user_id: req.session.user_id,
     },
     attributes: ["id", "title", "post_content", "movie_id", "user_id"],
 //     include: [
@@ -51,14 +51,18 @@ router.get("/", withAuth, (req, res) => {
 
 // user can create a new review/note (must be at least 2 characters long and no more than 200)
 
-router.post("/:id", withAuth, (req, res) => {
-  console.log("====LOCATION======");
+router.post("/", withAuth, (req, res) => {
+  console.log("====ADD REVIEW ROUTE HIT======");
+  console.log(req.session.user_id);
+  console.log(req.body.title);
+  console.log(req.body.post_content);
+  console.log(req.body.movie_id);
 
   UserReview.create({
     title: req.body.title,
     post_content: req.body.post_content,
     movie_id: req.body.movie_id,
-    user_id: req.session.user.id, //previously session
+    user_id: req.session.user_id, //previously session
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
