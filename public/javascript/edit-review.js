@@ -29,3 +29,7 @@ if(response.ok){
 }
 
 $('#submit').on('click', saveReview);
+
+
+///hide navigation cause too lazy to do in hbs
+$('.navbar-nav').hide();
