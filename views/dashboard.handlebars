@@ -11,8 +11,8 @@
       {{#if user}}
       <h4>{{user}}'s Favorites</h4>
       {{/if}}      
-          <div class="row container movrow">
-                 {{#each posts}}
+    <div class="row container movrow">
+      {{#each posts}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' class ="movies" id="{{id}}">
       {{/each}}
             </div>
@@ -24,13 +24,13 @@
       {{#if user}}
       <h4>{{user}}'s Reviews</h4>
       {{/if}} 
-      <div class="row">
+      <div class="container row" id="review-row">
         {{#each reviews}}
-        <div class="card col-5 review-card row" id="review">
-            <img src='https://image.tmdb.org/t/p/w500{{movie.poster_path}}' href="/movies/single/{{movie_id}}" class ="tiny-movies col-6" id="{{movie_id}}" >
-          <div class="card-body col-6">
+        <div class="card review-card col-5">
+          <div class="card-body">
+            <img src='https://image.tmdb.org/t/p/w500{{movie.poster_path}}' href="/movies/single/{{movie_id}}" class ="tiny-movies" id="{{movie_id}}" >
             <h5 class="card-title" id="title">{{title}}</h5>
-            <p id="movie-title">movie: {{movie_title}}</p>
+            {{!-- <p id="movie-title">movie: {{movie_title}}</p> --}}
             <p class="card-text" id="post-text">{{post_content}}</p>
           </div>
         <button class="button btn edit" name="{{id}}">edit review</button>

@@ -30,16 +30,17 @@ body{
     margin-left: 4vh; 
     border-radius: 5px;
     cursor: pointer;
+    justify-content: left;
   }
 
 .tiny-movies {
     background-color: rgb(1, 0, 48);
     padding: 5px;
-    height: 29.6%;
-    width: 20%;
+    height: 25%;
+    width: 15%;
     text-align: center;
-    margin-top: 4vh;
-    margin-left: 4vh; 
+    margin-top: 1vh;
+    margin-left: 1vh; 
     border-radius: 5px;
     cursor: pointer;
   }
@@ -47,7 +48,7 @@ body{
 .movrow{
     display: flex;
     margin: auto;
-    justify-content: space-around;
+    justify-content: left;
 }
 
 .movrow :hover{
@@ -70,10 +71,11 @@ border: 5px white solid;
 #dash-reviews{
 padding: 2% 2%;
 padding-bottom: 20%;
+/* display: flex; */
 }
 
 #dash-reviews .row{
-    margin: 2% 10%;
+    margin: 2% 2%;
 }
 
 #dash-reviews .btn{
@@ -83,6 +85,24 @@ padding-bottom: 20%;
     margin: 0 auto;
 }
 
-/* #review{
+#review-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
 
-} */
+.review-card{
+    padding: 5px;
+    height: 20%;
+    margin-top: 2vh;
+}
+
+#post-text{
+    height: 50%;
+    width: 50%;
+}
+
+.card-body{
+    text-align: center;
+    align-items: center;
+}
