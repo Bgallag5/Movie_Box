@@ -75,12 +75,12 @@ router.post("/", withAuth, (req, res) => {
 });
 
 // user can make changes to what they wrote in their review //
-router.put("/updateReview/:id", withAuth, (req, res) => {
+router.put("/update/:id", withAuth, (req, res) => {
   // res.json({ id: req.params.id });
   UserReview.update(req.body, {
     individualHooks: true,
     where: {
-      id: +req.params.id,
+      id: req.params.id,
     },
   })
     .then((dbPostData) => {

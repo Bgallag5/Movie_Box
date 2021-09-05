@@ -1,0 +1,42 @@
+body{
+    background-image: none;
+    background-color: black !important;
+}
+
+
+
+
+#dash-reviews h4{
+    color: whitesmoke;
+    text-align: center;
+}
+
+#dash-reviews{
+padding: 2% 2%;
+padding-bottom: 20%;
+}
+
+#dash-reviews .row{
+    margin: 2rem 10rem;
+}
+
+#dash-reviews .btn{
+    background-color:rgb(65, 0, 170);
+    color: whitesmoke;
+}
+
+#rev-card{
+height: 65vh;
+width: 40vw;
+margin: 0 auto;
+}
+
+#rev-section{
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.btn{
+    margin: 2vh;
+}

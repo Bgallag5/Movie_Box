@@ -26,12 +26,12 @@
       {{/if}} 
       <div class="row">
         {{#each reviews}}
-        <div class="card col-md-3" style="width: 18rem;" name="{{user_id}}">
+        <div class="card col-md-3 review-card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="card-title" id="title">{{title}}</h5>
             <p class="card-text" id="post-text">{{post_content}}</p>
           </div>
-        <button class="button btn" id="edit">edit review for {{movie_title}}</button>
+        <button class="button btn edit" name="{{id}}">edit review for {{movie_title}}</button>
         </div>
         {{/each}}
       </div>

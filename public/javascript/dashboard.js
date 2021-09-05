@@ -20,6 +20,16 @@ $(".movies").on('click', getSingle);
 async function editReview(event) { 
   event.preventDefault();
 
+  const id = this.name;
+  console.log(id); 
+
+  document.location.replace(`/movies/edit/${id}`)
  }
 
- $('#edit').on('click', editReview);
+ $(".edit").click(editReview);
+
+//  document.querySelector('.edit').addEventListener('click', editReview)
+
+
+
+

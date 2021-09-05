@@ -151,5 +151,52 @@ router.get("/single/:id", withAuth, (req, res) => {
     });
 });
 
+
+//RENDER EDIT REVIEW PAGE
+router.get('/edit/:id', withAuth, (req, res) => {
+  console.log('HIT RENDER EDIT ROUTE');
+  
+  UserReview.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ["id", 'title', 'post_content']
+  }).then(dbData => {
+    if(dbData){
+      console.log(dbData);
+      const review = dbData.get({plain: true})
+      console.log('=====REVIEW=====');
+      console.log(review);
+      
+      res.render('edit-review', {review})
+    }
+  }).catch((err) => res.status(500).json({err}));
+  
+});
+
+////EDIT REVIEW
+router.put('/editReview/:id', withAuth, (req, res) => {
+  console.log(req.body);
+  console.log('=====ID====');
+  console.log(req.params.id);
+  
+  UserReview.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  }).then(dbData => {
+    if (!dbData) {
+      console.log('NO dbDATA');
+      res.status(404).json({ message: "No post found with this id" });
+      return;
+    }
+    console.log('=====dbDATA======');
+    console.log(dbData);
+    res.json(dbData)
+  }).catch((err) => res.status(500).json({err}));
+  
+});
+
 module.exports = router;
 
