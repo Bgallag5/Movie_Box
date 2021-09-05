@@ -28,7 +28,18 @@ body{
     text-align: center;
     margin-top: 4vh;
     margin-left: 4vh; 
-    color: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.tiny-movies {
+    background-color: rgb(1, 0, 48);
+    padding: 5px;
+    height: 29.6%;
+    width: 20%;
+    text-align: center;
+    margin-top: 4vh;
+    margin-left: 4vh; 
     border-radius: 5px;
     cursor: pointer;
   }
@@ -62,14 +73,16 @@ padding-bottom: 20%;
 }
 
 #dash-reviews .row{
-    margin: 2rem 10rem;
+    margin: 2% 10%;
 }
 
 #dash-reviews .btn{
     background-color:rgb(65, 0, 170);
     color: whitesmoke;
+    width: 50%;
+    margin: 0 auto;
 }
 
-/* #dash-watchlist .row{
-    margin: 2rem 10rem;
+/* #review{
+
 } */

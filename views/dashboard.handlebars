@@ -26,12 +26,14 @@
       {{/if}} 
       <div class="row">
         {{#each reviews}}
-        <div class="card col-md-3 review-card" style="width: 18rem;">
-          <div class="card-body">
+        <div class="card col-5 review-card row" id="review">
+            <img src='https://image.tmdb.org/t/p/w500{{movie.poster_path}}' href="/movies/single/{{movie_id}}" class ="tiny-movies col-6" id="{{movie_id}}" >
+          <div class="card-body col-6">
             <h5 class="card-title" id="title">{{title}}</h5>
+            <p id="movie-title">movie: {{movie_title}}</p>
             <p class="card-text" id="post-text">{{post_content}}</p>
           </div>
-        <button class="button btn edit" name="{{id}}">edit review for {{movie_title}}</button>
+        <button class="button btn edit" name="{{id}}">edit review</button>
         </div>
         {{/each}}
       </div>

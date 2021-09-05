@@ -45,6 +45,9 @@ User.hasMany(UserReview, {
   foreignKey: "user_id",
 });
 
+UserReview.belongsTo(Movie, {
+  foreignKey: "movie_id"
+})
 /////I WAS GETTING ERRORS WITH THIS ASSOCIATION
 // User.belongsToMany(Movie, {
 //   through: UserReview,

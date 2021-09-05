@@ -25,6 +25,10 @@ router.get("/", withAuth, (req, res) => {
       {
         model: UserReview,
         attributes: ["id", "title", "post_content", "movie_id", "user_id", "movie_title"],
+        include: {
+          model: Movie,
+          attributes: ['poster_path']
+        }
       },
       {
         model: Fave,
