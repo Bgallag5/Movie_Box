@@ -1,38 +1,52 @@
-// Call for buttons to activate carousel
-const prevButton = document.getElementById("prev-button")
-const nextButton = document.getElementById("next-button")
 
-function previous() {
-    prevButton.onclick
-}
-// function needs to call previous images (or none for start) on click
+////CLICK MOVIE => SINGLE-VIEW
+async function getSingle(event) {
+    event.preventDefault();
+  console.log('GETTING SINGLE');
+  
+    const movie = this;
+    const id = this.id;
+    console.log(id);
+    console.log(movie);
+  
+    document.location.replace(`/movies/single/${id}`)
+  
+  } 
+  
+$(".movies").on('click', getSingle);
 
-function next() {
-    nextButton.onclick
-}
-// Functions needs to proceed to next images on click
+////CLICK TINY => SINGLE-VIEW
+async function getTinySingle(event) {
+    event.preventDefault();
+  console.log('GETTING SINGLE');
+  
+    // const movie = this;
+    // console.log(this.movie_id);
+    const id = this.id;
+    console.log(id);
+    // console.log(movie);
+  
+    document.location.replace(`/movies/single/${id}`)
+  
+  } 
+  
+$(".tiny-movies").on('click', getTinySingle);
 
 
-// Call Functions
-previous();
-next();
+////EDIT REVIEW
+async function editReview(event) { 
+  event.preventDefault();
+
+  const id = this.name;
+  console.log(id); 
+
+  document.location.replace(`/movies/edit/${id}`)
+ }
+
+ $(".edit").click(editReview);
+
+//  document.querySelector('.edit').addEventListener('click', editReview)
 
 
-//var index = 0;
 
-//function changeBanner() {
-//    [].forEach.call(document.images, function(v, i) {
-//        document.images[i].hidden = i !== index
-//    });
-//    index = (index + 1) % document.images.length;
-//}
-//window.onload = function() {
-//    setInterval(changeBanner, 1000)
-//};
 
-var dashReview = document.getElementById("dash-reviews")
-var reviewCards = document.getElementById("review-cards")
-
-// NEED MORE INFO FROM SINGLE -VIEW 
-//var reviewText = document.getElementById()
-//

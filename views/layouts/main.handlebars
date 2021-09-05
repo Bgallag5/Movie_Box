@@ -24,57 +24,55 @@
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light" id="navId">
         <a class="navbar-brand" id="movieBox" href="/movies">[MovieBox]</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse " id="navbarNav">
           <ul class="navbar-nav">
 
             <li class="nav-item nav-text" id="dashboard">
-              <a class="nav-link" href="#">My Dashboard</a>
+              <a class="nav-link" href="/dashboard">My Dashboard</a>
             </li>
             <li class="nav-item nav-text" id="movies">
-              <a class="nav-link" href="#">Movies</a>
+              <a class="nav-link" href="/movies">Movies</a>
             </li>
-            {{!-- {{#if certain page // if logged in display different headers}} --}}
+            {{#if loggedIn}}
+            <li class="nav-item nav-text" id="logout">
+              <a class="nav-link" href="#">Log Out</a>
+            </li>
+            {{else}}
             <li class="nav-item nav-text" id="login">
               <a class="nav-link" href="#">Log In</a>
             </li>
-
+          {{/if}}
           </ul>
         </div>
       </nav>
     </header>
     {{{body}}}
     <footer>
-      <div class="container" id="footer-create">
-        <h3>Created By The Movie Box Team!</h3>
+      <div class="container row col-3" id="footer-create">
+        <h3>Created By </br>
+          The Movie Box Team!</h3>
       </div>
-      <div class="container" id='ben'>
+      <div class="container creators" id='ben'>
         <h4>Ben Gallagher</h4>
-        <h5>Team Leader</h5>
+        <h5>Team Lead: Node, Javascript, Express, MySQL, Html, CSS</h5>
         <h5>GitHub: <a href="https://github.com/Bgallag5">Bgallag5</a></h5>
         <h5>Email: <a href="mailto:bgallag5@gmail.com">bgallag5@gmail.com</a></h5>
       </div>
-      <div class="container" id="ani">
+      <div class="container creators" id="ani">
         <h4>Ani Carr</h4>
-        <h5>Back-End Lead</h5>
+        <h5>Back-End Lead: Express, Node, MySQL, Javascript</h5>
         <h5>GitHub: <a href="https://github.com/anidino">anidino</a></h5>
         <h5>Email: <a href="mailto:ani.elaina.carr@gmail.com">ani.elaina.carr@gmail.com</a></h5>
       </div>
-      <div class="container" id="raevin">
+      <div class="container creators" id="raevin">
         <h4>Raevin Dunson</h4>
-        <h5>Front-End Lead</h5>
+        <h5>Front-End: Html, CSS, Javascript</h5>
         <h5>GitHub: <a href="https://github.com/raevindunson">raevindunson</a></h5>
         <h5>Email: <a href="mailto:raevin.dunson98@gmail.com">raevin.dunson98@gmail.com</a></h5>
-      </div>
-      <div class="container" id="thandie">
-        <h4>Thandie Kapakasa</h4>
-        <h5>Front-End Development</h5>
-        <h5>GitHub: <a href="https://github.com/thandiek">thandiek</a></h5>
-        <h5>Email: <a href="mailto:tkapakasa@yahoo.com">tkapakasa@yahoo.com</a></h5>
       </div>
     </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
   </body>
 
 </html>

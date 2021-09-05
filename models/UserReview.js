@@ -40,6 +40,9 @@ UserReview.init(
       },
       allowNull: false, //must always reference a user so never can be null
     },
+    movie_title: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize: sequelize,

@@ -8,42 +8,54 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   console.log(req.session);
   console.log("======================");
-  Fave.findAll({
+  User.findOne({
     where: {
-      user_id: req.session.user.id,
+      id: req.session.user_id,
     },
-    attributes: [
-      "id",
-      "user_id",
-      "movie_id",
-      //   [
-      //     sequelize.literal(
-      //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
-      //     ),
-      //     "vote_count",
-      //   ],
-    ],
+    // attributes: [
+    //   "username",
+    //   //   [
+    //   //     sequelize.literal(
+    //   //       "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+    //   //     ),
+    //   //     "vote_count",
+    //   //   ],
+    // ],
     include: [
       {
         model: UserReview,
-        attributes: ["id", "title", "post_content", "movie_id", "user_id"],
+        attributes: ["id", "title", "post_content", "movie_id", "user_id", "movie_title"],
         include: {
-          model: User,
-          attributes: ["username"],
-        },
+          model: Movie,
+          attributes: ['poster_path']
+        }
+      },
+      {
+        model: Fave,
+        attributes: ['movie_id'],
       },
       {
         model: Movie,
-        attributes: ["poster_path"],
+        attributes: ["poster_path", 'id'],
       },
 
     ],
   })
     .then((dbDashboard) => {
-      const posts = dbDashboard.map((post) => post.get({ plain: true }));
-      console.log(posts, "***************");
-      // res.render("dashboard", { posts, loggedIn: true });
-      res.render("dashboard", { posts }); //calling dashboard.hps send posts
+      const movies = dbDashboard.movies;
+      const user = dbDashboard.dataValues.username;
+      const reviewText = dbDashboard.userreviews;
+      const reviews = reviewText.map((review) => review.get({plain: true}))
+      console.log('=====REVIEWS======');
+      console.log(reviews);
+      console.log('=====MOVIES======');
+      console.log(movies);
+      console.log('=====User======');
+      console.log(user);
+      const posts = movies.map((post) => post.get({ plain: true }));
+      console.log('====POSTS======');
+      console.log(posts);
+      res.render("dashboard", { posts, user, reviews, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

@@ -3,13 +3,14 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const { Post, User, Comment, Movie, UserReview } = require('../models');
 const withAuth = require('../utils/auth');
+const lodash = require('lodash');
 
-router.get('/', (req, res) => { 
+router.get('/', withAuth, (req, res) => { 
     Movie.findAll({
       order: [["title", 'ASC']]
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
         console.log(err);
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
 
   
   // filter index db by genre   
-  router.get('/filter/:genre', (req, res) => {
+  router.get('/filter/:genre', withAuth, (req, res) => {
     Movie.findAll({ 
       where: {
         genre: req.params.genre
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
       console.log(err);
@@ -36,7 +37,7 @@ router.get('/', (req, res) => {
     });
   });
 
-  router.get('/best', (req, res) => {
+  router.get('/best', withAuth, (req, res) => {
     console.log('==========HIT BEST ROUTE============');
     Movie.findAll({ 
       where: {
@@ -48,7 +49,7 @@ router.get('/', (req, res) => {
     }).then(dbData => {
       const movies = dbData.map(movie => movie.get({plain: true}));
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
       console.log(err);
@@ -58,7 +59,7 @@ router.get('/', (req, res) => {
   
   
   // search index db by title
-  router.get('/search/:title', (req, res) => {
+  router.get('/search/:title', withAuth, (req, res) => {
     console.log("HIT HOME TITLE SEARCH ROUTES") 
     let title = req.params.title
    console.log(title);
@@ -75,9 +76,16 @@ router.get('/', (req, res) => {
       if (!dbData){
         res.status(404).json({ message: "We can't find a movie called this. 🙁" })
       }
+      console.log('===dbDATA====');
+      console.log(dbData);
+      console.log('====movData=====');
+      const movData = lodash.dropRight(dbData);
       const movies = dbData.map(movie => movie.get({plain: true}));
+      console.log(movData);
+      // const movieData = lodash.movies.drop
+      console.log('====MOVIES====');
       console.log(movies);
-      res.render('index', {movies});
+      res.render('index', {movies, loggedIn: true});
     })
     .catch((err) => {
         console.log(err);
@@ -96,10 +104,19 @@ router.get('/login', (req, res) => {
   res.render('login')
 });
 
+// render register page
+router.get('/register', (req, res) => {
+  console.log(req.session);
+  if (req.session.loggedIn) {
+    res.redirect("/movies");
+    return;
+  }
+  res.render('register')
+});
 
-//////ANI THIS WAS MY ATTEMPTED ROUTE TO RENDER SINGLE-VIEW, IT GETS CALLED IN INDEX.JS WITH THE MOVIE ID, SO SINCE YOURS WORKS
-///NOW WE'LL USE YOURS. JUST NEED TO CHANGE THE PATH THAT GETS CALLED IN INDEX.JS
-router.get("/single/:id", (req, res) => {
+
+////GET AND RENDER SINGLE MOVIE 
+router.get("/single/:id", withAuth, (req, res) => {
 
   Movie.findOne({
     where: {
@@ -120,10 +137,12 @@ router.get("/single/:id", (req, res) => {
     .then(dbData => {
       const data = [dbData];
       const movies = data.map(movie => movie.get({plain: true}));
-      console.log('=========dbDATA=========');
+      console.log('=========MOVIES=========');
       console.log(movies);
+      console.log('=========REVIEWS======');
       console.log(movies[0].userreviews);
-      res.render('single-view', {movies})
+      const reviews = (movies[0].userreviews)
+      res.render('single-view', {movies, reviews, loggedIn: true})
     })
     .catch((err) => {
       console.log(err);
@@ -132,14 +151,52 @@ router.get("/single/:id", (req, res) => {
     });
 });
 
+
+//RENDER EDIT REVIEW PAGE
+router.get('/edit/:id', withAuth, (req, res) => {
+  console.log('HIT RENDER EDIT ROUTE');
+  
+  UserReview.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ["id", 'title', 'post_content']
+  }).then(dbData => {
+    if(dbData){
+      console.log(dbData);
+      const review = dbData.get({plain: true})
+      console.log('=====REVIEW=====');
+      console.log(review);
+      
+      res.render('edit-review', {review})
+    }
+  }).catch((err) => res.status(500).json({err}));
+  
+});
+
+////EDIT REVIEW
+router.put('/editReview/:id', withAuth, (req, res) => {
+  console.log(req.body);
+  console.log('=====ID====');
+  console.log(req.params.id);
+  
+  UserReview.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  }).then(dbData => {
+    if (!dbData) {
+      console.log('NO dbDATA');
+      res.status(404).json({ message: "No post found with this id" });
+      return;
+    }
+    console.log('=====dbDATA======');
+    console.log(dbData);
+    res.json(dbData)
+  }).catch((err) => res.status(500).json({err}));
+  
+});
+
 module.exports = router;
 
-// render register page
-router.get('/register', (req, res) => {
-  console.log(req.session);
-  if (req.session.loggedIn) {
-    res.redirect("/movies");
-    return;
-  }
-  res.render('register')
-});

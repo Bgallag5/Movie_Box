@@ -3,20 +3,19 @@
 
 
   <section id="movie-section" class="container row">
-       <div class="container" id="poster-container"> 
+      <div class="container" id="movie-container"> 
           {{!-- <img src="./assets/images/jaws.jpeg" id="movie-poster"> --}}
     {{#each movies}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' href="/movies/single/{{id}}" id="movie-poster">
     
     {{/each}}
-       </div>
+    
 {{!-- or do we need helper functions? give each a class (i think movies already) then addEventListener
 on those classes with function that fetches the single view page based on ${id} --}}
-
     {{#each movies}}
     <div class="card border-info mb-3" id="movie-info">
     <div class="card-body text-info">
-    <h3 class="card-title">{{title}}</h3>
+    <h3 class="card-title" id="movieTitle">{{title}}</h3>
     <p class="card-text">{{plot}}</p>
 
     <h5 class="card-title">Audience Score</h5>
@@ -30,48 +29,44 @@ on those classes with function that fetches the single view page based on ${id} 
 
   </div>
 </div>
-<button class="btn buttons" id="buttonId" name="{{id}}"> Add to Favorites</button>
+</div>
 {{/each}}
 </section> 
 
 
 <section class="container row" id="user-reviews">
-  <form id="add-review" class="col" action="/single">
-    <textarea id="review-text" name="userReview"></textarea>
-  <br/>
-    <input type="submit"/>
-  </form>
 
-{{!-- {{#each movie}} --}}
-  <div class="col" id="past-reviews">
+  <div class="container row">
+{{#each movies}}
+<button class="btn buttons col-3 feedback add-remove" id="buttonId" name="{{id}}"> Add to Favorites</button>
+<button class="btn buttons col-3 feedback add-remove" id="removeId" name="{{id}}"> Remove Favorite</button>
+{{/each}}
+
+  <form id="add-review" class="col-5 feedback">
+    <textarea id="review-title" name="title" placeholder=" Title"></textarea>
+    <textarea id="review-text" name="userReview" placeholder=" Leave your own review here!" ></textarea>
+  <br/>
+    <button class="btn" id="review-submit">Submit</button>
+  </form>
+  </div>
+
+{{#each reviews}}
+  <div class="col-12" id="past-reviews">
     <div class="single-review">
       <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
+      <p class="review-title">{{title}}</p>
+      <p class="">by {{user.username}}</p>
       <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
-      </p>
-    </div>
-    <div class="single-review">
-      <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
-      <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
-      </p>
-    </div>
-    <div class="single-review">
-      <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
-      <p class="review-title">Title</p>
-      <p class="review-text">
-        This is my placeholder text. Does Marcellus Wallace look like a bitch? What? *shots* Say what again motherfucker
-        I dare you. Say what one more motherfucking time! 
+       {{post_content}}
       </p>
     </div>
   </div>
-  {{!-- {{/each}} --}}
+  {{/each}}
 </section>
       
       
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
 <script src="/javascript/single-view.js" ></script> 
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}

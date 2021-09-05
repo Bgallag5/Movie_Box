@@ -32,46 +32,59 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 
-// Ani's CREATE (using GET...I know it's weird but it works) a new favorite route - movie info not included bc user just clicks fav button on individual view page //
-router.get("/upVote/:id", withAuth, async (req, res) => {
-  // custom static method created in models/UserFav.js
-  const movie_id = req.params.id;
-  const user_id = req.session.user.id; //returns only that user's fave's
-  //const poster_path = req.body.poster_path;
-  const foundMovie = await Movie.findOne({
-    where: { id: movie_id },
-  });
-  if (!foundMovie) {
-    res.send({ message: "Could not find the movie you like." });
-    return;
-  }
-  const isLiked = await Fave.findOne({
-    // id: req.params.id,
-    // user_id: req.session.user.id,
-    // movie_id: req.body.movie_id,
-    // poster_path: req.body.poster_path,
-    where: { user_id, movie_id },
-    attributes: ["id", "user_id", "movie_id"],
-    include: {
-      model: Movie,
-      attributes: ["poster_path"],
+// // Ani's CREATE (using GET...I know it's weird but it works) a new favorite route - movie info not included bc user just clicks fav button on individual view page //
+// router.get("/upVote/:id", withAuth, async (req, res) => {
+//   console.log('====HIT ADD FAVORITES ROUTE=====');
+//   // custom static method created in models/UserFav.js
+//   const movie_id = req.params.id;
+//   const user_id = req.session.user.id; //returns only that user's fave's
+//   //const poster_path = req.body.poster_path;
+//   const foundMovie = await Movie.findOne({
+//     where: { id: movie_id },
+//   });
+//   if (!foundMovie) {
+//     res.send({ message: "Could not find the movie you like." });
+//     return;
+//   }
+//   const isLiked = await Fave.findOne({
+//     // id: req.params.id,
+//     // user_id: req.session.user.id,
+//     // movie_id: req.body.movie_id,
+//     // poster_path: req.body.poster_path,
+//     where: { user_id, movie_id },
+//     attributes: ["id", "user_id", "movie_id"],
+//     include: {
+//       model: Movie,
+//       attributes: ["poster_path"],
+//     },
+//   });
+//   if (isLiked) {
+//     res.send({ message: "you already liked this" });
+//     return;
+//   }
+//   console.log('====PRE CREATE=====');
+//   const fave = await Fave.create({ user_id, movie_id });
+//   console.log('====POST CREATE=====');
+
+//   res.send(fave);
+// });
+
+
 
 // Ani's create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {
   console.log('====HIT ADD ROUTE======');
 
-  // custom static method created in models/UserFav.js
+const user = req.session.user_id;
+const movie = req.params.id
   console.log(req.params.id);
   console.log(req.session.user_id);
-  const movie_id = req.params.id;
-  const user_id = req.session.user_fid; //returns only that user's fave's
-
 
   const isFavorite = await Fave.findOne({
 
     where: { 
-      user_id: user_id, 
-      movie_id: movie_id,
+      user_id: user, 
+      movie_id: movie,
 
     },
   });
@@ -82,7 +95,7 @@ router.post("/add/:id", withAuth, async (req, res) => {
   }
 
   console.log('=====PRE CREATE======');
-  const fave = await Fave.create({ user_id, movie_id });
+  const fave = await Fave.create({ user_id: user, movie_id: movie});
   console.log('====FAV CREATED====');
   res.json(fave);
 });
@@ -90,11 +103,12 @@ router.post("/add/:id", withAuth, async (req, res) => {
 
 
 // Delete a favorite movie by id
-router.delete("/delete/:id", withAuth, (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
+  console.log('====HIT DELETE====');
   // console.log('id', req.params.id);
   Fave.destroy({
     where: {
-      id: req.params.id,
+      movie_id: req.params.id,
     },
   })
     .then((dbdeletedata) => {

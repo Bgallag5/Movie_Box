@@ -13,18 +13,18 @@
         <div class="dropdown filter">
           <label class="sortbtn buttons">Sort By Genre</label>
           <select class="dropdown-content" id='dropdown'>
+            <option href="#" selected disabled hidden>Select Genre</option>
             <option href="#">Action</option>
             <option href="#">Family</option>
             <option href="#">Horror</option>
             <option href="#">Adventure</option>
             <option href="#">Comedy</option>
-            <option href="#">Thriller</option>
             <option href="#">Drama</option>
           </select>
         </div>
 
         <div>
-          <button class="btn" id="bestBtn">Filter Best</button>
+          <button class="btn buttons" id="bestBtn">Top Rated</button>
         </div>
 
     </section>
@@ -43,4 +43,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/javascript/index.js"></script>
-
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}

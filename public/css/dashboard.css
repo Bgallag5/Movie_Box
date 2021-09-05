@@ -1,12 +1,13 @@
-#logout{
-    margin-left: 45rem;
+body{
+    background-image: none;
+    background-color: black !important;
 }
 
 /* #myFavs{
     display: inline-block;
 } */
 
-.movies {
+/* .movies {
   background-color: rgb(65,0, 170);
   padding: 5px;
   height: 48vh;
@@ -17,7 +18,31 @@
   color: whitesmoke;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
+
+.movies {
+    background-color: rgb(1, 0, 48);
+    padding: 5px;
+    height: 29.6%;
+    width: 20%;
+    text-align: center;
+    margin-top: 4vh;
+    margin-left: 4vh; 
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.tiny-movies {
+    background-color: rgb(1, 0, 48);
+    padding: 5px;
+    height: 29.6%;
+    width: 20%;
+    text-align: center;
+    margin-top: 4vh;
+    margin-left: 4vh; 
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
 .movrow{
     display: flex;
@@ -30,6 +55,10 @@ border: 5px white solid;
 /* background-color: rgb(30, 32, 46, .8); */
 }
 
+#dash-favs{
+   padding: 2% 2%;
+}
+
 #dash-favs h4{
     color: whitesmoke;
 }
@@ -38,15 +67,22 @@ border: 5px white solid;
     color: whitesmoke;
 }
 
+#dash-reviews{
+padding: 2% 2%;
+padding-bottom: 20%;
+}
+
 #dash-reviews .row{
-    margin: 2rem 10rem;
+    margin: 2% 10%;
 }
 
 #dash-reviews .btn{
     background-color:rgb(65, 0, 170);
     color: whitesmoke;
+    width: 50%;
+    margin: 0 auto;
 }
 
-#dash-watchlist .row{
-    margin: 2rem 10rem;
-}
+/* #review{
+
+} */
