@@ -41,7 +41,7 @@ const movies = [
     {
         title: "Taxi Driver",
         rating: 8.2,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "A mentally unstable Vietnam War veteran works as a night-time taxi driver in New York City where the perceived decadence and sleaze feed his urge for violent action, attempting to save a preadolescent prostitute in the process.",
         poster_path: "/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
         release_year: 1976,
@@ -57,7 +57,7 @@ const movies = [
     {
         title: "A Clockwork Orange",
         rating: 8.2,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "In a near-future Britain, young Alexander DeLarge and his pals get their kicks beating and raping anyone they please. When not destroying the lives of others, Alex swoons to the music of Beethoven. The state, eager to crack down on juvenile crime, gives an incarcerated Alex the option to undergo an invasive procedure that'll rob him of all personal agency. In a time when conscience is a commodity, can Alex change his tune?",
         poster_path:  "/4sHeTAp65WrSSuc05nRBKddhBxO.jpg",
         release_year: 1971,
@@ -73,7 +73,7 @@ const movies = [
     {
         title: "The Usual Suspects",
         rating: 8.2,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "Held in an L.A. interrogation room, Verbal Kint attempts to convince the feds that a mythic crime lord, Keyser Soze, not only exists, but was also responsible for drawing him and his four partners into a multi-million dollar heist that ended with an explosion in San Pedro harbor – leaving few survivors. Verbal lures his interrogators with an incredible story of the crime lord's almost supernatural prowess.",
         poster_path: "/bUPmtQzrRhzqYySeiMpv7GurAfm.jpg",
         release_year: 1995,
@@ -89,7 +89,7 @@ const movies = [
     {
         title: "The Silence of the Lambs",
         rating: 8.3,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "Clarice Starling is a top student at the FBI's training academy. Jack Crawford wants Clarice to interview Dr. Hannibal Lecter, a brilliant psychiatrist who is also a violent psychopath, serving life behind bars for various acts of murder and cannibalism. Crawford believes that Lecter may have insight into a case and that Starling, as an attractive young woman, may be just the bait to draw him out.",
         poster_path: "/rplLJ2hPcOQmkFhTqUte0MkEaO2.jpg",
         release_year: 1991,
@@ -601,7 +601,7 @@ const movies = [
     {
         title: "The Matrix Reloaded",
         rating: 6.9,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "Six months after the events depicted in The Matrix, Neo has proved to be a good omen for the free humans, as more and more humans are being freed from the matrix and brought to Zion, the one and only stronghold of the Resistance.  Neo himself has discovered his superpowers including super speed, ability to see the codes of the things inside the matrix and a certain degree of pre-cognition. But a nasty piece of news hits the human resistance: 250,000 machine sentinels are digging to Zion and would reach them in 72 hours. As Zion prepares for the ultimate war, Neo, Morpheus and Trinity are advised by the Oracle to find the Keymaker who would help them reach the Source.  Meanwhile Neo's recurrent dreams depicting Trinity's death have got him worried and as if it was not enough, Agent Smith has somehow escaped deletion, has become more powerful than before and has fixed Neo as his next target.",
         poster_path: "/8xEVAe84zlL9rkfYT6dZXero4KK.jpg",
         release_year: 2003,
@@ -673,7 +673,7 @@ const movies = [
     {
         title: "Inception",
         rating: 8.3,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: inception, the implantation of another person's idea into a target's subconscious.",
         poster_path: "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
         release_year: 2010,
@@ -761,7 +761,7 @@ const movies = [
     {
         title: "Containment",
         rating: 5.9,
-        genre: 'Thriller',
+        genre: 'Drama',
         plot: "Neighbors in a block wake one morning to find they have been sealed inside their apartments. Can they work together to find out why? Or will they destroy each other in their fight to escape?",
         poster_path: "/jMyudM6LM9VfIsR8ZRghlSpAdfv.jpg",
         release_year: 2015,

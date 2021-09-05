@@ -2,6 +2,11 @@
  <link rel="stylesheet" href="/css/dashboard.css"/>  
 
 
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+
+
     <section id='dash-favs'>
       {{#if user}}
       <h4>{{user}}'s Favorites</h4>
@@ -14,7 +19,6 @@
      
     </section>
 
-   
 
     <section id="dash-reviews">
       {{#if user}}
@@ -22,21 +26,17 @@
       {{/if}} 
       <div class="row">
         {{#each reviews}}
-        <div class="card col-md-3" style="width: 18rem;">
+        <div class="card col-md-3" style="width: 18rem;" name="{{user_id}}">
           <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{post_content}}</p>
+            <p class="card-text" id="post-text">{{post_content}}</p>
           </div>
-          <p class="muted">Review for {{movie_title}}</p>
+        <button class="button btn" id="edit">edit review for {{movie_title}}</button>
         </div>
         {{/each}}
       </div>
     </section>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
-<script src="/javascript/dashboard.js"></script>
+ <script src="/javascript/dashboard.js"></script>
 

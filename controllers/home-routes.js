@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const { Post, User, Comment, Movie, UserReview } = require('../models');
 const withAuth = require('../utils/auth');
+const lodash = require('lodash');
 
 router.get('/', withAuth, (req, res) => { 
     Movie.findAll({
@@ -75,7 +76,14 @@ router.get('/', withAuth, (req, res) => {
       if (!dbData){
         res.status(404).json({ message: "We can't find a movie called this. 🙁" })
       }
+      console.log('===dbDATA====');
+      console.log(dbData);
+      console.log('====movData=====');
+      const movData = lodash.dropRight(dbData);
       const movies = dbData.map(movie => movie.get({plain: true}));
+      console.log(movData);
+      // const movieData = lodash.movies.drop
+      console.log('====MOVIES====');
       console.log(movies);
       res.render('index', {movies, loggedIn: true});
     })
