@@ -4,7 +4,7 @@
 
 <img width="1437" alt="Screen Shot 2021-09-05 at 11 08 25 PM" src="https://user-images.githubusercontent.com/82895658/132155472-02996f89-9828-4610-bc87-72145b4dd558.png">  
 
-<img width="1440" alt="Screen Shot 2021-09-05 at 11 09 30 PM" src="https://user-images.githubusercontent.com/82895658/132155487-b9261cd2-228c-4e53-aa76-6d46a6ad0b2d.png">
+
 
  # Movie Box
 
@@ -15,7 +15,9 @@
   -[License](#license)
 
   ## Description  
-  Movie Box is a fullstack movie database application that allows users to sort, search, and save the movies in our databse. Users can also read each other's reviews and leave their own.      
+  Movie Box is a fullstack movie database application that allows users to sort, search, and save the movies in our databse. Users can also read each other's reviews and leave their own.   
+
+  visit the site: https://fierce-plateau-48530.herokuapp.com/movies/login     
   
   
   ## Made With
