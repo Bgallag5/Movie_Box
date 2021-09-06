@@ -31,12 +31,7 @@ async function loginFormHandler(event) {
 }
 
 document.querySelector('#login-button').addEventListener('click', loginFormHandler);
-// document.querySelector('#password-input').addEventListener('keyup', (e) => {
-//   if(e.keyCode === 13) {
-//     e.preventDefault();
-//     $('#login-button').
-//   }
-// });
+
 
 
 

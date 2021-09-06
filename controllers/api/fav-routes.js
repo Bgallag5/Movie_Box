@@ -22,54 +22,11 @@ router.get("/", withAuth, async (req, res) => {
       },
     }).then((result) => res.json(result));
 
-    // console.log(fav.toJSON());
-    //res.json(favs);
-    //return count of updated element
   } catch (error) {
     console.error(error);
     res.status(500).send("failed to retrieve favorites");
   }
 });
-
-
-// // Ani's CREATE (using GET...I know it's weird but it works) a new favorite route - movie info not included bc user just clicks fav button on individual view page //
-// router.get("/upVote/:id", withAuth, async (req, res) => {
-//   console.log('====HIT ADD FAVORITES ROUTE=====');
-//   // custom static method created in models/UserFav.js
-//   const movie_id = req.params.id;
-//   const user_id = req.session.user.id; //returns only that user's fave's
-//   //const poster_path = req.body.poster_path;
-//   const foundMovie = await Movie.findOne({
-//     where: { id: movie_id },
-//   });
-//   if (!foundMovie) {
-//     res.send({ message: "Could not find the movie you like." });
-//     return;
-//   }
-//   const isLiked = await Fave.findOne({
-//     // id: req.params.id,
-//     // user_id: req.session.user.id,
-//     // movie_id: req.body.movie_id,
-//     // poster_path: req.body.poster_path,
-//     where: { user_id, movie_id },
-//     attributes: ["id", "user_id", "movie_id"],
-//     include: {
-//       model: Movie,
-//       attributes: ["poster_path"],
-//     },
-//   });
-//   if (isLiked) {
-//     res.send({ message: "you already liked this" });
-//     return;
-//   }
-//   console.log('====PRE CREATE=====');
-//   const fave = await Fave.create({ user_id, movie_id });
-//   console.log('====POST CREATE=====');
-
-//   res.send(fave);
-// });
-
-
 
 // Ani's create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {

@@ -18,10 +18,6 @@ router.get("/", (req, res) => {
     });
 });
 
-//leave commented
-// async function checkPassword(password, hash) {
-//   return await bcrypt.compare(password, hash);
-// }
 
 router.get('/:id', (req, res) => {
     User.findOne({
@@ -56,7 +52,7 @@ router.post("/register", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    // favorites: req.body.favorites
+
   })
     .then((dbUserData) => {
 
@@ -64,9 +60,6 @@ router.post("/register", (req, res) => {
           req.session.user_id = dbUserData.id;
           req.session.username = dbUserData.username;
           req.session.loggedIn = true;
-          // req.session.favorites = dbUserData.favorites;
-          console.log(dbUserData);
-          console.log(req.session);
           res.json(dbUserData);
         });
 

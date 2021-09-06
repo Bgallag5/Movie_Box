@@ -48,22 +48,7 @@ User.hasMany(UserReview, {
 UserReview.belongsTo(Movie, {
   foreignKey: "movie_id"
 })
-/////I WAS GETTING ERRORS WITH THIS ASSOCIATION
-// User.belongsToMany(Movie, {
-//   through: UserReview,
-//   foreignKey: "movie_id",
-//   // onDelete: "SET NULL",
-// });
 
-// UserReview.belongsTo(Movie, {
-//   foreignKey: 'movie_id'
-// })
-
-
-// Fave.belongsToMany(Movie, {
-//   foreignKey: "user_id",
-//   onDelete: "SET NULL",
-// });
 
 
 module.exports = {
