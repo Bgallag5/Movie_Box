@@ -1,10 +1,10 @@
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-<img width="1424" alt="Screen Shot 2021-09-05 at 11 07 50 PM" src="https://user-images.githubusercontent.com/82895658/132155355-27899021-75ad-4738-abc7-b50303795ed6.png">   
+<img width="1424" alt="Screen Shot 2021-09-05 at 11 07 50 PM" src="https://user-images.githubusercontent.com/82895658/132155464-c06adcd9-d721-44d7-9542-34ced3668fd0.png">
 
-<img width="1440" alt="Screen Shot 2021-09-05 at 11 09 30 PM" src="https://user-images.githubusercontent.com/82895658/132155396-96fc756e-394c-498b-bb69-10dc4505ed6f.png">
+<img width="1437" alt="Screen Shot 2021-09-05 at 11 08 25 PM" src="https://user-images.githubusercontent.com/82895658/132155472-02996f89-9828-4610-bc87-72145b4dd558.png">  
 
-<img width="1437" alt="Screen Shot 2021-09-05 at 11 08 25 PM" src="https://user-images.githubusercontent.com/82895658/132155374-431393a9-8a38-4d19-aa6e-a8738c38d61a.png">
+<img width="1440" alt="Screen Shot 2021-09-05 at 11 09 30 PM" src="https://user-images.githubusercontent.com/82895658/132155487-b9261cd2-228c-4e53-aa76-6d46a6ad0b2d.png">
 
  # Movie Box
 
