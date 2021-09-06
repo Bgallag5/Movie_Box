@@ -1,6 +1,7 @@
 body{
     background-image: none;
-    background-color: black !important;
+    /* background-color: rgba(21, 3, 49,1); */
+    background: -webkit-linear-gradient(rgb(26, 2, 65) 0%, rgb(9, 1, 9) 100%);
 }
 
 /* #myFavs{
@@ -30,17 +31,13 @@ body{
     margin-left: 4vh; 
     border-radius: 5px;
     cursor: pointer;
-    justify-content: left;
   }
 
 .tiny-movies {
     background-color: rgb(1, 0, 48);
-    padding: 5px;
     height: 25%;
     width: 15%;
-    text-align: center;
-    margin-top: 1vh;
-    margin-left: 1vh; 
+    text-align: center; 
     border-radius: 5px;
     cursor: pointer;
   }
@@ -71,6 +68,7 @@ border: 5px white solid;
 #dash-reviews{
 padding: 2% 2%;
 padding-bottom: 20%;
+justify-content: left;
 /* display: flex; */
 }
 
@@ -87,7 +85,7 @@ padding-bottom: 20%;
 
 #review-row{
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     padding: 10px 5px;
 }
 
@@ -99,7 +97,7 @@ padding-bottom: 20%;
 
 #post-text{
     height: 50%;
-    width: 50%;
+    width: 90%;
 }
 
 .card-body{
