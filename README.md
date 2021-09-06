@@ -26,7 +26,9 @@
   Ben Gallagher [Github](https://github.com/Bgallag5)
   ...or email me: bgallag5@gmail.com  
   Ani Carr [Github](https://github.com/anidino)
-  ...or email me: ani.elaina.carr@gmail.com
+  ...or email me: ani.elaina.carr@gmail.com   
+  Raevin Dunson [Github](https://github.com/raevindunson)
+  ...or email me: raevin.dunson98@gmail.com
 
 
   ## License  
