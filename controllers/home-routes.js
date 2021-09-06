@@ -94,7 +94,7 @@ router.get('/', withAuth, (req, res) => {
   });
   
 
-  ////render login page
+  //render login page
 router.get('/login', (req, res) => {
   console.log(req.session);
   if (req.session.loggedIn) {

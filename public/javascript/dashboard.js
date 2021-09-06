@@ -20,11 +20,8 @@ async function getTinySingle(event) {
     event.preventDefault();
   console.log('GETTING SINGLE');
   
-    // const movie = this;
-    // console.log(this.movie_id);
     const id = this.id;
     console.log(id);
-    // console.log(movie);
   
     document.location.replace(`/movies/single/${id}`)
   
@@ -45,7 +42,7 @@ async function editReview(event) {
 
  $(".edit").click(editReview);
 
-//  document.querySelector('.edit').addEventListener('click', editReview)
+
 
 
 

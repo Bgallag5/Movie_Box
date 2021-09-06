@@ -1,7 +1,6 @@
 async function postReview(param) {
-    ///check if logged in here? or in helpers and call here? 
-    ///grab content of post 
-    const review = document.getElementById('#IDGOESHERE').value;     ////const title = document.querySelector('input[name="post-title"]').value; in module---handlebars thing??
+
+    const review = document.getElementById('#IDGOESHERE').value;    
     ///make a POST to the db
     const response = await fetch('/api/reviews', {
         method: 'POST',
@@ -23,8 +22,6 @@ async function postReview(param) {
 
 
 async function editReview(param) {
-    ///check if logged in here? or in helpers and call here? 
-    ///grab content of post 
     const review = document.getElementById('#IDGOESHERE').value.trim();   
     console.log(window.location);
     const id = window.location.toString().split('/')[
