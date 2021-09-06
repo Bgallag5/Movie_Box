@@ -3,9 +3,14 @@
   box-sizing: border-box;
 }
 
+
 body {
-  background-image: url("../assets/images/cityscape.jpg");
-  /* display: inline-block; */
+  background: url("../assets/images/cityscape.jpg") no-repeat left top, linear-gradient( rgb(3, 23, 53) 0%, rgba(21, 3, 49,1) 40%);
+  /* background-image: url("../assets/images/cityscape.jpg"); */
+  /* background: -webkit-linear-gradient(top, url("../assets/images/cityscape.jpg") 0%, rgba(255,255,255,0) 48%, rgba(2,2,2,1) 100%); */
+  /* background: -webkit-linear-gradient(top, url("../assets/images/cityscape.jpg") 0%,rgba(21, 3, 49,1) 50%); */
+  /* background: rgba(21, 3, 49,1) url("../assets/images/cityscape.jpg") 0 0 no-repeat; */
+
 }
 
 #movieBox {
@@ -72,6 +77,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 5vh 3vh;
+  position: bottom;
 }
 
 footer a {

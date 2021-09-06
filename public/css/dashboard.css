@@ -1,6 +1,7 @@
 body{
     background-image: none;
-    background-color: black !important;
+    /* background-color: rgba(21, 3, 49,1); */
+    background: -webkit-linear-gradient(rgb(26, 2, 65) 0%, rgb(9, 1, 9) 100%);
 }
 
 /* #myFavs{
@@ -34,12 +35,9 @@ body{
 
 .tiny-movies {
     background-color: rgb(1, 0, 48);
-    padding: 5px;
-    height: 29.6%;
-    width: 20%;
-    text-align: center;
-    margin-top: 4vh;
-    margin-left: 4vh; 
+    height: 25%;
+    width: 15%;
+    text-align: center; 
     border-radius: 5px;
     cursor: pointer;
   }
@@ -47,7 +45,7 @@ body{
 .movrow{
     display: flex;
     margin: auto;
-    justify-content: space-around;
+    justify-content: left;
 }
 
 .movrow :hover{
@@ -70,10 +68,12 @@ border: 5px white solid;
 #dash-reviews{
 padding: 2% 2%;
 padding-bottom: 20%;
+justify-content: left;
+/* display: flex; */
 }
 
 #dash-reviews .row{
-    margin: 2% 10%;
+    margin: 2% 2%;
 }
 
 #dash-reviews .btn{
@@ -83,6 +83,24 @@ padding-bottom: 20%;
     margin: 0 auto;
 }
 
-/* #review{
+#review-row{
+    display: flex;
+    justify-content: left;
+    padding: 10px 5px;
+}
 
-} */
+.review-card{
+    padding: 5px;
+    height: 20%;
+    margin-top: 2vh;
+}
+
+#post-text{
+    height: 50%;
+    width: 90%;
+}
+
+.card-body{
+    text-align: center;
+    align-items: center;
+}
