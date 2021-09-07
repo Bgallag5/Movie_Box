@@ -1,13 +1,11 @@
 // Ani's Code //
 const router = require("express").Router();
-const { User , Movie, Fave} = require("../../models");
+const { User, Movie, Fave } = require("../../models");
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
-
 // get all users
 router.get("/", (req, res) => {
-  console.log("review session", req.session);
   User.findAll({
     attributes: { exclude: ["password"] },
   })
@@ -18,31 +16,30 @@ router.get("/", (req, res) => {
     });
 });
 
-
-router.get('/:id', (req, res) => {
-    User.findOne({
-        attributes: { exclude: ['password'] },
-        where: {
-            id: req.params.id
-        },
-        include: [
-            {
-                model: Fave,
-                attributes: ['id', 'movie_id', 'user_id']
-            }
-        ]
+router.get("/:id", (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Fave,
+        attributes: ["id", "movie_id", "user_id"],
+      },
+    ],
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
     })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: "No user found with this id" });
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // user can sign up //
@@ -52,17 +49,14 @@ router.post("/register", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-
   })
     .then((dbUserData) => {
-
-        req.session.save(() => {
-          req.session.user_id = dbUserData.id;
-          req.session.username = dbUserData.username;
-          req.session.loggedIn = true;
-          res.json(dbUserData);
-        });
-
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+        res.json(dbUserData);
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -70,7 +64,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-////ANI I CHANGED THIS: 
+////ANI I CHANGED THIS:
 router.post("/login", async (req, res) => {
   console.log("=======HIT LOGIN ROUTE======");
   try {
@@ -87,7 +81,7 @@ router.post("/login", async (req, res) => {
     }
     console.log(req.body.password);
     console.log(dbUserData.password);
-    ///THIS IS CORRECT --BUT ALSO MAYBE REDO THIS NOT AS ASYNC B/C MINE ISNT WORKING?
+
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -99,26 +93,24 @@ router.post("/login", async (req, res) => {
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      console.log('SESSION DATA SAVED');
+      console.log("SESSION DATA SAVED");
       res.json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (error) {
     console.error("failed login", error);
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
 });
 
 // user can logout (should be connected to logout.js)
 router.post("/logout", (req, res) => {
-  console.log('===HIT LOGOUT ROUTE===');
-  console.log(req.session); 
+  console.log("===HIT LOGOUT ROUTE===");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
     res.status(404).end();
-    console.log("You are NOT logged out");
   }
 });
 
