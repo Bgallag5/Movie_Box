@@ -6,18 +6,12 @@ const bcrypt = require("bcrypt");
 //a user can get all of their reviews
 router.get("/", withAuth, (req, res) => {
   console.log("review session", req.session);
-  // const user_id = req.session.user.id;
+
   UserReview.findAll({
     where: {
       user_id: req.session.user_id,
     },
     attributes: ["id", "title", "post_content", "movie_id", "user_id"],
-    //     include: [
-    //       {
-    //         model: User,
-    //         attributes: ["id", "username"],
-    //       },
-    //     ],
   })
     .then((dbAllReviews) => res.json(dbAllReviews))
     .catch((err) => {
@@ -66,8 +60,7 @@ router.put("/update/:id", withAuth, (req, res) => {
 
 // user can delete reviews BY ID they no longer want
 router.delete("/:id", withAuth, (req, res) => {
-  // console.log("review session", req.session);
-  console.log("id", req.params.id);
+
   UserReview.destroy({
     where: {
       id: req.params.id,

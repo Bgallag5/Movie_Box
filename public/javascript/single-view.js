@@ -12,7 +12,6 @@ async function addFavorite(event) {
     headers: { "Content-Type": "application/json" },
   });
   if (response.ok) {
-    console.log("ADDED TO FAVS");
     alert("Added to Favs!");
   } else {
     alert(response.statusText);
@@ -32,7 +31,6 @@ async function removeFavorite(event) {
   });
 
   if (response.ok) {
-    console.log("Remove from Favs");
     alert("Removed to Favs!");
   } else {
     alert(response.statusText);
@@ -48,9 +46,8 @@ async function addReview(event) {
   const text = document.getElementById("review-text").value;
   const path = document.location.pathname;
   const movieId = path.replace("/movies/single/", "");
-  console.log(movieId);
   const movieTitle = document.getElementById("movieTitle").textContent;
-  console.log(movieTitle);
+
 
   const response = await fetch(`/api/reviews`, {
     method: "POST",
@@ -63,7 +60,6 @@ async function addReview(event) {
     headers: { "Content-Type": "application/json" },
   });
   if (response.ok) {
-    console.log("REVIEW SUBMITTED");
     alert("Review Submitted!");
   } else {
     alert(response.statusText);
@@ -73,7 +69,7 @@ async function addReview(event) {
 $("#review-submit").on("click", addReview);
 
 
-////DELETE REVIEW
+////DELETE REVIEW - to be used
 // async function deleteReview(param) {
 
 //     console.log(window.location);

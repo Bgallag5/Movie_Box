@@ -17,9 +17,7 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      console.log("RESPONSE.OK");
       document.location.replace("/movies");
-      console.log("LOCATION REPLACED");
     } else {
       ///betterlooking 'please enter req info'
       alert(response.statusText);

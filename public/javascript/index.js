@@ -55,7 +55,6 @@ document.querySelector("#buttonId").addEventListener("click", searchMovies);
 ////CLICK MOVIE => SINGLE-VIEW
 async function getSingle(event) {
   event.preventDefault();
-  console.log("GETTING SINGLE");
 
   const movie = this;
   const id = this.id;

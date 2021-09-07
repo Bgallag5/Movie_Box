@@ -33,8 +33,6 @@ router.post("/add/:id", withAuth, async (req, res) => {
 
   const user = req.session.user_id;
   const movie = req.params.id;
-  console.log(req.params.id);
-  console.log(req.session.user_id);
 
   const isFavorite = await Fave.findOne({
     where: {
@@ -48,16 +46,12 @@ router.post("/add/:id", withAuth, async (req, res) => {
     return;
   }
 
-  console.log("=====PRE CREATE======");
   const fave = await Fave.create({ user_id: user, movie_id: movie });
-  console.log("====FAV CREATED====");
   res.json(fave);
 });
 
 // Delete a favorite movie by id
 router.delete("/:id", withAuth, (req, res) => {
-  console.log("====HIT DELETE====");
-  // console.log('id', req.params.id);
   Fave.destroy({
     where: {
       movie_id: req.params.id,

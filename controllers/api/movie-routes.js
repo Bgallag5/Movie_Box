@@ -47,10 +47,6 @@ router.get("/title/:title", withAuth, (req, res) => {
       {
         model: UserReview,
         attributes: ["id", "title", "post_content", "user_id"],
-        // include: {
-        //   model: User,
-        //   attributes: ["id", "username"],
-        // },
       },
     ],
   })

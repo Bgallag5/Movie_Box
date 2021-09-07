@@ -29,7 +29,6 @@ router.get("/filter/:genre", withAuth, (req, res) => {
   })
     .then((dbData) => {
       const movies = dbData.map((movie) => movie.get({ plain: true }));
-      console.log(movies);
       res.render("index", { movies, loggedIn: true });
     })
     .catch((err) => {
@@ -50,7 +49,6 @@ router.get("/best", withAuth, (req, res) => {
   })
     .then((dbData) => {
       const movies = dbData.map((movie) => movie.get({ plain: true }));
-      console.log(movies);
       res.render("index", { movies, loggedIn: true });
     })
     .catch((err) => {
@@ -63,7 +61,6 @@ router.get("/best", withAuth, (req, res) => {
 router.get("/search/:title", withAuth, (req, res) => {
   console.log("HIT HOME TITLE SEARCH ROUTES");
   let title = req.params.title;
-  console.log(title);
 
   Movie.findAll({
     where: {
@@ -131,10 +128,8 @@ router.get("/single/:id", withAuth, (req, res) => {
     .then((dbData) => {
       const data = [dbData];
       const movies = data.map((movie) => movie.get({ plain: true }));
-
-      console.log("=========REVIEWS======");
-      console.log(movies[0].userreviews);
       const reviews = movies[0].userreviews;
+
       res.render("single-view", { movies, reviews, loggedIn: true });
     })
     .catch((err) => {
@@ -155,10 +150,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
   })
     .then((dbData) => {
       if (dbData) {
-        console.log(dbData);
         const review = dbData.get({ plain: true });
-        console.log("=====REVIEW=====");
-        console.log(review);
 
         res.render("edit-review", { review });
       }
@@ -168,8 +160,6 @@ router.get("/edit/:id", withAuth, (req, res) => {
 
 ////EDIT REVIEW
 router.put("/editReview/:id", withAuth, (req, res) => {
-  console.log("=====ID====");
-  console.log(req.params.id);
 
   UserReview.update(req.body, {
     individualHooks: true,
@@ -182,8 +172,6 @@ router.put("/editReview/:id", withAuth, (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      console.log("=====dbDATA======");
-      console.log(dbData);
       res.json(dbData);
     })
     .catch((err) => res.status(500).json({ err }));
