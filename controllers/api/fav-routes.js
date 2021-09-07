@@ -21,7 +21,6 @@ router.get("/", withAuth, async (req, res) => {
         },
       },
     }).then((result) => res.json(result));
-
   } catch (error) {
     console.error(error);
     res.status(500).send("failed to retrieve favorites");
@@ -30,38 +29,34 @@ router.get("/", withAuth, async (req, res) => {
 
 // Ani's create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {
-  console.log('====HIT ADD ROUTE======');
+  console.log("====HIT ADD ROUTE======");
 
-const user = req.session.user_id;
-const movie = req.params.id
+  const user = req.session.user_id;
+  const movie = req.params.id;
   console.log(req.params.id);
   console.log(req.session.user_id);
 
   const isFavorite = await Fave.findOne({
-
-    where: { 
-      user_id: user, 
+    where: {
+      user_id: user,
       movie_id: movie,
-
     },
   });
 
   if (isFavorite) {
-    res.send({ message: "you already favorited this" }); 
+    res.send({ message: "you already favorited this" });
     return;
   }
 
-  console.log('=====PRE CREATE======');
-  const fave = await Fave.create({ user_id: user, movie_id: movie});
-  console.log('====FAV CREATED====');
+  console.log("=====PRE CREATE======");
+  const fave = await Fave.create({ user_id: user, movie_id: movie });
+  console.log("====FAV CREATED====");
   res.json(fave);
 });
 
-
-
 // Delete a favorite movie by id
 router.delete("/:id", withAuth, (req, res) => {
-  console.log('====HIT DELETE====');
+  console.log("====HIT DELETE====");
   // console.log('id', req.params.id);
   Fave.destroy({
     where: {
@@ -80,6 +75,5 @@ router.delete("/:id", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;

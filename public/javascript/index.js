@@ -1,12 +1,16 @@
-
 //BACK TO TOP
 //Get the button:
 topBtn = document.getElementById("topBtn");
 
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+  if (
+    document.body.scrollTop > 1000 ||
+    document.documentElement.scrollTop > 1000
+  ) {
     topBtn.style.display = "block";
   } else {
     topBtn.style.display = "none";
@@ -19,99 +23,46 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE
 }
 
-
-
 //FILTER GENRE
-var sortBtn = document.querySelector('.dropdown')
+var sortBtn = document.querySelector(".dropdown");
 
-sortBtn.onchange = async function(){
+sortBtn.onchange = async function () {
+  const genre = $("#dropdown").find("option:selected").text();
+  console.log(genre);
 
- const genre = $('#dropdown').find('option:selected').text()
- console.log(genre);
-
- document.location.replace(`/movies/filter/${genre}`);
-}
+  document.location.replace(`/movies/filter/${genre}`);
+};
 
 //FILTER BEST
-var bestBtn = document.querySelector('#bestBtn')
+var bestBtn = document.querySelector("#bestBtn");
 
-bestBtn.onclick = async function(){
+bestBtn.onclick = async function () {
   document.location.replace(`/movies/best`);
-}
+};
 
-////SEARCH BY TITLE  
-async function searchMovies(event) { 
+////SEARCH BY TITLE
+async function searchMovies(event) {
   event.preventDefault();
 
-  const search = document.querySelector('#inputId').value.trim();
+  const search = document.querySelector("#inputId").value.trim();
 
-  console.log(search); 
+  console.log(search);
   document.location.replace(`/movies/search/${search}`);
- };
+}
 
-document.querySelector('#buttonId').addEventListener('click', searchMovies);
-
-
+document.querySelector("#buttonId").addEventListener("click", searchMovies);
 
 ////CLICK MOVIE => SINGLE-VIEW
 async function getSingle(event) {
   event.preventDefault();
-console.log('GETTING SINGLE');
+  console.log("GETTING SINGLE");
 
   const movie = this;
   const id = this.id;
   console.log(id);
   console.log(movie);
 
-  document.location.replace(`/movies/single/${id}`)
+  document.location.replace(`/movies/single/${id}`);
+}
 
-} 
-
-$(".movies").on('click', getSingle);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$(".movies").on("click", getSingle);

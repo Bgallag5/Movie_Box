@@ -12,12 +12,12 @@ router.get("/", withAuth, (req, res) => {
       user_id: req.session.user_id,
     },
     attributes: ["id", "title", "post_content", "movie_id", "user_id"],
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["id", "username"],
-//       },
-//     ],
+    //     include: [
+    //       {
+    //         model: User,
+    //         attributes: ["id", "username"],
+    //       },
+    //     ],
   })
     .then((dbAllReviews) => res.json(dbAllReviews))
     .catch((err) => {
@@ -27,7 +27,6 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
-
   UserReview.create({
     movie_title: req.body.movie_title,
     title: req.body.title,

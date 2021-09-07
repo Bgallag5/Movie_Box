@@ -1,13 +1,11 @@
 // ani
 const axios = require("axios").default;
 const router = require("express").Router();
-const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 
 const withAuth = require("../../utils/auth");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const { User, Movie, UserFav, UserReview, Rating } = require("../../models");
-
 
 //Ani's routes - get movie by id for LOGGED IN USERS ////
 router.get("/:id", withAuth, (req, res) => {
@@ -22,7 +20,7 @@ router.get("/:id", withAuth, (req, res) => {
         include: {
           model: User,
           attributes: ["id", "username"],
-        }
+        },
       },
     ],
   })
@@ -92,9 +90,5 @@ router.delete("/delete/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
-
 
 module.exports = router;

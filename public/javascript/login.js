@@ -1,5 +1,3 @@
-
-
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -19,23 +17,20 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      console.log('RESPONSE.OK');
+      console.log("RESPONSE.OK");
       document.location.replace("/movies");
-      console.log('LOCATION REPLACED');
+      console.log("LOCATION REPLACED");
     } else {
       ///betterlooking 'please enter req info'
       alert(response.statusText);
     }
-
   }
 }
 
-document.querySelector('#login-button').addEventListener('click', loginFormHandler);
+document
+  .querySelector("#login-button")
+  .addEventListener("click", loginFormHandler);
 
-
-
-
-$('#new').on('click', () => {
-  document.location.replace('/movies/register');
-})
-
+$("#new").on("click", () => {
+  document.location.replace("/movies/register");
+});
