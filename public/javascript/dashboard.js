@@ -43,6 +43,12 @@ async function editReview(event) {
  $(".edit").click(editReview);
 
 
+ //color picker
+$('#picker').on('input', () => {
+// console.log(this);
+  const colorValue = $('#picker').val();
+  $('body').css('background', colorValue);
+})
 
 
 
