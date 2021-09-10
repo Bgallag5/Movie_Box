@@ -46,7 +46,8 @@ async function editReview(event) {
  //color picker
 $('#picker').on('input', () => {
 // console.log(this);
-  const colorValue = $('#picker').val();
+const color = $('#picker').val()
+  const colorValue = `-webkit-linear-gradient(${color} 0%, #000000 100%)`;
   $('body').css('background', colorValue);
 })
 
