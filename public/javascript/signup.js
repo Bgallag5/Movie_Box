@@ -7,7 +7,6 @@ async function signupFormHandler(event) {
   const email = document.querySelector("#signup-email").value.trim();
   const password = document.querySelector("#signup-password").value.trim();
 
-  console.log(username, email, password);
 
   if (username && email && password) {
     const response = await fetch(`/api/user/register`, {
@@ -21,7 +20,6 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      console.log(response);
       document.location.replace("/movies");
     } else {
       alert(response.statusText);

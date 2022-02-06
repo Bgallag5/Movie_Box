@@ -3,9 +3,8 @@ const { User, UserReview, Movie } = require("../../models");
 const withAuth = require("../../utils/auth");
 const bcrypt = require("bcrypt");
 
-//a user can get all of their reviews
+// get all of their reviews
 router.get("/", withAuth, (req, res) => {
-  console.log("review session", req.session);
 
   UserReview.findAll({
     where: {
@@ -20,13 +19,14 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
+//post review 
 router.post("/", withAuth, (req, res) => {
   UserReview.create({
     movie_title: req.body.movie_title,
     title: req.body.title,
     post_content: req.body.post_content,
     movie_id: req.body.movie_id,
-    user_id: req.session.user_id, //previously session
+    user_id: req.session.user_id, 
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -35,9 +35,8 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-// user can make changes to what they wrote in their review //
+// make changes to what they wrote in their review //
 router.put("/update/:id", withAuth, (req, res) => {
-  // res.json({ id: req.params.id });
   UserReview.update(req.body, {
     individualHooks: true,
     where: {
@@ -58,7 +57,7 @@ router.put("/update/:id", withAuth, (req, res) => {
     });
 });
 
-// user can delete reviews BY ID they no longer want
+// delete review by ID
 router.delete("/:id", withAuth, (req, res) => {
 
   UserReview.destroy({

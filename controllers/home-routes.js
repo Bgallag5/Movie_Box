@@ -37,8 +37,8 @@ router.get("/filter/:genre", withAuth, (req, res) => {
     });
 });
 
+//get best movies route 
 router.get("/best", withAuth, (req, res) => {
-  console.log("==========HIT BEST ROUTE============");
   Movie.findAll({
     where: {
       rating: {
@@ -57,9 +57,8 @@ router.get("/best", withAuth, (req, res) => {
     });
 });
 
-// search index db by title
+// search movies by matching title sting  
 router.get("/search/:title", withAuth, (req, res) => {
-  console.log("HIT HOME TITLE SEARCH ROUTES");
   let title = req.params.title;
 
   Movie.findAll({
@@ -90,7 +89,6 @@ router.get("/search/:title", withAuth, (req, res) => {
 
 //render login page
 router.get("/login", (req, res) => {
-  console.log(req.session);
   if (req.session.loggedIn) {
     res.redirect("/movies");
     return;
@@ -140,7 +138,6 @@ router.get("/single/:id", withAuth, (req, res) => {
 
 //RENDER EDIT REVIEW PAGE
 router.get("/edit/:id", withAuth, (req, res) => {
-  console.log("HIT RENDER EDIT ROUTE");
 
   UserReview.findOne({
     where: {
@@ -158,7 +155,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     .catch((err) => res.status(500).json({ err }));
 });
 
-////EDIT REVIEW
+//EDIT REVIEW
 router.put("/editReview/:id", withAuth, (req, res) => {
 
   UserReview.update(req.body, {
@@ -176,5 +173,33 @@ router.put("/editReview/:id", withAuth, (req, res) => {
     })
     .catch((err) => res.status(500).json({ err }));
 });
+
+
+///RENDER PROFILE PAGE
+router.get("/profile", withAuth, (req, res) => {
+User.findOne({
+  where: {
+    id: req.session.user_id
+  }
+}).then(dbData => {
+  if (!dbData) {
+    res.status(404).json({message: "No Profile found"})
+  }
+  const {id, username, email} = {...dbData.dataValues};
+
+  res.render('profile-page', {username, id, email, loggedIn: true}) 
+}).catch((err) => res.send('Bad Request'))
+});
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

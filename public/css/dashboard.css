@@ -1,7 +1,10 @@
+
+
 body{
     background-image: none;
     /* background-color: rgba(21, 3, 49,1); */
-    background: -webkit-linear-gradient(rgb(26, 2, 65) 0%, rgb(9, 1, 9) 100%);
+    /* background: red; */
+    background: -webkit-linear-gradient(#1a0241 0%, #000000 100%);
 }
 
 /* #myFavs{

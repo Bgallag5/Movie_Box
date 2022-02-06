@@ -1,0 +1,10 @@
+body{
+    background-image: none;
+    background: -webkit-linear-gradient(#1a0241 0%, #000000 100%);
+    background-repeat: no-repeat;
+}
+
+footer{
+    position: absolute;
+}
+

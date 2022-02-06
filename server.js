@@ -40,5 +40,3 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
 
-////Front End: Ben, Raevin
-///Back: Ani, Thandie

@@ -34,7 +34,7 @@ router.get("/:id", withAuth, (req, res) => {
     });
 });
 
-// Ani's get movie by title for LOGGED IN users //
+// get movie by title for LOGGED IN users 
 router.get("/title/:title", withAuth, (req, res) => {
   let title = req.params.title.split("_").join(" ");
   console.log("LOOK HERE", title);
@@ -65,6 +65,7 @@ router.get("/title/:title", withAuth, (req, res) => {
     });
 });
 
+//delete movie from db 
 router.delete("/delete/:id", (req, res) => {
   Movie.destroy({
     where: {

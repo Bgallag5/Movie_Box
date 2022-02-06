@@ -28,7 +28,6 @@ var sortBtn = document.querySelector(".dropdown");
 
 sortBtn.onchange = async function () {
   const genre = $("#dropdown").find("option:selected").text();
-  console.log(genre);
 
   document.location.replace(`/movies/filter/${genre}`);
 };
@@ -46,7 +45,6 @@ async function searchMovies(event) {
 
   const search = document.querySelector("#inputId").value.trim();
 
-  console.log(search);
   document.location.replace(`/movies/search/${search}`);
 }
 
@@ -58,8 +56,6 @@ async function getSingle(event) {
 
   const movie = this;
   const id = this.id;
-  console.log(id);
-  console.log(movie);
 
   document.location.replace(`/movies/single/${id}`);
 }

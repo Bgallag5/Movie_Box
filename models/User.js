@@ -32,9 +32,6 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {    //VALIDATION SHOULD HAPPEN WHEN USER REGISTERS BC THIS WILL ALWAYS BE HASHED PW
-      //   len: [7],
-      // },
     },
   },
   {

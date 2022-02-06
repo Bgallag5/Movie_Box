@@ -64,9 +64,8 @@ router.post("/register", (req, res) => {
     });
 });
 
-////ANI I CHANGED THIS:
+//User login routes 
 router.post("/login", async (req, res) => {
-  console.log("=======HIT LOGIN ROUTE======");
   try {
     let dbUserData = await User.findOne({
       where: {
@@ -79,8 +78,6 @@ router.post("/login", async (req, res) => {
         .json({ message: "We can't find a user with that email address 🤨" });
       return;
     }
-    console.log(req.body.password);
-    console.log(dbUserData.password);
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
@@ -93,18 +90,15 @@ router.post("/login", async (req, res) => {
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      console.log("SESSION DATA SAVED");
       res.json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (error) {
-    console.error("failed login", error);
     res.status(500).json(error);
   }
 });
 
 // user can logout (should be connected to logout.js)
 router.post("/logout", (req, res) => {
-  console.log("===HIT LOGOUT ROUTE===");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
