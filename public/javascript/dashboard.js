@@ -6,8 +6,6 @@ async function getSingle(event) {
   
     const movie = this;
     const id = this.id;
-    console.log(id);
-    console.log(movie);
   
     document.location.replace(`/movies/single/${id}`)
   
@@ -15,13 +13,11 @@ async function getSingle(event) {
   
 $(".movies").on('click', getSingle);
 
-////CLICK TINY => SINGLE-VIEW
+//CLICK TINY => SINGLE-VIEW
 async function getTinySingle(event) {
     event.preventDefault();
-  console.log('GETTING SINGLE');
   
     const id = this.id;
-    console.log(id);
   
     document.location.replace(`/movies/single/${id}`)
   
@@ -30,12 +26,11 @@ async function getTinySingle(event) {
 $(".tiny-movies").on('click', getTinySingle);
 
 
-////EDIT REVIEW
+//EDIT REVIEW
 async function editReview(event) { 
   event.preventDefault();
 
   const id = this.name;
-  console.log(id); 
 
   document.location.replace(`/movies/edit/${id}`)
  }
@@ -49,6 +44,9 @@ const color = $('#picker').val()
 $('body').css('background', `-webkit-linear-gradient(${color} 0%, #000000 100%)`);
 })
 
-
+//user profile 
+$('#user-profile').on('click', () => {
+  document.location.replace('/movies/profile');
+})
 
 

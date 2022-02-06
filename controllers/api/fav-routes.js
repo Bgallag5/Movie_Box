@@ -6,7 +6,7 @@ const aniKey = "43934c9963msh721330f251ef6dep1dc772jsn1442ece51420";
 const { User, Movie, Fave } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// Ani's get all user favorites - RETURNS all movie info //
+// get all user favorites - RETURNS all movie info //
 router.get("/", withAuth, async (req, res) => {
   try {
     //insert a user movie pair into the database if it does not exists already
@@ -27,9 +27,8 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// Ani's create a new favorite route //
+// create a new favorite route //
 router.post("/add/:id", withAuth, async (req, res) => {
-  console.log("====HIT ADD ROUTE======");
 
   const user = req.session.user_id;
   const movie = req.params.id;

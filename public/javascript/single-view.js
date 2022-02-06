@@ -2,7 +2,6 @@ async function addFavorite(event) {
   event.preventDefault();
 
   const id = this.name;
-  console.log(id);
 
   const response = await fetch(`/api/fav/add/${id}`, {
     method: "POST",
@@ -24,7 +23,6 @@ async function removeFavorite(event) {
   event.preventDefault();
 
   const id = this.name;
-  console.log(id);
 
   const response = await fetch(`/api/fav/${id}`, {
     method: "DELETE",

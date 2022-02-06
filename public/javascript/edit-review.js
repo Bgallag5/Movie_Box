@@ -4,9 +4,6 @@ async function saveReview(e) {
   const title = document.getElementById("title").value;
   const post_content = document.getElementById("review-text").value;
   const id = this.name;
-  console.log(id);
-  console.log(title);
-  console.log(post_content);
 
   const response = await fetch(`/movies/editReview/${id}`, {
     method: "PUT",

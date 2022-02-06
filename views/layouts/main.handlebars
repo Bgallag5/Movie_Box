@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Movie Box" />
+    <meta property="og:type" content="Website" />
+    <meta name="title" property="og:title" content="Movie Box" />
+    <meta name="description" property="og:description" content="Movie Box" />
+    <meta name="image" property="og:image" content="https://live.staticflickr.com/65535/51864890057_448a996a7f_k.jpg" />
+    <meta name="author" content="Ben Gallagher" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +22,7 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous"
     />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="/css/style.css" />
     {{!-- how do we do our stylesheets in handlebars? We just link them in their respective .hbs--}}
     <title>Movie Box</title>
@@ -36,6 +43,8 @@
             {{#if loggedIn}}
             <li class="nav-item nav-text" id="logout">
               <a class="nav-link" href="#">Log Out</a>
+            <li class="nav-item nav-text" id="user-profile">
+              <a class="nav-link" href="#"><i class='far fa-user-circle'></i></a>
             </li>
             {{else}}
             <li class="nav-item nav-text" id="login">
